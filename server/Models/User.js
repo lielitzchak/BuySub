@@ -3,6 +3,22 @@ const { isEmail } = require('validator');
 
 
 const userSchema = new mongoose.Schema({
+  firstName:{
+    type: String,
+    required: [true, 'Please enter your firstName']
+  },
+  lastName:{
+    type: String,
+    required: [true, 'Please enter your lastName']
+  },
+  birthOfDate:{
+    type: Date,
+    required: [true, 'Please enter your birthOfDate']
+  },
+  image:{
+    type: String,
+    default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+  },
   email: {
     type: String,
     required: [true, 'Please enter an email'],
@@ -13,7 +29,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please enter a password'],
-    minlength: [6, 'Minimum password length is 6 characters'],
+    minlength: [6, 'Minimum password length is 6 characters']
   },
   role: {
     type: Array,
