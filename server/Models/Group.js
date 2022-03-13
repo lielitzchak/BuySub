@@ -8,13 +8,15 @@ const groupSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
-  members: {
-    type: Array,
+  members: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
-  },
-  products:{
-      type: Array
-  }
+  }],
+  products:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product'
+  }]
 },
   { timestamps: true }
 );
