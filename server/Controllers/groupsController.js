@@ -13,18 +13,18 @@ let getGroupById = async (req,res) => {
 
 
 let addGroup = async (req,res) => {
-    const {userId} = req.params;
 
-  const user = await User.findOne({userId});
+  const user = await User.findOne({_id : req.params.id});
   console.log(user);
+  
   const newGroup = await Group.create(req.body);
+  newGroup.members.push(user._id);
   user.groupName = newGroup.groupName;
-  newGroup.members.push(user);
   
-  await user.save();
   await newGroup.save();
+  await user.save();
   
-  res.send('The Gropup added and Linked Sucessfully')  
+  res.send({message :'The Group added and Linked Sucessfully',newGroup})  
 };
 
 

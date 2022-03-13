@@ -12,9 +12,22 @@ let getProductById = async (req,res) => {
 })};
 
 
+// let addProduct = async (req,res) => {
+
+//    const group = await Group.findOne({_id : req.params.id});
+//    console.log(group);
+//    const newProduct = await Product.create(req.body);
+
+//    group.products.push(newProduct._id);
+   
+//    await group.save();
+   
+//    res.send({message :'The Product added and Linked Sucessfully',newProduct})  
+// };
+
 let addProduct = async (req,res) => {
 
-   const group = await Group.findOne({_id : req.params.id});
+   const group = await Group.findOne({groupName : req.params.groupName});
    console.log(group);
    const newProduct = await Product.create(req.body);
 
@@ -22,7 +35,7 @@ let addProduct = async (req,res) => {
    
    await group.save();
    
-   res.send('The Product added and Linked Sucessfully')  
+   res.send({message :'The Product added and Linked Sucessfully',newProduct})  
 };
 
 

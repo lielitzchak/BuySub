@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   birthOfDate:{
     type: Date,
-    required: [true, 'Please enter your birthOfDate']
+    required: [true, 'Please enter your birthOfDate YY/MM/DD']
   },
   image:{
     type: String,

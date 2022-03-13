@@ -7,6 +7,9 @@ const authRoutes = require('./Routes/auth');
 const usersRoutes = require('./Routes/users'); 
 const groupsRoutes = require('./Routes/groups'); 
 const productsRoutes = require('./Routes/products'); 
+const passport = require('passport')
+require('./Config/passport')(passport);
+
 
 app.use(cors());
 
@@ -16,10 +19,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); 
 
 
+app.use(passport.initialize());
 app.use('/Api',authRoutes);
 app.use('/Api',usersRoutes);
 app.use('/Api',groupsRoutes);
 app.use('/Api',productsRoutes);
+// app.use('/Api',passport.authenticate('jwt',{session:false}),productsRoutes);
+
 
 const port =  process.env.PORT || 11000 ;
 
@@ -28,4 +34,10 @@ app.listen(port,() => {
 })
 
 
+if (process.env.NODE_ENV === 'production'){ 
+    app.use(express.static(path.join(__dirname,'../client/build')))
+    app.get('*',(req,res)=>{
+        res.sendFile(path.join(__dirname, '../client/build','index.html'))
+    });
+}
 
