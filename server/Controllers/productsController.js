@@ -1,3 +1,4 @@
+const Group = require('../Models/Group');
 const Product = require('../Models/Product');
 
 let getProducts = async (req,res) => {
@@ -12,9 +13,18 @@ let getProductById = async (req,res) => {
 
 
 let addProduct = async (req,res) => {
-   await Product.create(req.body).then((data) => { 
-    res.send(data)
-})};
+
+   const group = await Group.findOne({_id : req.params.id});
+   console.log(group);
+   const newProduct = await Product.create(req.body);
+
+   group.products.push(newProduct._id);
+   
+   await group.save();
+   
+   res.send('The Product added and Linked Sucessfully')  
+};
+
 
 
 let updateProduct = async (req,res) => {

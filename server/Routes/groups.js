@@ -7,7 +7,7 @@ router.get('/groups',getGroups)
 
 router.get('/groups/:id',getGroupById)
 
-router.post('/groups',addGroup)
+router.post('/groups/:id',addGroup)
 
 router.put('/groups/:id',updateGroup)
 
