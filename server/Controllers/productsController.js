@@ -12,19 +12,6 @@ let getProductById = async (req,res) => {
 })};
 
 
-// let addProduct = async (req,res) => {
-
-//    const group = await Group.findOne({_id : req.params.id});
-//    console.log(group);
-//    const newProduct = await Product.create(req.body);
-
-//    group.products.push(newProduct._id);
-   
-//    await group.save();
-   
-//    res.send({message :'The Product added and Linked Sucessfully',newProduct})  
-// };
-
 let addProduct = async (req,res) => {
 
    const group = await Group.findOne({groupName : req.params.groupName});
