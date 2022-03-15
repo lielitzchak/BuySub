@@ -1,13 +1,20 @@
+import { useState } from "react";
 
-
-const Login = ()=>{
-    return(
-        <section>
-            email <input type={"email"}/>
-            password <input type={"string"}/>
-        </section>
-    )
-}
+const Login = () => {
+  const j = (event) => {
+    event.preventDefault();
+    console.log("kjh");
+  };
+  return (
+    <form onSubmit={(event) => j(event)}>
+      <label>email</label>
+      <input type={"email"} />
+      <label>password</label>
+      <input type={"string"} />
+      <button onClick={(event) => j(event)}>click</button>
+    </form>
+  );
+};
 export default Login;
 
 // email: {
