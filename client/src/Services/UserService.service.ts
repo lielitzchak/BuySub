@@ -1,13 +1,13 @@
-const basic_url =
+//liel keep going
+export const basic_url =
   process.env.NODE_ENV === "production"
     ? "https://buy-sub.herokuapp.com/Api"
     : "http://localhost:11000/Api";
 export const GetAllUsers = async (): Promise<any> => {
-  try {
     return await fetch(`${basic_url}/users`)
       .then((res: any): Promise<any> => res.json().then((data: any) => data)) // not sure what i need to the second then function.
       .catch((er: any): void => console.log(er));
-  } catch {}
+  
 };
 export const getUserById = async (id: any): Promise<any> => {
   return await fetch(`${basic_url}/users/${id}`)
@@ -23,7 +23,9 @@ export const addUser = async (user: any): Promise<any> => {
   return await fetch(`${basic_url}/users`, options)
     .then((res: any) => res.json().then((data: any) => console.log(data))) // not sure what i need to the second then function.
     .catch((er: any) => console.log(er));
+
 };
+
 // export async function GetAllUsers() {
 //   try {
 //     return await fetch(basic_url)
