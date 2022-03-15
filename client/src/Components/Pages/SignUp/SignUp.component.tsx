@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authContext } from "../../../Context/AuthProvider.component";
 import { singUp } from "../../../Services/AuthServeice.service";
+import jwt_decode from "jwt-decode";
 
 
-export const Register = (): JSX.Element => {
+
+const SingUp = (): JSX.Element => {
   const [newUser, setNewUser]: any = useState({});
+
+  
+  let {auth,setAuth}:any = useContext(authContext)
+
+  const navigate = useNavigate()
+
   const updateUserInfo = (event: any): void => {
     newUser[event.target.name] = event.target.value;
   };
@@ -11,7 +21,16 @@ export const Register = (): JSX.Element => {
     event.preventDefault();
     setNewUser(newUser);
     singUp(newUser)
-    .then((data) => console.log(data));
+    .then((res)=>{
+      if(res.accessToken){
+        localStorage.setItem("jwtToken",res.accessToken)
+        let tokenDecoded:any = jwt_decode(res.accessToken)
+        setAuth(tokenDecoded)
+        // auth = tokenDecoded
+        console.log(auth);
+        navigate('/CreateOrJoinTeam');
+      }
+    })
 
   };
   return (
@@ -62,3 +81,4 @@ export const Register = (): JSX.Element => {
     </form>
   );
 };
+export default SingUp;
