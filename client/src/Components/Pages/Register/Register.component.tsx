@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { singUp } from "../../Services/AuthServeice.service";
+import { singUp } from "../../../Services/AuthServeice.service";
 
 
 export const Register = (): JSX.Element => {
