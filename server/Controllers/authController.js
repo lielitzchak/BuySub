@@ -12,9 +12,16 @@ let signupPost = async (req,res)=>{
       if(err) return res.status(500).send({message: err});
 
       req.body.password = hashPassword;
-      await  User.create(req.body) 
-          .then(result=> res.status(200).send({message:"User has been Added",result}))
-          .catch(err=> res.status(500).send(err))
+      
+      await  User.create(req.body)
+      .then(user=> 
+          jwt.sign({email : user.email,id : user._id,role: user.role},process.env.SECRET_KEY,{expiresIn:'30m'},(err,accessToken)=>{
+            if(err) return res.status(400).send({Error:`${err}`})
+            res.status(200).send({message:"User has been Added and Signed Up Sucssefuly",user,accessToken});
+            user.isLogin = true;
+            user.save();
+        }))
+      .catch(err=> res.status(500).send(err))
   })
 }
 
