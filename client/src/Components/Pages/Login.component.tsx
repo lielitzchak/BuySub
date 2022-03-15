@@ -1,17 +1,25 @@
 import { useState } from "react";
 
 const Login = () => {
-  const j = (event) => {
-    event.preventDefault();
-    console.log("kjh");
+  const [user, setUser]: any = useState({});
+  const updateUserInfo = (event: any): void => {
+    user[event.target.name] = event.target.value;
   };
+  const saveNewUser = (event: any): void => {
+    event.preventDefault();
+    setUser(user);
+    console.log(user);
+    
+    // addUser(newUser).then((data) => console.log(data));
+  };
+  
   return (
-    <form onSubmit={(event) => j(event)}>
+    <form onSubmit={saveNewUser}>
       <label>email</label>
-      <input type={"email"} />
+      <input type="email" name="email" onChange={updateUserInfo}/>
       <label>password</label>
-      <input type={"string"} />
-      <button onClick={(event) => j(event)}>click</button>
+      <input type="string" name="password" onChange={updateUserInfo} />
+      <button>click</button>
     </form>
   );
 };

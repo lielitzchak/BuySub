@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { addUser } from "../../Services/UserService.service";
+import { singUp } from "../../Services/AuthServeice.service";
+
 
 export const Register = (): JSX.Element => {
   const [newUser, setNewUser]: any = useState({});
@@ -9,60 +10,51 @@ export const Register = (): JSX.Element => {
   const saveNewUser = (event: any): void => {
     event.preventDefault();
     setNewUser(newUser);
-    addUser(newUser);
+    singUp(newUser)
+    .then((data) => console.log(data));
+
   };
   return (
-    <form
-      onSubmit={(event) => {
-        saveNewUser(event);
-      }}
-    >
+    <form onSubmit={saveNewUser}>
       <label>first Name</label>
       <input
         name="firstName"
-        onChange={(event) => updateUserInfo(event)}
+        onChange={updateUserInfo}
         type="text"
       />
       <br /> <br />
       <label>last Name</label>
       <input
         name="lastName"
-        onChange={(event) => updateUserInfo(event)}
+        onChange={updateUserInfo}
         type="text"
       />
       <br /> <br />
       <label>email</label>
       <input
         name="email"
-        onChange={(event) => updateUserInfo(event)}
+        onChange={updateUserInfo}
         type="email"
       />
       <br /> <br />
       <label>password</label>
       <input
         name="password"
-        onChange={(event) => updateUserInfo(event)}
+        onChange={updateUserInfo}
         type="password"
       />
       <br /> <br />
       <label>image</label>
       <input
         name="image"
-        onChange={(event) => updateUserInfo(event)}
+        onChange={updateUserInfo}
         type="url"
-      />
-      <br /> <br />
-      <label>role</label>
-      <input
-        name="role"
-        onChange={(event) => updateUserInfo(event)}
-        type="text"
       />
       <br /> <br />
       <label>birth Of Date</label>
       <input
         name="birthOfDate"
-        onChange={(event) => updateUserInfo(event)}
+        onChange={updateUserInfo}
         type="date"
       />
       <br /> <br />
