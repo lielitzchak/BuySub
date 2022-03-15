@@ -5,24 +5,24 @@ const basic_url =
 export const GetAllUsers = async (): Promise<any> => {
   try {
     return await fetch(`${basic_url}/users`)
-      .then((res): Promise<any> => res.json().then((data) => data)) // not sure what i need to the second then function.
-      .catch((er): void => console.log(er));
+      .then((res: any): Promise<any> => res.json().then((data: any) => data)) // not sure what i need to the second then function.
+      .catch((er: any): void => console.log(er));
   } catch {}
 };
-export const getUserById = async (id: any) => {
+export const getUserById = async (id: any): Promise<any> => {
   return await fetch(`${basic_url}/users/${id}`)
-    .then((res) => res.json().then((data) => data)) // not sure what i need to the second then function.
-    .catch((er) => console.log(er));
+    .then((res: any) => res.json().then((data: any) => data)) // not sure what i need to the second then function.
+    .catch((er: any) => console.log(er));
 };
-export const addUser = async (user: any) => {
+export const addUser = async (user: any): Promise<any> => {
   let options = {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(user),
   };
   return await fetch(`${basic_url}/users`, options)
-    .then((res) => res.json().then((data) => console.log(data))) // not sure what i need to the second then function.
-    .catch((er) => console.log(er));
+    .then((res: any) => res.json().then((data: any) => console.log(data))) // not sure what i need to the second then function.
+    .catch((er: any) => console.log(er));
 };
 // export async function GetAllUsers() {
 //   try {
