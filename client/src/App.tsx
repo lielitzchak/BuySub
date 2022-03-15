@@ -1,14 +1,10 @@
 import "./App.css";
-import Login from "./Components/Pages/Login.component";
-import { Register } from "./Components/Pages/Register.component";
+import RouterApp from "./Router/RouterApp";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Login/>
-        <Register />
-      </header>
+      <RouterApp/>
     </div>
   );
 }
