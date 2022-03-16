@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { authContext } from '../../../Context/AuthProvider.component';
 import { addGroup } from "../../../Services/GroupsServeice.service";
+import { useNavigate } from "react-router-dom";
 
 const CreateOrJoinTeam = () => {
   const { auth } = useContext(authContext);
   // const [joinTeamInfo, setJoinTeamInfo]: any = useState();
-  const [createTeamInfo, setCreateTeamInfo]: any = useState();
+  const [createTeamInfo, setCreateTeamInfo]: any = useState({});
+  const navigate = useNavigate()
 
   const updateTeamInfo = (event: any): void => {
     createTeamInfo[event.target.name] = event.target.value;
@@ -14,7 +16,10 @@ const CreateOrJoinTeam = () => {
     event.preventDefault();
     setCreateTeamInfo(createTeamInfo);
     addGroup(createTeamInfo, auth.id)
-    .then((res) => {console.log(res);})
+    .then((res) => {
+      navigate('/Team')
+      console.log(res);
+    })
     .catch((err) => {console.log(err)})
   }
   // const updateTeamInfo = (event: any): void => {
@@ -42,7 +47,7 @@ const CreateOrJoinTeam = () => {
       <form onSubmit={saveTeamInfo}>
 
         <label>team name</label>
-        <input name="teamName" type="text" onChange={updateTeamInfo} />
+        <input name="groupName" type="text" onChange={updateTeamInfo} />
 
         <label>password</label>
         <input name="password" type="password" onChange={updateTeamInfo} />

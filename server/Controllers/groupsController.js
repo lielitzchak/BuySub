@@ -33,9 +33,6 @@ let addGroup = async (req,res) => {
     res.send({message :'The Group added and Linked Sucessfully',newGroup})  
 
   });
-
-
-  
 };
 
 

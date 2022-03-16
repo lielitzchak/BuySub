@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [user, setUser]: any = useState({});
   
-  let {auth,setAuth}:any = useContext(authContext)
+  const {auth,setAuth}:any = useContext(authContext)
 
   const navigate = useNavigate()
 
@@ -16,7 +16,7 @@ const Login = () => {
   };
   const saveNewUser = (event: any): void => {
     event.preventDefault();
-    setUser(user);
+    // setUser(user);
     console.log(user);
     logIn(user)
     .then((res)=>{
@@ -24,8 +24,6 @@ const Login = () => {
         localStorage.setItem("jwtToken",res.accessToken)
         let tokenDecoded:any = jwt_decode(res.accessToken)
         setAuth(tokenDecoded)
-        // auth = tokenDecoded
-        console.log(auth);
         console.log(auth.email);
         navigate('/');
       }
