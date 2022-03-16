@@ -5,7 +5,11 @@ import { useContext } from "react"
 
 export default function NavBar() {
   const { auth } = useContext(authContext)
-  {console.log(auth.role)}
+
+  console.log('before');
+  console.log(auth.role);
+  console.log('After');
+  
   
   return (
     <nav>
@@ -14,7 +18,7 @@ export default function NavBar() {
       {auth.groupName?<Link to="/Team">Team</Link>:""}
       {/* <Link to="/Team">Team</Link> */}
       {auth.email?<LogOut/> :<Link to="/Login">Login</Link>}
-      {console.log(auth.role)}
+      <h1>{auth.email}</h1>
       
     </nav>
 

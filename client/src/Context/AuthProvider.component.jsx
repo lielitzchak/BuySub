@@ -4,12 +4,7 @@ import jwt_decode from 'jwt-decode'
 export const authContext = createContext();
 export default function AuthProvider({ children }) {
   const [auth, setAuth] = useState({})
-  // useEffect(() => {
-  //   if (localStorage.jwtToken) {
 
-  //     // auth = tokenDecoded
-  //   }
-  // }, [])
   useEffect(() => {
     if (localStorage.jwtToken) {
       const token = localStorage.getItem("jwtToken")
@@ -19,6 +14,7 @@ export default function AuthProvider({ children }) {
       console.log(auth);
     }
   }, [])
+  
   return (
     <authContext.Provider value={{ auth, setAuth }}>
       {children}
