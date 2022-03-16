@@ -8,9 +8,9 @@ export default function AuthProvider({ children }) {
     if (localStorage.jwtToken) {
       const token = localStorage.getItem("jwtToken")
       let tokenDecoded = jwt_decode(token)
-      // setAuth(tokenDecoded)
-      auth = tokenDecoded
-      console.log(auth);
+      setAuth(tokenDecoded)
+      // auth = tokenDecoded
+      // console.log(auth);
     }
   }, [])
   return (
