@@ -7,6 +7,15 @@ const groupSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  password: {
+    type: String,
+    required: [true, 'Please enter a password'],
+    minlength: [6, 'Minimum password length is 6 characters']
+  },
+  color: {
+    type: String,
+    default: ''
+  },
   members: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
