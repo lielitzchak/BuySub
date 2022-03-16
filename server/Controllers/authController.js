@@ -54,6 +54,7 @@ let logout = async (req, res) => {
 
     await User.findOne({ _id : req.params.id}).then((user) => {
       user.isLogin = false;
+      user.lastLogin = Date.now();
       user.save();
       console.log(user);
     })

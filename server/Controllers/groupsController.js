@@ -1,5 +1,7 @@
 const Group = require('../Models/Group');
 const User = require('../Models/User');
+const bcrypt = require('bcrypt');
+
 
 let getGroups = async (req,res) => {
    await Group.find({}).then((data) => {
@@ -16,15 +18,24 @@ let addGroup = async (req,res) => {
 
   const user = await User.findOne({_id : req.params.id});
   console.log(user);
+  user.role.push('Admin');
   
-  const newGroup = await Group.create(req.body);
-  newGroup.members.push(user._id);
-  user.groupName = newGroup.groupName;
+  bcrypt.hash(req.body.password, 10, async (err, hashPassword) => {
+    if (err) return res.status(500).send({ message: err });
+    req.body.password = hashPassword;
+    const newGroup = await Group.create(req.body);
+    newGroup.members.push(user._id);
+    user.groupName = newGroup.groupName;
+    
+    await newGroup.save();
+    await user.save();
+    
+    res.send({message :'The Group added and Linked Sucessfully',newGroup})  
+
+  });
+
+
   
-  await newGroup.save();
-  await user.save();
-  
-  res.send({message :'The Group added and Linked Sucessfully',newGroup})  
 };
 
 
