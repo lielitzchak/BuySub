@@ -1,16 +1,23 @@
 import { basic_url } from './UserService.service';
 
-export const addGroup = async (user: any) => {
+export const addGroup = async (newGroup: any,id:any) => {
     let options = {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newGroup),
       
     };
-    return await fetch(`${basic_url}/groups`, options)
+    return await fetch(`${basic_url}/groups/${id}`, options)
       .then((res) => res.json())
       .catch((er) => console.log(er));
   };
+
+
+
+
+
+
+
 
   export const logIn = async (user: any) => {
     let options = {
