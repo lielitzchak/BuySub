@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const LogOut = () => {
     const { auth,setAuth } = useContext(authContext)
     const navigate = useNavigate()
-    console.log(auth);
     
     const LogOut = () => {
         logOut(auth.id)
