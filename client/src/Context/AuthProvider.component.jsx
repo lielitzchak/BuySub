@@ -14,6 +14,7 @@ export default function AuthProvider({ children }) {
       // console.log(auth);
     }
   }, [])
+  
   return (
     <authContext.Provider value={{ auth, setAuth }}>
       {children}
