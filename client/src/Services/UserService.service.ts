@@ -25,10 +25,6 @@ export const addUser = async (user: any): Promise<any> => {
 
 export const updateUser = async (id: string, newUser: any): Promise<any> => {
   try {
-    let oldUser: any;
-    await fetch(`${basic_url}/users/${id}`)
-      .then((res: any) => res.json().then((data: any) => (oldUser = data)))
-      .catch((er: any) => console.log(er));
     const options = {
       method: "PUT",
       body: JSON.stringify(newUser),
