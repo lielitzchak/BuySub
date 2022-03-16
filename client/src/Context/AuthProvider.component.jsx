@@ -10,8 +10,6 @@ export default function AuthProvider({ children }) {
       const token = localStorage.getItem("jwtToken")
       let tokenDecoded = jwt_decode(token)
       setAuth(tokenDecoded)
-      // auth = tokenDecoded
-      // console.log(auth);
     }
   }, [])
   

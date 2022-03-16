@@ -6,41 +6,18 @@ import { Admin } from "../../Pages/Admin/Admin.component";
 
 export default function NavBar() {
   const { auth, setAuth} = useContext(authContext);
-  let authPromise = new Promise((resolve, reject) => {
-    resolve((res) =>setAuth(res) );
-    reject((rej) => rej );
-  });
-  authPromise
-  .then((data)=>{console.log(data)})
-  .catch((err)=> console.log(err))
-  // authPromise.then((res) =>).catch((ca) =>);
-  // console.log(authPromise);
-  // console.log("first");
-  // console.log(auth.email);
-  // let authPromise = auth;
-  // console.log("authPromise");
-  // console.log(authPromise);
 
-  let admin = "Admin";
-  const jj = ()=>{
-    if(auth.role[1] !== undefined){
-      console.log(auth);
-      <Admin/>
-    }
-  }
+  console.log('before');
+  console.log(auth.email);
+  console.log('after');
+
   return (
     <nav>
       <Link to="/">Home</Link>
       <Link to="/SignUp">SignUp</Link>
       <Link to="/Inventory">Inventory</Link>
       {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>}
-      {jj()}
-      {/* {auth.role[1] == admin ? <Admin /> : "node"} */}
-      {
-        // auth.role[1] == admin ? <Admin /> : "node"
-
-        // console.log(auth.role)
-      }
+      {/* {auth.role.includes('Admin') ? <Admin /> : ''} */}
       <h1>{auth.email}</h1>
     </nav>
   );
