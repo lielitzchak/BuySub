@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
-import { singUp } from "../../../Services/AuthServeice.service";
+import { singUp } from "../../../Services/AuthService.service";
 import jwt_decode from "jwt-decode";
 
 

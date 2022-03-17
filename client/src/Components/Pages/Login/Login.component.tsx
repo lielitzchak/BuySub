@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { logIn } from "../../../Services/AuthServeice.service";
+import { logIn } from "../../../Services/AuthService.service";
 import jwt_decode from "jwt-decode";
 import {authContext} from '../../../Context/AuthProvider.component'
 import { useNavigate } from "react-router-dom";

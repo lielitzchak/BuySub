@@ -9,7 +9,7 @@ import CreateOrJoinTeam from '../Components/Pages/CreateOrJoinTeam/CreateOrJoinT
 import Team from '../Components/Pages/Team/Team.component';
 import { Admin } from '../Components/Pages/Admin/Admin.component';
 import Inventory from '../Components/Pages/Inventory/Inventory.component';
-import Setting from '../Components/Pages/Setting/Setting';
+import Setting from '../Components/Pages/Setting/Setting.component';
 
 
 
