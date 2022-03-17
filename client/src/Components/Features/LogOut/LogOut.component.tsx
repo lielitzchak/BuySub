@@ -1,4 +1,4 @@
-import { logOut } from "../../../Services/AuthServeice.service";
+import { logOut } from "../../../Services/AuthService.service";
 import { authContext } from '../../../Context/AuthProvider.component'
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";

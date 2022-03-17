@@ -1,5 +1,13 @@
 import { basic_url } from './UserService.service';
 
+
+export const getGroupProducts = async (groupName : any) => {
+
+  return await fetch(`${basic_url}/groups/products/${groupName}`)
+  .then((res) => res.json())
+  .catch((er) => console.log(er));
+} 
+
 export const addGroup = async (newGroup: any,id:any) => {
     let options = {
       method: "POST",
@@ -31,20 +39,4 @@ export const joinGroup = async (groupDetailsToJoin: any,id:any) => {
 
 
 
-  export const logIn = async (user: any) => {
-    let options = {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(user),
-      
-    };
-    return await fetch(`${basic_url}/login`, options)
-      .then((res) => res.json())
-      .catch((er) => console.log(er));
-  };
-
-  export const logOut = async (id: any) => {
-    return await fetch(`${basic_url}/logout/${id}`)
-      .then((res) => res.json())
-      .catch((er) => console.log(er));
-  };
+ 
