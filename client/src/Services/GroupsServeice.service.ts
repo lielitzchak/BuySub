@@ -12,6 +12,18 @@ export const addGroup = async (newGroup: any,id:any) => {
       .catch((er) => console.log(er));
   };
 
+export const joinGroup = async (groupDetailsToJoin: any,id:any) => {
+    let options = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(groupDetailsToJoin),
+      
+    };
+    return await fetch(`${basic_url}/groups/join/${id}`, options)
+      .then((res) => res.json())
+      .catch((er) => console.log(er));
+};
+
 
 
 
