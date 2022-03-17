@@ -5,7 +5,7 @@ export const getGroupProducts = async (groupName : any) => {
 
   return await fetch(`${basic_url}/groups/products/${groupName}`)
   .then((res) => res.json())
-  .catch((er) => console.log(er));
+  .catch((err) => console.log(err));
 } 
 
 export const addGroup = async (newGroup: any,id:any) => {

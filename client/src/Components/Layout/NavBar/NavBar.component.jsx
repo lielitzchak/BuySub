@@ -10,7 +10,7 @@ export default function NavBar() {
     <nav>
       <Link to="/">Home</Link>
       <Link to="/SignUp">SignUp</Link>
-      {auth.email ? <Link to="/Team">Team</Link> : ''}
+      {auth.email && auth.groupName != '' ? <Link to="/Team">Team</Link> : ''}
       {
         auth.role && auth.role.length >= 1 && auth.role.includes('Admin') ? <Link to="/Admin">Admin</Link> : ''
       }

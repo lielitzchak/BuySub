@@ -10,7 +10,12 @@ let getGroups = async (req,res) => {
 
 let getGroupProducts = async (req,res) => {
    const groupProdcts = await Group.findOne({groupName: req.params.groupName}).populate('products');
-   res.status(200).send(groupProdcts.products)
+   if(groupProdcts.products.length > 1){
+
+       res.status(200).send(groupProdcts.products)
+   }else{
+       res.status(200).send({message: 'The Are No Products'})
+   }
 }
 
 let getGroupById = async (req,res) => {
