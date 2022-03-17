@@ -28,11 +28,12 @@ let signupPost = async (req,res)=>{
 
 let loginPost  = async (req,res)=>{
   if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
-
+  
   const {email,password} = req.body;
-  try {
-    const user = await User.findOne({email});
-    bcrypt.compare(password ,user.password,(err,isMatch)=>{
+
+  await User.findOne({email})
+  .then(user=> {
+      bcrypt.compare(password ,user.password,(err,isMatch)=>{
       if(err) return res.status(400).send({message:"error in pas"})
       if(!isMatch) return res.status(403).send({message:"Password incorrect"})
 
@@ -42,19 +43,14 @@ let loginPost  = async (req,res)=>{
           user.isLogin = true;
           user.save();
       })
-    })
-    
-  } catch (error) {
-    res.status(400).send({message:`${err}`})
+  })
+  })
+  .catch((err)=>{res.status(400).send({message:`${err}`})})
 
-  }
-  
-
-  
-  
-  // await User.findOne({email})
-  // .then(user=> {
-  //     bcrypt.compare(password ,user.password,(err,isMatch)=>{
+    // const {email,password} = req.body;
+  // try {
+  //   const user = await User.findOne({email});
+  //   bcrypt.compare(password ,user.password,(err,isMatch)=>{
   //     if(err) return res.status(400).send({message:"error in pas"})
   //     if(!isMatch) return res.status(403).send({message:"Password incorrect"})
 
@@ -64,9 +60,13 @@ let loginPost  = async (req,res)=>{
   //         user.isLogin = true;
   //         user.save();
   //     })
-  // })
-  // })
-  // .catch((err)=>{res.status(400).send({message:`${err}`})})
+  //   })
+    
+  // } catch (error) {
+  //   res.status(400).send({message:`${err}`})
+
+  // }
+  
   
 }
 
