@@ -5,7 +5,7 @@ import { addGroup } from "../../../Services/GroupsServeice.service";
 const CreateOrJoinTeam = () => {
   const { auth } = useContext(authContext);
   // const [joinTeamInfo, setJoinTeamInfo]: any = useState();
-  const [createTeamInfo, setCreateTeamInfo]: any = useState();
+  const [createTeamInfo, setCreateTeamInfo]: any = useState({});
 
   const updateTeamInfo = (event: any): void => {
     createTeamInfo[event.target.name] = event.target.value;
@@ -41,8 +41,8 @@ const CreateOrJoinTeam = () => {
 
       <form onSubmit={saveTeamInfo}>
 
-        <label>team name</label>
-        <input name="teamName" type="text" onChange={updateTeamInfo} />
+        <label>group name</label>
+        <input name="groupName" type="text" onChange={updateTeamInfo} />
 
         <label>password</label>
         <input name="password" type="password" onChange={updateTeamInfo} />

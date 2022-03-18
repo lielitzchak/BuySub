@@ -6,7 +6,7 @@ import  SignUp  from '../Components/Pages/SignUp/SignUp.component';
 import Login from '../Components/Pages/Login/Login.component';
 import Inventory from '../Components/Pages/Inventory/Inventory.component';
 import Page404 from '../Components/Pages/Page404/Page404.component';
-import AuthProvider from '../Context/AuthProvider.component'
+// import AuthProvider from '../Context/AuthProvider.component'
 import CreateOrJoinTeam from '../Components/Pages/CreateOrJoinTeam/CreateOrJoinTeam.component';
 import Team from '../Components/Pages/Team/Team.component';
 
@@ -14,7 +14,7 @@ import Team from '../Components/Pages/Team/Team.component';
 
 export default function RouterApp() {
   return(
-      <AuthProvider>
+      
         <Router>
             <Header/>
             <Routes>
@@ -28,6 +28,6 @@ export default function RouterApp() {
             </Routes>
             <Footer/>
         </Router>
-       </AuthProvider>
+      //  </AuthProvider>
   )
 }
