@@ -8,6 +8,16 @@ let getGroups = async (req,res) => {
         res.send(data)
 })};
 
+let getGroupProducts = async (req,res) => {
+   const groupProdcts = await Group.findOne({groupName: req.params.groupName}).populate('products');
+   if(groupProdcts.products.length > 1){
+
+       res.status(200).send(groupProdcts.products)
+   }else{
+       res.status(200).send({message: 'The Are No Products'})
+   }
+}
+
 let getGroupById = async (req,res) => {
    await Group.findOne(req.params.id).then((data) => {
         res.send(data)
@@ -33,10 +43,31 @@ let addGroup = async (req,res) => {
     res.send({message :'The Group added and Linked Sucessfully',newGroup})  
 
   });
-
-
-  
 };
+
+let joinGroup = async (req,res) => {
+
+    const user = await User.findOne({_id : req.params.id})
+    console.log(user);
+
+    const groupToJoin = await Group.findOne({groupName: req.body.groupName}).then((group) => {
+
+        bcrypt.compare(req.body.password ,group.password, async (err,isMatch)=>{
+            if(err) return res.status(400).send({message:"error in pas"})
+            if(!isMatch) return res.status(403).send({message:"Password incorrect"})
+            group.members.push(user._id);
+            user.groupName = group.groupName;
+            
+            await group.save();
+            await user.save();
+
+            res.send({message :`You Join The ${group.groupName}  Group and Linked Sucessfully`,groupToJoin})  
+
+        })
+
+    }).catch((err)=>{res.status(400).send({message:`${err}`})})
+
+}
 
 
 
@@ -64,7 +95,9 @@ let deleteGroup = async (req,res) => {
 module.exports = {
     getGroups,
     getGroupById,
+    getGroupProducts,
     addGroup,
+    joinGroup,
     updateGroup,
     deleteGroup
 };

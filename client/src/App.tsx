@@ -1,14 +1,13 @@
 import "./App.css";
+import AuthProvider from "./Context/AuthProvider.component";
 import RouterApp from "./Router/RouterApp.component";
-import AuthProvider from './Context/AuthProvider.component';
+
 
 function App() {
   return (
-    <div className="App">
       <AuthProvider>
-        <RouterApp />
+          <RouterApp />
       </AuthProvider>
-    </div>
   );
 }
 

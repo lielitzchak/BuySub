@@ -28,7 +28,7 @@ let signupPost = async (req,res)=>{
 
 let loginPost  = async (req,res)=>{
   if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
-
+  
   const {email,password} = req.body;
 
   await User.findOne({email})
@@ -37,7 +37,7 @@ let loginPost  = async (req,res)=>{
       if(err) return res.status(400).send({message:"error in pas"})
       if(!isMatch) return res.status(403).send({message:"Password incorrect"})
 
-      jwt.sign({email : user.email,id : user._id,role: user.role},process.env.SECRET_KEY,{expiresIn:'30m'},(err,accessToken)=>{
+      jwt.sign({email : user.email,id : user._id,role: user.role},process.env.SECRET_KEY,{expiresIn:'3d'},(err,accessToken)=>{
           if(err) return res.status(400).send({Error:`${err}`})
           res.status(200).send({message:"Login Sucssefuly",accessToken});
           user.isLogin = true;
@@ -46,6 +46,27 @@ let loginPost  = async (req,res)=>{
   })
   })
   .catch((err)=>{res.status(400).send({message:`${err}`})})
+
+    // const {email,password} = req.body;
+  // try {
+  //   const user = await User.findOne({email});
+  //   bcrypt.compare(password ,user.password,(err,isMatch)=>{
+  //     if(err) return res.status(400).send({message:"error in pas"})
+  //     if(!isMatch) return res.status(403).send({message:"Password incorrect"})
+
+  //     jwt.sign({email : user.email,id : user._id,role: user.role},process.env.SECRET_KEY,{expiresIn:'3H'},(err,accessToken)=>{
+  //         if(err) return res.status(400).send({Error:`${err}`})
+  //         res.status(200).send({message:"Login Sucssefuly",accessToken});
+  //         user.isLogin = true;
+  //         user.save();
+  //     })
+  //   })
+    
+  // } catch (error) {
+  //   res.status(400).send({message:`${err}`})
+
+  // }
+  
   
 }
 
