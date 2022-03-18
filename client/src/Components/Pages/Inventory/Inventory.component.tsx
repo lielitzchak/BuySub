@@ -1,7 +1,6 @@
 import Product from "../Product/Product.component";
 
-
-export default function Inventory(props) {
+const Inventory = (props: any) => {
   // const {groupProducts} = props;
 
   return (
@@ -9,16 +8,18 @@ export default function Inventory(props) {
       <div>Inventory Page</div>
 
       <section>
-        {props.groupProducts ? props.groupProducts.map((item) => {
-           return  <Product productInfo={item}/>
-        }) : console.log('asd')}
+        {props.groupProducts
+          ? props.groupProducts.map((item:any) => {
+              return <Product productInfo={item} />;
+            })
+          : console.log("asd")}
       </section>
       {/* <section>
         {groupProducts ? groupProducts.map((item) => {
            return  <Product productInfo={item}/>
         }) : console.log('asd')}
       </section> */}
-      
     </section>
-  )
-}
+  );
+};
+export default Inventory;

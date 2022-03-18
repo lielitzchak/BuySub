@@ -4,9 +4,9 @@ import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
 import Inventory from "../Inventory/Inventory.component";
 
-const Team = () => {
+const Team = (): JSX.Element => {
   const { auth } = useContext(authContext);
-  const [groupProducts, setGroupProducts] = useState([])
+  // const [groupProducts, setGroupProducts] = useState([])
 
   return (
     <div>
@@ -23,19 +23,16 @@ const Team = () => {
         }
       </section> */}
       <section>
-      {
-       async () => {
+        {async () => {
           console.log(auth.groupName);
           // getGroupProducts(auth.groupName).then((data) => {
-        await  getGroupProducts('testgroup').then((data) => {
-
+          await getGroupProducts("testgroup").then((data) => {
             console.log(data);
-             <Inventory groupProducts={data} />
+            <Inventory groupProducts={data} />;
 
             // setGroupProducts(data)
-          })
-        }
-      }
+          });
+        }}
       </section>
       {/* {getGroupProducts(auth.groupName).then((data) => {
 
@@ -43,7 +40,6 @@ const Team = () => {
         setGroupProducts(data)
       })
       } */}
-
 
       {/* <section>
         {
@@ -59,10 +55,8 @@ const Team = () => {
       }
       </section> */}
       <Outlet />
-
     </div>
-
-  )
-}
+  );
+};
 
 export default Team;
