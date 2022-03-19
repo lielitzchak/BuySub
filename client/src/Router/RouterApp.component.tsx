@@ -14,6 +14,7 @@ import Profile from "../Components/Pages/Profile/Profile.component";
 import Unauthorized from "../Components/Pages/Unauthorized/Unauthorized";
 import RequiredAuth from "../Components/Pages/RequiredAuth/RequiredAuth";
 import Permission from "../Components/Pages/Permission/Permission";
+import AddProduct from "../Components/Pages/AddProduct/AddProduct";
 
 const RouterApp = (): JSX.Element => {
   return (
@@ -41,6 +42,7 @@ const RouterApp = (): JSX.Element => {
              </Route>
 
              <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
+             <Route path="/AddProduct" element={<AddProduct />} />
         </Route>
 
         <Route path="*" element={<Page404 />} />
