@@ -11,23 +11,38 @@ import { Admin } from "../Components/Pages/Admin/Admin.component";
 import Inventory from "../Components/Pages/Inventory/Inventory.component";
 import Setting from "../Components/Pages/Setting/Setting.component";
 import Profile from "../Components/Pages/Profile/Profile.component";
+import Unauthorized from "../Components/Pages/Unauthorized/Unauthorized";
+import RequiredAuth from "../Components/Pages/RequiredAuth/RequiredAuth";
+import Permission from "../Components/Pages/Permission/Permission";
 
 const RouterApp = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
+
+        {/** Public Routes **/}
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Team" element={<Team />}>
-          <Route index element={<Inventory />} />
-          <Route path="Inventory" element={<Inventory />} />
-          <Route path="Setting" element={<Setting />} />
+        <Route path="/Unauthorized" element={<Unauthorized />} />
+
+        {/** Private Routes **/}
+        <Route element={<RequiredAuth />}>
+             <Route path="/Profile" element={<Profile />} />
+             <Route path="/Team" element={<Team />}>
+               <Route index element={<Inventory />} />
+               <Route path="Inventory" element={<Inventory />} />
+               <Route path="Setting" element={<Setting />} />
+             </Route>
+
+             <Route element={<Permission role={'Admin'}/>}>
+                 <Route path="/Admin" element={<Admin />} />
+             </Route>
+
+             <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
         </Route>
-        <Route path="/Admin" element={<Admin />} />
-        <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
+
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
