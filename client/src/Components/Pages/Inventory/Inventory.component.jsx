@@ -8,9 +8,9 @@ export default function Inventory() {
   const [groupProducts, setGroupProducts] = useState([])
 
   useEffect(async() => {
-    await getGroupProducts(await auth.groupName).then((data) => {
+    // await getGroupProducts(await auth.groupName).then((data) => {
     // getGroupProducts(auth.groupName).then((data) => {
-    // getGroupProducts('testgroup').then((data) => {
+    getGroupProducts('testgroup').then((data) => {
       console.log(data);
       if (data.length >= 1) {
         setGroupProducts(data)

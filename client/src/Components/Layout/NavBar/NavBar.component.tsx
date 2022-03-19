@@ -9,7 +9,8 @@ const NavBar = (): JSX.Element => {
   return (
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/SignUp">SignUp</Link>
+      {auth.email ? '' : <Link to="/SignUp">SignUp</Link>}
+      <Link to="/Profile">Profile</Link>
       {auth.email && auth.groupName != "" ? <Link to="/Team">Team</Link> : ""}
       {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? (
         <Link to="/Admin">Admin</Link>
@@ -18,8 +19,6 @@ const NavBar = (): JSX.Element => {
       )}
       {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>}
       <h1>{auth.email}</h1>
-      <h1>{auth.role}</h1>
-      <h1>{auth.groupName}</h1>
     </nav>
   );
 };
