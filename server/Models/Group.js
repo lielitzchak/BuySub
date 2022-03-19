@@ -16,6 +16,10 @@ const groupSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  imageGroup:{
+    type: String,
+    default: "https://cdn.pixabay.com/photo/2021/12/21/04/58/group-6884594__480.png"
+  },
   members: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

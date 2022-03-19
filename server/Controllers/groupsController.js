@@ -9,13 +9,15 @@ let getGroups = async (req,res) => {
 })};
 
 let getGroupProducts = async (req,res) => {
-   const groupProdcts = await Group.findOne({groupName: req.params.groupName}).populate('products');
-   if(groupProdcts.products.length > 1){
+   await Group.findOne({groupName: req.params.groupName}).populate('products').then((groupProdcts) => {
+    if(groupProdcts.products.length >= 1){
 
-       res.status(200).send(groupProdcts.products)
-   }else{
-       res.status(200).send({message: 'The Are No Products'})
-   }
+        res.status(200).send(groupProdcts.products)
+    }else{
+        res.status(200).send({message: 'The Are No Products'})
+    }
+   });
+
 }
 
 let getGroupById = async (req,res) => {
