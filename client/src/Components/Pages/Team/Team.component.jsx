@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 
 
-export default function Team() {
+export default function Team(){
 
   return (
 
@@ -15,8 +15,7 @@ export default function Team() {
       </section>
 
       <Outlet />
-
     </div>
+  );
+};
 
-  )
-}
