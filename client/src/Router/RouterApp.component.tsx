@@ -10,6 +10,7 @@ import Team from "../Components/Pages/Team/Team.component";
 import { Admin } from "../Components/Pages/Admin/Admin.component";
 import Inventory from "../Components/Pages/Inventory/Inventory.component";
 import Setting from "../Components/Pages/Setting/Setting.component";
+import Profile from "../Components/Pages/Profile/Profile.component";
 
 const RouterApp = (): JSX.Element => {
   return (
@@ -19,6 +20,7 @@ const RouterApp = (): JSX.Element => {
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Profile" element={<Profile />} />
         <Route path="/Team" element={<Team />}>
           <Route index element={<Inventory />} />
           <Route path="Inventory" element={<Inventory />} />
