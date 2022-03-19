@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link} from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
 
@@ -29,21 +30,23 @@ export default function Inventory() {
 
   return (
     <section>
+      <Link to="/AddProduct">AddProduct</Link>
+
       <div>Inventory Page</div>
 
       <section>
         {groupProducts.length >= 1 ? groupProducts.map((item) => {
-          const { productName, expirationDate } = item;
+          const { productName,quantity, expirationDate } = item;
 
           return (
             <article key={item._id}>
               <h1>Product Name : {productName}</h1>
+              <h1>Quantity : {quantity}</h1>
               <h1>Expiration Date :{expirationDate}</h1>
             </article>
           )
         }) : console.log('blabla')}
       </section>
-
     </section>
   );
 };
