@@ -8,10 +8,10 @@ export default function Inventory() {
   const { auth } = useContext(authContext);
   const [groupProducts, setGroupProducts] = useState([])
 
-  useEffect(async() => {
+  useEffect(() => {
     // await getGroupProducts(await auth.groupName).then((data) => {
-    // getGroupProducts(auth.groupName).then((data) => {
-    getGroupProducts('testgroup').then((data) => {
+    getGroupProducts(auth.groupName).then((data) => {
+    // getGroupProducts('testgroup').then((data) => {
       console.log(data);
       if (data.length >= 1) {
         setGroupProducts(data)
@@ -45,7 +45,7 @@ export default function Inventory() {
               <h1>Expiration Date :{expirationDate}</h1>
             </article>
           )
-        }) : console.log('blabla')}
+        }) : <h1>The Are No Products</h1>}
       </section>
     </section>
   );
