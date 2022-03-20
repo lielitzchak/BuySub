@@ -1,4 +1,5 @@
 const User = require("../Models/User");
+const Group = require("../Models/Group");
 const bcrypt = require("bcrypt");
 
 const getUsers = async (req, res) => {
@@ -38,9 +39,15 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  await User.findByIdAndRemove({ _id: req.params.id }).then((data) => {
-    res.send(data);
-  });
+  const userToDelete = await User.findByIdAndRemove({ _id: req.params.id })
+
+  Group.findOne({groupName: userToDelete.groupName}).then((groupMember) => {
+    
+    const member = groupMember.members;
+    member.splice(member.indexOf(userToDelete.id),1)
+    groupMember.save();
+    res.send({Message : groupMember.members,userToDelete})
+  })  
 };
 
 
