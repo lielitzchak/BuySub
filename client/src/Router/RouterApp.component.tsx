@@ -33,16 +33,16 @@ const RouterApp = (): JSX.Element => {
              <Route path="/Profile" element={<Profile />} />
              <Route path="/Team" element={<Team />}>
                <Route index element={<Inventory />} />
-               <Route path="Inventory" element={<Inventory />} />
+               <Route path="AddProduct" element={<AddProduct />} />
+               <Route path="Inventory" element={<Inventory />}/>
                <Route path="Setting" element={<Setting />} />
              </Route>
 
-             <Route element={<Permission role={'Admin'}/>}>
+             <Route element={<Permission allowedRole={'Admin'}/>}>
                  <Route path="/Admin" element={<Admin />} />
              </Route>
 
              <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
-             <Route path="/AddProduct" element={<AddProduct />} />
         </Route>
 
         <Route path="*" element={<Page404 />} />
