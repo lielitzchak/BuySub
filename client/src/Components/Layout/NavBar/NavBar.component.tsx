@@ -17,8 +17,8 @@ const NavBar = (): JSX.Element => {
         ""
       )}
       {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>}
-      <h1>{auth.email}</h1>
-      <h1>{auth.role}</h1>
+      {/* <h1>{auth.email}</h1> */}
+      {/* <h1>{auth.role}</h1> */}
     </nav>
   );
 };
