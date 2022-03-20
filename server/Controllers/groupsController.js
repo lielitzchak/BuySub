@@ -20,6 +20,17 @@ let getGroupProducts = async (req, res) => {
     });
 };
 
+let getGroupInfo = async (req, res) => {
+  await Group.findOne({ groupName: req.params.groupName }).populate("members")
+    .then((groupProdcts) => {
+      if (groupProdcts) {
+        res.status(200).send(groupProdcts);
+      } else {
+        res.status(200).send({ message: "The Are No Products" });
+      }
+    });
+};
+
 let getGroupById = async (req, res) => {
   await Group.findOne(req.params.id).then((data) => {
     res.send(data);
@@ -114,6 +125,7 @@ module.exports = {
   getGroups,
   getGroupById,
   getGroupProducts,
+  getGroupInfo,
   addGroup,
   joinGroup,
   updateGroup,
