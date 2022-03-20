@@ -31,8 +31,11 @@ export default function AddProduct() {
             <label>Product Name</label>
             <input type="text" name="productName" onChange={updateProductInfo} required />
 
+            <label>Price</label>
+            <input type="text" name="price" onChange={updateProductInfo} />
+
             <label>Quantity</label>
-            <input type="number" name="quantity" onChange={updateProductInfo} />
+            <input type="number" name="quantity" onChange={updateProductInfo} required />
 
             <label>Expiration Date</label>
             <input type="text" name="expirationDate" onChange={updateProductInfo} />
