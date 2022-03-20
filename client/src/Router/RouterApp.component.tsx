@@ -15,13 +15,13 @@ import Unauthorized from "../Components/Pages/Unauthorized/Unauthorized";
 import RequiredAuth from "../Components/Pages/RequiredAuth/RequiredAuth";
 import Permission from "../Components/Pages/Permission/Permission";
 import AddProduct from "../Components/Pages/AddProduct/AddProduct";
+import Test from "../Components/Pages/Admin/Test";
 
 const RouterApp = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-
         {/** Public Routes **/}
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
@@ -30,19 +30,23 @@ const RouterApp = (): JSX.Element => {
 
         {/** Private Routes **/}
         <Route element={<RequiredAuth />}>
-             <Route path="/Profile" element={<Profile />} />
-             <Route path="/Team" element={<Team />}>
-               <Route index element={<Inventory />} />
-               <Route path="Inventory" element={<Inventory />} />
-               <Route path="Setting" element={<Setting />} />
-             </Route>
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Team" element={<Team />}>
+            <Route index element={<Inventory />} />
+            <Route path="Inventory" element={<Inventory />} />
+            <Route path="Setting" element={<Setting />} />
+          </Route>
 
-             <Route element={<Permission role={'Admin'}/>}>
-                 <Route path="/Admin" element={<Admin />} />
-             </Route>
+          <Route element={<Permission role={"Admin"} />}>
+            <Route path="/Admin" element={<Admin />}>
+              <Route index element={<AddProduct />} />
+              <Route path="AddProduct" element={<AddProduct />} />
+              <Route path="AddMembers" element={<Test />} />
+            </Route>
+          </Route>
 
-             <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
-             <Route path="/AddProduct" element={<AddProduct />} />
+          <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
+          {/* <Route path="/AddProduct" element={<AddProduct />} /> */}
         </Route>
 
         <Route path="*" element={<Page404 />} />
