@@ -13,6 +13,19 @@ export const getGroupProducts = async (groupName: any): Promise<any> => {
     .catch((err) => console.log(err));
 };
 
+export const getGroupInfo = async (groupName: any): Promise<any> => {
+
+  let options = {
+    headers: {
+       Authorization: `Bearer ${localStorage.getItem('jwtToken')}`
+    }
+ }
+
+  return await fetch(`${basic_url}/groups/groupInfo/${groupName}`,options)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
 export const addGroup = async (newGroup: any, id: any): Promise<any> => {
   let options = {
     method: "POST",

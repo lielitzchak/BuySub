@@ -1,8 +1,8 @@
-const dotenv = require('dotenv').config();
+ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const dbConnection = require('./DB/db')
+require('./DB/db')
 const authRoutes = require('./Routes/auth'); 
 const usersRoutes = require('./Routes/users'); 
 const groupsRoutes = require('./Routes/groups'); 
@@ -21,9 +21,11 @@ app.use(express.json());
 
 app.use(passport.initialize());
 app.use('/Api',authRoutes);
-app.use('/Api',passport.authenticate('jwt',{session:false}),usersRoutes);
+app.use('/Api',usersRoutes);
+app.use('/Api',groupsRoutes);
+// app.use('/Api',passport.authenticate('jwt',{session:false}),usersRoutes);
 app.use('/Api',passport.authenticate('jwt',{session:false}),productsRoutes);
-app.use('/Api',passport.authenticate('jwt',{session:false}),groupsRoutes);
+// app.use('/Api',passport.authenticate('jwt',{session:false}),groupsRoutes);
 
 
 const port =  process.env.PORT || 11000 ;

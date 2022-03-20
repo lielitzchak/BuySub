@@ -10,6 +10,7 @@ export default function Team(){
         <h1>Team component</h1>
 
         <Link to="Inventory">Inventory</Link>
+        <Link to="AddProduct">Add Product</Link>
         <Link to="Setting">Setting</Link>
 
       </section>

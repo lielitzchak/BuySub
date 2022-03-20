@@ -16,7 +16,7 @@ const CreateOrJoinTeam = (): JSX.Element => {
 
   const createTeam = (event: any): void => {
     event.preventDefault();
-    setCreateTeamInfo(createTeamInfo);
+    // setCreateTeamInfo(createTeamInfo);
     addGroup(createTeamInfo, auth.id)
       .then((res) => navigate("/Team"))
       .catch((err) => console.log(err));
@@ -28,7 +28,7 @@ const CreateOrJoinTeam = (): JSX.Element => {
 
   const joinTeam = (event: any): void => {
     event.preventDefault();
-    setJoinTeamInfo(joinTeamInfo);
+    // setJoinTeamInfo(joinTeamInfo);
     joinGroup(joinTeamInfo, auth.id)
       .then((res) => navigate("/Team"))
       .catch((err) => console.log(err));

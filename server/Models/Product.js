@@ -7,11 +7,15 @@ const productSchema = new mongoose.Schema({
     required: [true, 'Please enter a productName'],
     lowercase: true,
   },
+  price: {
+    type: String
+  },
   quantity: {
-      type: Number
+      type: Number,
+      required : [true, 'Please enter a quantity']
   },
   expirationDate: {
-    type: String,
+    type: Date,
   }
 },
   { timestamps: true }
