@@ -21,9 +21,11 @@ app.use(express.json());
 
 app.use(passport.initialize());
 app.use('/Api',authRoutes);
-app.use('/Api',passport.authenticate('jwt',{session:false}),usersRoutes);
+app.use('/Api',usersRoutes);
+app.use('/Api',groupsRoutes);
+// app.use('/Api',passport.authenticate('jwt',{session:false}),usersRoutes);
 app.use('/Api',passport.authenticate('jwt',{session:false}),productsRoutes);
-app.use('/Api',passport.authenticate('jwt',{session:false}),groupsRoutes);
+// app.use('/Api',passport.authenticate('jwt',{session:false}),groupsRoutes);
 
 
 const port =  process.env.PORT || 11000 ;
