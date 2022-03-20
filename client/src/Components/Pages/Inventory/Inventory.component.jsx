@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Link} from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
 
@@ -30,7 +29,6 @@ export default function Inventory() {
 
   return (
     <section>
-      <Link to="/AddProduct">AddProduct</Link>
 
       <div>Inventory Page</div>
 
