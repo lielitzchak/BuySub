@@ -26,7 +26,7 @@ export default function AddProduct() {
   return (
     <section>
         <h1>Add Product</h1>
-        <form action="" autoComplete="true" onSubmit={addProductToGroup}>
+        <form action="" autoComplete="on" onSubmit={addProductToGroup}>
 
             <label>Product Name</label>
             <input type="text" name="productName" onChange={updateProductInfo} required />
@@ -38,7 +38,7 @@ export default function AddProduct() {
             <input type="number" name="quantity" onChange={updateProductInfo} required />
 
             <label>Expiration Date</label>
-            <input type="text" name="expirationDate" onChange={updateProductInfo} />
+            <input type="date" name="expirationDate" onChange={updateProductInfo} />
 
             <button>Add Product</button>
         </form>    

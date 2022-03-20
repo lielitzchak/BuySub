@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
       required : [true, 'Please enter a quantity']
   },
   expirationDate: {
-    type: String,
+    type: Date,
   }
 },
   { timestamps: true }

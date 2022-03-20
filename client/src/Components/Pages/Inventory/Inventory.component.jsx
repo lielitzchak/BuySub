@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
+import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct";
 
 export default function Inventory() {
 
@@ -26,7 +27,9 @@ export default function Inventory() {
 
   }, [])
 
-
+  let edit = (id)=>{
+    return <section>{id}</section>
+  }
   return (
     <section>
 
@@ -42,6 +45,10 @@ export default function Inventory() {
               <h1>Price : {price}</h1>
               <h1>Quantity : {quantity}</h1>
               <h1>Expiration Date :{expirationDate}</h1>
+              <button onClick={()=>edit(item._id)}>Edit</button>
+              {/* <button onClick={()=>UpdateProduct(item._id)}>Edit</button> */}
+              {console.log(item)}
+              {}
             </article>
           )
         }) : <h1>The Are No Products</h1>}
