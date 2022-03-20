@@ -2,14 +2,18 @@ import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { updateProduct,getProductById } from "../../../Services/ProductService.service";
 
-export default function UpdateProduct(id:any) {
+export default function UpdateProduct(item:any) {
+    console.log(item);
+    
     const [productDetail, setProductDetail]: any = useState({});
     const [prevProductDetail, setPrevProductDetail]: any = useState({});
     const { auth } = useContext(authContext);
 
     useEffect(()=>{
-        getProductById(id)
+        getProductById(item._id)
         .then((data)=>{ setPrevProductDetail(data)})
+        // console.log(prevProductDetail);
+        
     },[])
     let updateProductInfo = (event: any): void => {
         productDetail[event.target.name] = event.target.value;
@@ -53,13 +57,13 @@ export default function UpdateProduct(id:any) {
 
     let editProduct = (event: any): void => {
         event.preventDefault();
-        updateProduct(id,productDetail)
+        updateProduct(item._id,productDetail)
         .then((res)=>{console.log(res)})
         .catch((err)=>{console.log(err);
         })
-        
+
     }
-    console.log(prevProductDetail);
+    // console.log(prevProductDetail);
     
     return (
         <section>
