@@ -21,7 +21,6 @@ const RouterApp = (): JSX.Element => {
     <BrowserRouter>
       <Header />
       <Routes>
-
         {/** Public Routes **/}
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
