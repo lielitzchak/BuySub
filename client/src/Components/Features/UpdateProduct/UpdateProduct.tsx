@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateProduct, getProductById } from "../../../Services/ProductService.service";
+import { updateProduct } from "../../../Services/ProductService.service";
 
 export default function UpdateProduct(props: any) {
     const [productDetail, setProductDetail]: any = useState({});
@@ -8,21 +8,16 @@ export default function UpdateProduct(props: any) {
 
 
     let updateProductInfo = (event: any): void => {
-        productDetail[event.target.name] = event.target.value;
-        // setProductDetail(prevProductDetail);
-
-        // if (productDetail.productName == ""){
-        //     productDetail.productName = prevProductDetail.productName
-        // }
-        // if (productDetail.price == ""){
-        //     productDetail.price = prevProductDetail.price
-        // }
-        // if (productDetail.quantity == ""){
-        //     productDetail.quantity = prevProductDetail.quantity
-        // }
-        // if (productDetail.expirationDate == ""){
-        //     productDetail.expirationDate = prevProductDetail.expirationDate
-        // }
+        productDetail[event.target.name] = event.target.value;        
+        if (productDetail.price == ""){
+            productDetail.price = prevProductDetail.price
+        }
+        if (productDetail.expirationDate == ""){
+            productDetail.expirationDate = prevProductDetail.expirationDate
+        }
+        if (productDetail.productImage == ""){
+            productDetail.productImage = prevProductDetail.productImage
+        }
     }
 
 
@@ -46,16 +41,19 @@ export default function UpdateProduct(props: any) {
                     <form action="" autoComplete="on" onSubmit={editProduct}>
 
                         <label>Product Name</label>
-                        <input type="text" name="productName" value={prevProductDetail.productName} onChange={updateProductInfo} required />
+                        <input type="text" name="productName" placeholder={prevProductDetail.productName}   onChange={updateProductInfo} required />
 
                         <label>Price</label>
-                        <input type="text" name="price" value={prevProductDetail.price} onChange={updateProductInfo} />
+                        <input type="text" name="price" placeholder={prevProductDetail.price}  onChange={updateProductInfo} />
 
                         <label>Quantity</label>
-                        <input type="number" name="quantity" value={prevProductDetail.quantity} onChange={updateProductInfo} required />
+                        <input type="number" name="quantity" placeholder={prevProductDetail.quantity} onChange={updateProductInfo} required />
 
                         <label>Expiration Date</label>
-                        <input type="text" name="expirationDate" value={prevProductDetail.expirationDate} placeholder={"yyyy/mm/dd"} onChange={updateProductInfo} />
+                        <input type="text" name="expirationDate" placeholder={"yyyy/mm/dd"} onChange={updateProductInfo} />
+
+                        <label>Product Image</label>
+                        <input type="text" name="productImage" placeholder={prevProductDetail.productImage} onChange={updateProductInfo} />
 
                         <button>Update Product</button>
                     </form>
