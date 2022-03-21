@@ -24,7 +24,6 @@ const Login = (): JSX.Element => {
           localStorage.setItem("jwtToken", res.accessToken);
           let tokenDecoded: any = jwt_decode(res.accessToken);
           setAuth(tokenDecoded);
-          console.log(auth.email); //! why is undefined ?
           navigate("/");
         }
       })
