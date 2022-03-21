@@ -61,31 +61,24 @@ let joinGroup = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     console.log(user);
 
-    const groupToJoin = await Group.findOne({ groupName: req.body.groupName })
-        .then((group) => {
-            bcrypt.compare(
-                req.body.password,
-                group.password,
-                async (err, isMatch) => {
-                    if (err) return res.status(400).send({ message: "error in pas" });
-                    if (!isMatch)
-                        return res.status(403).send({ message: "Password incorrect" });
-                    group.members.push(user._id);
-                    user.groupName = group.groupName;
-
-                    await group.save();
-                    await user.save();
-
-                    res.send({
-                        message: `You Join The ${group.groupName}  Group and Linked Sucessfully`,
-                        groupToJoin,
-                    });
-                }
-            );
-        })
-        .catch((err) => {
-            res.status(400).send({ message: `${err}` });
+    const groupToJoin = await Group.findOne({ groupName: req.body.groupName }).then((group) => {
+        bcrypt.compare(req.body.password,group.password,async (err, isMatch) => {
+            if (err) return res.status(400).send({ message: "error in pas" });
+            if (!isMatch)
+                return res.status(403).send({ message: "Password incorrect" });
+            group.members.push(user._id);
+            user.groupName = group.groupName;
+            await group.save();
+            await user.save();
+            res.send({
+                message: `You Join The ${group.groupName}  Group and Linked Sucessfully`,
+                groupToJoin,
+            });
         });
+        
+    }).catch((err) => {
+            res.status(400).send({ message: `${err}` });
+    });
 };
 
 let updateGroup = async (req, res) => {
@@ -141,13 +134,13 @@ const adminRemoveMember = async (req, res) => {
         : res.send({ massaged: "user not found" });
 };
 const adminAddAdmin = async (req, res) => {
-    try {
-        const userAddToAdmin = await User.findOne({ _id: req.body._id });
-        userAddToAdmin.role.push("Admin");
-        res.send({ massaged: "admin added successfully" });
-    } catch (error) {
-        res.send({ massaged: "error" });
-    }
+  try {
+    const userAddToAdmin = await User.findOne({ email: req.body.email });
+    userAddToAdmin.role.push("Admin");
+    res.send({ massaged: "admin added successfully" });
+  } catch (error) {
+    res.send({ massaged: "error" });
+  }
 };
 
 module.exports = {
