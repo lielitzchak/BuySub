@@ -42,6 +42,7 @@ const Login = (): JSX.Element => {
               <input
                 onChange={updateUserInfo}
                 type="text"
+                name="email"
                 className="login__input"
                 placeholder="Email"
               />
@@ -51,6 +52,7 @@ const Login = (): JSX.Element => {
               <input
                 onChange={updateUserInfo}
                 type="password"
+                name="password"
                 className="login__input"
                 placeholder="Password"
               />
