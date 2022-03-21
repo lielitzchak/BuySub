@@ -21,7 +21,8 @@ let getGroupProducts = async (req, res) => {
 };
 
 let getGroupInfo = async (req, res) => {
-  await Group.findOne({ groupName: req.params.groupName }).populate("members")
+  await Group.findOne({ groupName: req.params.groupName })
+    .populate("members")
     .then((groupProdcts) => {
       if (groupProdcts) {
         res.status(200).send(groupProdcts);
@@ -126,7 +127,7 @@ const adminRemoveMember = async (req, res) => {
 };
 const adminAddAdmin = async (req, res) => {
   try {
-    const userAddToAdmin = await User.findOne({ _id: req.body._id });
+    const userAddToAdmin = await User.findOne({ email: req.body.email });
     userAddToAdmin.role.push("Admin");
     res.send({ massaged: "admin added successfully" });
   } catch (error) {
