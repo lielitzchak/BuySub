@@ -11,10 +11,10 @@ import { Admin } from "../Components/Pages/Admin/Admin.component";
 import Inventory from "../Components/Pages/Inventory/Inventory.component";
 import Setting from "../Components/Pages/Setting/Setting.component";
 import Profile from "../Components/Pages/Profile/Profile.component";
-import Unauthorized from "../Components/Pages/Unauthorized/Unauthorized";
+import Unauthorized from "../Components/Pages/Unauthorized/Unauthorized.component";
 import RequiredAuth from "../Components/Pages/RequiredAuth/RequiredAuth";
 import Permission from "../Components/Pages/Permission/Permission";
-import AddProduct from "../Components/Pages/AddProduct/AddProduct";
+import AddProduct from "../Components/Pages/AddProduct/AddProduct.component";
 
 const RouterApp = (): JSX.Element => {
   return (

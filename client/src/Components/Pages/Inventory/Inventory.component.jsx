@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
-import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct";
+import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
 
 export default function Inventory() {
 
@@ -27,9 +27,9 @@ export default function Inventory() {
 
   }, [])
 
-  let editPruduct = () => {
+  // let editPruduct = () => {
     
-  }
+  // }
   return (
     <section>
 

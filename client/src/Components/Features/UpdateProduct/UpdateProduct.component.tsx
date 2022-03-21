@@ -25,6 +25,8 @@ export default function UpdateProduct(props: any) {
         event.preventDefault();
         updateProduct(props.item._id, productDetail)
             .then((res) => { console.log(res) })
+            .then(() => { setshowUpdate(!showUpdate) })
+            .then(() => { setProductDetail(productDetail) })
             .catch((err) => {
                 console.log(err);
             });
@@ -32,6 +34,9 @@ export default function UpdateProduct(props: any) {
 
     }
     console.log(prevProductDetail);
+    let cancel = ()=>{
+        setshowUpdate(!showUpdate)
+    }
 
     return (
         <>
@@ -57,6 +62,8 @@ export default function UpdateProduct(props: any) {
 
                         <button>Update Product</button>
                     </form>
+                <button onClick={cancel}>Cancel</button> 
+
                     {console.log(prevProductDetail)}
 
                 </section> :
