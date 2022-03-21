@@ -1,87 +1,69 @@
-import { useContext, useEffect, useState } from "react";
-import { authContext } from "../../../Context/AuthProvider.component";
-import { updateProduct,getProductById } from "../../../Services/ProductService.service";
+import { useState } from "react";
+import { updateProduct, getProductById } from "../../../Services/ProductService.service";
 
-export default function UpdateProduct(id:any) {
+export default function UpdateProduct(props: any) {
     const [productDetail, setProductDetail]: any = useState({});
-    const [prevProductDetail, setPrevProductDetail]: any = useState({});
-    const { auth } = useContext(authContext);
+    const [prevProductDetail, setPrevProductDetail]: any = useState(props.item);
+    const [showUpdate, setshowUpdate] = useState(false)
 
-    useEffect(()=>{
-        getProductById(id)
-        .then((data)=>{ setPrevProductDetail(data)})
-    },[])
+
     let updateProductInfo = (event: any): void => {
         productDetail[event.target.name] = event.target.value;
         // setProductDetail(prevProductDetail);
 
-        if (productDetail.productName == ""){
-            productDetail.productName = prevProductDetail.productName
-        }
-        if (productDetail.price == ""){
-            productDetail.price = prevProductDetail.price
-        }
-        if (productDetail.quantity == ""){
-            productDetail.quantity = prevProductDetail.quantity
-        }
-        if (productDetail.expirationDate == ""){
-            productDetail.expirationDate = prevProductDetail.expirationDate
-        }
+        // if (productDetail.productName == ""){
+        //     productDetail.productName = prevProductDetail.productName
+        // }
+        // if (productDetail.price == ""){
+        //     productDetail.price = prevProductDetail.price
+        // }
+        // if (productDetail.quantity == ""){
+        //     productDetail.quantity = prevProductDetail.quantity
+        // }
+        // if (productDetail.expirationDate == ""){
+        //     productDetail.expirationDate = prevProductDetail.expirationDate
+        // }
     }
-    // let updateProductInfo = (event: any): void => {
-    //     productDetail[event.target.name] = event.target.value;
-    //     if (event.target.value == "" ) {
-    //         switch (productDetail[event.target.name]) {
-    //             case "productName":
-    
-    //                 break;
-    //             case "price":
-    
-    //                 break;
-    //             case "quantity":
-    
-    //                 break;
-    //             case "expirationDate":
-    
-    //                 break;
-    //             default:
-    //                 break;
-    //         }
-    //     }
-       
-    // }
+
 
     let editProduct = (event: any): void => {
         event.preventDefault();
-        updateProduct(id,productDetail)
-        .then((res)=>{console.log(res)})
-        .catch((err)=>{console.log(err);
-        })
-        
+        updateProduct(props.item._id, productDetail)
+            .then((res) => { console.log(res) })
+            .catch((err) => {
+                console.log(err);
+            });
+            
+
     }
     console.log(prevProductDetail);
-    
+
     return (
-        <section>
-            <h1>Update Product</h1>
-            <form action="" autoComplete="on" onSubmit={editProduct}>
+        <>
+            {showUpdate ?
+                <section>
+                    <h1>Update Product</h1>
+                    <form action="" autoComplete="on" onSubmit={editProduct}>
 
-                <label>Product Name</label>
-                <input type="text" name="productName" value={prevProductDetail.productName} onChange={updateProductInfo} required />
+                        <label>Product Name</label>
+                        <input type="text" name="productName" value={prevProductDetail.productName} onChange={updateProductInfo} required />
 
-                <label>Price</label>
-                <input type="text" name="price" value={prevProductDetail.price} onChange={updateProductInfo} />
+                        <label>Price</label>
+                        <input type="text" name="price" value={prevProductDetail.price} onChange={updateProductInfo} />
 
-                <label>Quantity</label>
-                <input type="number" name="quantity" value={prevProductDetail.quantity} onChange={updateProductInfo} required />
+                        <label>Quantity</label>
+                        <input type="number" name="quantity" value={prevProductDetail.quantity} onChange={updateProductInfo} required />
 
-                <label>Expiration Date</label>
-                <input type="date" name="expirationDate" value={prevProductDetail.expirationDate} onChange={updateProductInfo} />
+                        <label>Expiration Date</label>
+                        <input type="text" name="expirationDate" value={prevProductDetail.expirationDate} placeholder={"yyyy/mm/dd"} onChange={updateProductInfo} />
 
-                <button>Update Product</button>
-            </form>
-            {console.log(prevProductDetail)}
+                        <button>Update Product</button>
+                    </form>
+                    {console.log(prevProductDetail)}
 
-        </section>
+                </section> :
+                <button onClick={() => setshowUpdate(!showUpdate)}>Edit</button>}
+        </>
+
     )
 }
