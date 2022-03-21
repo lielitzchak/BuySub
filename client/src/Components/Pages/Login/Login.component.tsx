@@ -39,7 +39,6 @@ const Login = (): JSX.Element => {
         <div className="screen__content">
           <form onSubmit={saveNewUser} className="login">
             <div className="login__field">
-              <i className="login__icon fas fa-user"></i>
               <input
                 onChange={updateUserInfo}
                 type="text"
@@ -60,7 +59,6 @@ const Login = (): JSX.Element => {
               <span className="button__text">Log In Now</span>
             </button>
           </form>
-          <div className="social-login"></div>
         </div>
         <div className="screen__background">
           <span className="screen__background__shape screen__background__shape4"></span>
