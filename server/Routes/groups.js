@@ -27,7 +27,9 @@ router.post("/groups/:id", addGroup);
 
 router.post("/groups/join/:id", joinGroup);
 
-router.post("/groups/:id", addGroup);
+router.put("/groups/:id", updateGroup);
+
+router.delete("/groups/:id", deleteGroup);
 
 router.put("/groups/admin/removeMember", adminRemoveMember);
 
@@ -35,8 +37,5 @@ router.post("/groups/admin/adminAddMember", adminAddMember);
 
 router.post("/groups/admin/adminAddAdmin", adminAddAdmin);
 
-router.put("/groups/:id", updateGroup);
-
-router.delete("/groups/:id", deleteGroup);
 
 module.exports = router;
