@@ -82,18 +82,26 @@ let joinGroup = async (req, res) => {
 };
 
 let updateGroup = async (req, res) => {
-    await Group.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
-        Group.findOne({ _id: req.params.id }).then((data) => {
-            res.send(data);
-        });
-    });
+   const groupToUpdate = await Group.findByIdAndUpdate({ _id: req.params.id }, req.body);
+
+    if(groupToUpdate.groupName != req.body.groupName.toLowerCase()){
+
+      await  User.find({ groupName: groupToUpdate.groupName }).then((usersToUpdate) => {
+
+           console.log(usersToUpdate);
+           usersToUpdate.forEach((user) => {
+               user.groupName = req.body.groupName;
+               user.save();
+           })
+           
+       })
+   }
+
+    await Group.findOne({ _id: req.params.id }).then((data) => {
+         res.send({Message : 'Group Updated Successfully', data});
+     });
 };
-// let updateGroup = async (req,res) => {
-//    await Group.findByIdAndUpdate({_id : req.params.id},req.body).then(() => {
-//         Group.findOne({_id : req.params.id}).then((data) => {
-//             res.send(data)
-//         })
-// })};
+
 
 let deleteGroup = async (req, res) => {
     const groupToDelete = await Group.findByIdAndRemove({ _id: req.params.id });
