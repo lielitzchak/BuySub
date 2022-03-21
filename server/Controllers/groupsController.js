@@ -21,7 +21,8 @@ let getGroupProducts = async (req, res) => {
 };
 
 let getGroupInfo = async (req, res) => {
-  await Group.findOne({ groupName: req.params.groupName }).populate("members")
+  await Group.findOne({ groupName: req.params.groupName })
+    .populate("members")
     .then((groupProdcts) => {
       if (groupProdcts) {
         res.status(200).send(groupProdcts);
@@ -108,17 +109,30 @@ let deleteGroup = async (req, res) => {
 };
 
 const adminAddMember = async (req, res) => {
-    let userToAdd = res.body; // the member to add
-
+  const userToAdd = res.body;
+  let group = await Group.findOne({ groupName: req.params.groupName });
+  group.members.push(userToAdd);
+  userToAdd.groupName = group.groupName;
+  await group.save();
+  await userToAdd.save();
 };
+
 const adminRemoveMember = async (req, res) => {
-
-
+  let group = await Group.findOne({ _id: req.params.id });
+  let deleteMember = { ...req.body };
+  let indexToDelete = group.members.indexOf(deleteMember._id);
+  indexToDelete
+    ? group.members.splice(indexToDelete, 1) + res.send(group)
+    : res.send({ massaged: "user not found" });
 };
 const adminAddAdmin = async (req, res) => {
-
-
-    
+  try {
+    const userAddToAdmin = await User.findOne({ email: req.body.email });
+    userAddToAdmin.role.push("Admin");
+    res.send({ massaged: "admin added successfully" });
+  } catch (error) {
+    res.send({ massaged: "error" });
+  }
 };
 
 module.exports = {
@@ -130,5 +144,7 @@ module.exports = {
   joinGroup,
   updateGroup,
   deleteGroup,
+  adminAddMember,
+  adminRemoveMember,
+  adminAddAdmin,
 };
-// testgroup

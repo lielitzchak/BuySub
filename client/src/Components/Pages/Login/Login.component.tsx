@@ -24,7 +24,7 @@ const Login = (): JSX.Element => {
           localStorage.setItem("jwtToken", res.accessToken);
           let tokenDecoded: any = jwt_decode(res.accessToken);
           setAuth(tokenDecoded);
-          console.log(auth.email);//! why is undefined ?
+          console.log(auth.email); //! why is undefined ?
           navigate("/");
         }
       })
@@ -34,13 +34,40 @@ const Login = (): JSX.Element => {
   };
 
   return (
-    <form onSubmit={saveNewUser}>
-      <label>email</label>
-      <input type="email" name="email" onChange={updateUserInfo} />
-      <label>password</label>
-      <input type="password" name="password" onChange={updateUserInfo} />
-      <button>click</button>
-    </form>
+    <div className="container">
+      <div className="screen">
+        <div className="screen__content">
+          <form onSubmit={saveNewUser} className="login">
+            <div className="login__field">
+              <input
+                onChange={updateUserInfo}
+                type="text"
+                className="login__input"
+                placeholder="Email"
+              />
+            </div>
+            <div className="login__field">
+              <i className="login__icon fas fa-lock"></i>
+              <input
+                onChange={updateUserInfo}
+                type="password"
+                className="login__input"
+                placeholder="Password"
+              />
+            </div>
+            <button className="button login__submit">
+              <span className="button__text">Log In Now</span>
+            </button>
+          </form>
+        </div>
+        <div className="screen__background">
+          <span className="screen__background__shape screen__background__shape4"></span>
+          <span className="screen__background__shape screen__background__shape3"></span>
+          <span className="screen__background__shape screen__background__shape2"></span>
+          <span className="screen__background__shape screen__background__shape1"></span>
+        </div>
+      </div>
+    </div>
   );
 };
 export default Login;
