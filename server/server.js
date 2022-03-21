@@ -23,8 +23,10 @@ app.use(passport.initialize());
 app.use('/Api',authRoutes);
 app.use('/Api',usersRoutes);
 app.use('/Api',groupsRoutes);
+app.use('/Api',productsRoutes);
+
 // app.use('/Api',passport.authenticate('jwt',{session:false}),usersRoutes);
-app.use('/Api',passport.authenticate('jwt',{session:false}),productsRoutes);
+// app.use('/Api',passport.authenticate('jwt',{session:false}),productsRoutes);
 // app.use('/Api',passport.authenticate('jwt',{session:false}),groupsRoutes);
 
 

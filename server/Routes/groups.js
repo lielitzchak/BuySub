@@ -18,9 +18,11 @@ router.get("/groups/:id", getGroupById);
 
 router.get("/groups/products/:groupName", getGroupProducts);
 
+router.get("/groups/groupInfo/:groupName", getGroupInfo);
+
 router.post("/groups/:id", addGroup);
 
-router.get("/groups/groupInfo/:groupName", getGroupInfo);
+router.post("/groups/join/:id", joinGroup);
 
 router.post("/groups/:id", addGroup);
 

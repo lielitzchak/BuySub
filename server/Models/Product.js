@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema({
       type: Number,
       required : [true, 'Please enter a quantity']
   },
+  productImage: {
+    type: String,
+    default : "https://cdn.pixabay.com/photo/2014/04/03/11/51/milk-312369__480.png"
+  },
   expirationDate: {
     type: Date,
   }
