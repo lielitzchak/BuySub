@@ -409,7 +409,7 @@ h6 {
   transition: all 0.3s ease-in-out;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   visibility: hidden;
 }
 
@@ -423,9 +423,9 @@ input[type="checkbox"]:checked + label:before {
   -webkit-transform: translateX(90px);
           transform: translateX(90px);
   background-color: #FFF;
-}
+} */
 
-label {
+/* label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -441,9 +441,9 @@ label {
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   cursor: pointer;
-}
+} */
 
-label:before {
+/* label:before {
   -webkit-transition: -webkit-transform .75s ease;
   transition: -webkit-transform .75s ease;
   transition: transform .75s ease;
@@ -459,5 +459,5 @@ label:before {
   border-radius: 50%;
   top: 12px;
   left: 12px;
-}
+} */
 /*# sourceMappingURL=index.css.map */
