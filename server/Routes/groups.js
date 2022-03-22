@@ -31,11 +31,11 @@ router.put("/groups/:id", updateGroup);
 
 router.delete("/groups/:id", deleteGroup);
 
-router.put("/groups/admin/removeMember", adminRemoveMember);
+router.put("/groups/admin/removeMember/:groupName", adminRemoveMember);
 
-router.post("/groups/admin/adminAddMember", adminAddMember);
+router.post("/groups/admin/adminAddMember/:groupName", adminAddMember);
 
-router.post("/groups/admin/adminAddAdmin", adminAddAdmin);
+router.post("/groups/admin/adminAddAdmin/:groupName", adminAddAdmin);
 
 
 module.exports = router;
