@@ -27,7 +27,8 @@ let signupPost = async (req,res)=>{
 
 
 let loginPost  = async (req,res)=>{
-  if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
+  if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
+
   
   const {email,password} = req.body;
 
