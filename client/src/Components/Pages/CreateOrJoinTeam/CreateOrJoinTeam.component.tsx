@@ -18,7 +18,7 @@ const CreateOrJoinTeam = (): JSX.Element => {
     event.preventDefault();
     // setCreateTeamInfo(createTeamInfo);
     addGroup(createTeamInfo, auth.id)
-      .then((res) => navigate("/Team"))
+      .then((res) => navigate('/Team'))
       .catch((err) => console.log(err));
   };
 
@@ -30,7 +30,7 @@ const CreateOrJoinTeam = (): JSX.Element => {
     event.preventDefault();
     // setJoinTeamInfo(joinTeamInfo);
     joinGroup(joinTeamInfo, auth.id)
-      .then((res) => navigate("/Team"))
+      .then(() => navigate('/Team'))
       .catch((err) => console.log(err));
   };
 
@@ -51,7 +51,7 @@ const CreateOrJoinTeam = (): JSX.Element => {
 
       <form onSubmit={joinTeam}>
         <label>team name</label>
-        <input name="teamName" type="text" onChange={joinInfo} />
+        <input name="groupName" type="text" onChange={joinInfo} />
 
         <label>password</label>
         <input name="password" type="password" onChange={joinInfo} />

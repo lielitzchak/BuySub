@@ -10,7 +10,7 @@ let getGroups = async (req, res) => {
 };
 
 let getGroupProducts = async (req, res) => {
-    await Group.findOne({ groupName: req.params.groupName })
+    await Group.findOne({ groupName: req.params.groupName.toLowerCase()})
         .populate("products")
         .then((groupProdcts) => {
             if (groupProdcts.products.length >= 1) {
@@ -61,19 +61,17 @@ let joinGroup = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     console.log(user);
 
-    const groupToJoin = await Group.findOne({ groupName: req.body.groupName.toLowerCase() }).then((group) => {
+    const groupToJoin = await Group.findOne({groupName: req.body.groupName.toLowerCase()}).then((group) => {
+        console.log(req.body);
         bcrypt.compare(req.body.password,group.password,async (err, isMatch) => {
             if (err) return res.status(400).send({ message: "error in pas" });
-            if (!isMatch)
-                return res.status(403).send({ message: "Password incorrect" });
+            if (!isMatch) return res.status(403).send({ message: "Password incorrect" });
+                console.log('the user enter metch the password');
             group.members.push(user._id);
             user.groupName = group.groupName;
             await group.save();
             await user.save();
-            res.send({
-                message: `You Join The ${group.groupName}  Group and Linked Sucessfully`,
-                groupToJoin,
-            });
+            res.send({message: `You Join The Group and Linked Sucessfully`,group});
         });
         
     }).catch((err) => {
