@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 export const authContext = createContext();
 const AuthProvider = ({ children }) => {
   let [auth, setAuth] = useState({});
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (localStorage.jwtToken) {
@@ -14,7 +15,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <authContext.Provider value={{ auth, setAuth }}>
+    <authContext.Provider value={{ auth, setAuth,loading, setLoading }}>
       {children}
     </authContext.Provider>
   );

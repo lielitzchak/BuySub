@@ -3,11 +3,12 @@ import { logIn } from "../../../Services/AuthService.service";
 import jwt_decode from "jwt-decode";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Features/Loading/Loading.component";
 
 const Login = (): JSX.Element => {
   const [user, setUser]: any = useState({});
 
-  const { auth, setAuth }: any = useContext(authContext);
+  const { auth, setAuth,loading, setLoading}: any = useContext(authContext);
 
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ const Login = (): JSX.Element => {
   const saveNewUser = (event: any): void => {
     event.preventDefault();
     // setUser(user);
+    setLoading(true)
     console.log(user);
     logIn(user)
       .then((res) => {
@@ -29,10 +31,13 @@ const Login = (): JSX.Element => {
       })
       .catch((err) => {
         console.log(err); //לשלוח מהשרת הודעת שגיאה
-      });
+      }).finally(() => setLoading(false));
   };
 
   return (
+
+    loading ? <Loading/> :
+     
     <div className="container">
       <div className="screen">
         <div className="screen__content">
@@ -69,6 +74,7 @@ const Login = (): JSX.Element => {
         </div>
       </div>
     </div>
+    
   );
 };
 export default Login;
