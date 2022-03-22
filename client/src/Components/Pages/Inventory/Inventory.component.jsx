@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
+import Loading from "../../Features/Loading/Loading.component";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
 
 export default function Inventory() {
 
-  const { auth } = useContext(authContext);
+  const { auth,loading, setLoading  } = useContext(authContext);
   const [groupProducts, setGroupProducts] = useState([])
   
   useEffect(() => {
-    // await getGroupProducts(await auth.groupName).then((data) => {
+    setLoading(true)
     getGroupProducts(auth.groupName).then((data) => {
-      // getGroupProducts('testgroup').then((data) => {
       console.log(data);
       if (data.length >= 1) {
         setGroupProducts(data)
@@ -20,19 +20,20 @@ export default function Inventory() {
       } else {
         console.log('empty');
       }
-
+      setLoading(true)
     }).catch((err) => {
       console.log(err);
-    })
+    }).finally(() => setLoading(false))
 
   }, [])
 
-  // let editPruduct = () => {
-    
-  // }
-  return (
-    <section>
 
+  return (
+
+    loading ? <Loading/> :
+
+    <section>
+      
       <div>Inventory Page</div>
 
       <section>
