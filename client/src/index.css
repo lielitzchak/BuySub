@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+* {
+  border: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -135,6 +143,156 @@
 }
 
 .container .screen .screen__background .screen__background__shape4 {
+  height: 400px;
+  width: 200px;
+  background: #7E7BB9;
+  top: 420px;
+  right: 50px;
+  border-radius: 60px;
+}
+
+* {
+  border: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container_signUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+}
+
+.container_signUp .screen {
+  background: -webkit-gradient(linear, left top, right top, from(#5D54A4), to(#7C78B8));
+  background: linear-gradient(90deg, #5D54A4, #7C78B8);
+  position: relative;
+  height: 600px;
+  width: 360px;
+  -webkit-box-shadow: 0px 0px 24px #5C5696;
+          box-shadow: 0px 0px 24px #5C5696;
+}
+
+.container_signUp .screen .screen__content {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+}
+
+.container_signUp .screen .screen__content .signUp {
+  width: 320px;
+  padding: 19px 0 0 49px;
+}
+
+.container_signUp .screen .screen__content .signUp .signUp__field {
+  padding: 20px 0px;
+  position: relative;
+}
+
+.container_signUp .screen .screen__content .signUp .signUp__field .signUp__input {
+  border: none;
+  border-bottom: 2px solid #D1D1D4;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.container_signUp .screen .screen__content .signUp .signUp__field .signUp__input:active,
+.container_signUp .screen .screen__content .signUp .signUp__field .signUp__input:focus,
+.container_signUp .screen .screen__content .signUp .signUp__field .signUp__input:hover {
+  outline: none;
+  border-bottom-color: #6A679E;
+}
+
+.container_signUp .screen .signUp__submit {
+  background: #fff;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 16px 20px;
+  border-radius: 26px;
+  border: 1px solid #D4D3E8;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  color: #4C489D;
+  -webkit-box-shadow: 0px 2px 2px #5C5696;
+          box-shadow: 0px 2px 2px #5C5696;
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.container_signUp .screen .signUp__submit:active,
+.container_signUp .screen .signUp__submit:focus,
+.container_signUp .screen .signUp__submit:hover {
+  border-color: #6A679E;
+  outline: none;
+}
+
+.container_signUp .screen .screen__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -5;
+  -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
+}
+
+.container_signUp .screen .screen__background .screen__background__shape {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: absolute;
+}
+
+.container_signUp .screen .screen__background .screen__background__shape1 {
+  height: 520px;
+  width: 520px;
+  background: #FFF;
+  top: -50px;
+  right: 120px;
+  border-radius: 0 72px 0 0;
+}
+
+.container_signUp .screen .screen__background .screen__background__shape2 {
+  height: 220px;
+  width: 220px;
+  background: #6C63AC;
+  top: -172px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.container_signUp .screen .screen__background .screen__background__shape3 {
+  height: 540px;
+  width: 190px;
+  background: -webkit-gradient(linear, right top, left top, from(#5D54A4), to(#6A679E));
+  background: linear-gradient(270deg, #5D54A4, #6A679E);
+  top: -24px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.container_signUp .screen .screen__background .screen__background__shape4 {
   height: 400px;
   width: 200px;
   background: #7E7BB9;

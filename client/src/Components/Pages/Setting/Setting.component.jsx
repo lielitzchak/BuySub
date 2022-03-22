@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupInfo } from "../../../Services/GroupsService.service";
+import UpdateGroup from "../../Features/UpdateGroup/UpdateGroup.component";
 
 
 export default function Setting() {
@@ -15,9 +16,18 @@ export default function Setting() {
     })
   },[])
 
+
+  // let showFormToEditGroup = ()=>{
+  //   setshowUpdate(!showUpdate);
+  // }
+
+
   return (
     <section>
       <h1>Setting</h1>
+      <UpdateGroup item={groupInfo}/>
+      
+      {/* <button onClick={showFormToEditGroup}>Edit Group Info</button> */}
       <img src={groupInfo.imageGroup} alt="group" />
       
       <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
