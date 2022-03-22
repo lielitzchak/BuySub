@@ -29,70 +29,70 @@ const SingUp = (): JSX.Element => {
     });
   };
   return (
-    <div className="container">
+    <div className="container_signUp">
       <div className="screen">
         <div className="screen__content">
           <form className="signUp" onSubmit={saveNewUser}>
-            <div className="login__field">
+            <div className="signUp__field">
               <input
-                className="login__input"
+                className="signUp__input"
                 placeholder="first Name"
                 name="firstName"
                 onChange={updateUserInfo}
                 type="text"
               />
             </div>
-            <div className="login__field">
-              <i className="login__icon fas fa-lock"></i>
+            <div className="signUp__field">
+              <i className="signUp__icon fas fa-lock"></i>
               <input
-                className="login__input"
+                className="signUp__input"
                 placeholder="last Name"
                 name="lastName"
                 onChange={updateUserInfo}
                 type="text"
               />
             </div>
-            <div className="login__field">
-              <i className="login__icon fas fa-user"></i>
+            <div className="signUp__field">
+              <i className="signUp__icon fas fa-user"></i>
               <input
-                className="login__input"
+                className="signUp__input"
                 placeholder="email"
                 name="email"
                 onChange={updateUserInfo}
                 type="email"
               />
             </div>
-            <div className="login__field">
-              <i className="login__icon fas fa-user"></i>
+            <div className="signUp__field">
+              <i className="signUp__icon fas fa-user"></i>
               <input
-                className="login__input"
+                className="signUp__input"
                 placeholder="password"
                 name="password"
                 onChange={updateUserInfo}
                 type="password"
               />
             </div>
-            <div className="login__field">
-              <i className="login__icon fas fa-user"></i>
+            <div className="signUp__field">
+              <i className="signUp__icon fas fa-user"></i>
               <input
-                className="login__input"
+                className="signUp__input"
                 placeholder="image"
                 name="image"
                 onChange={updateUserInfo}
                 type="url"
               />
             </div>
-            <div className="login__field">
-              <i className="login__icon fas fa-user"></i>
+            <div className="signUp__field">
+              <i className="signUp__icon fas fa-user"></i>
               <input
-                className="login__input"
+                className="signUp__input"
                 placeholder="birth Of Date"
                 name="birthOfDate"
                 onChange={updateUserInfo}
                 type="date"
               />
             </div>
-            <button className="button login__submit">
+            <button className="button signUp__submit">
               <span className="button__text">save me!</span>
             </button>
             <div className="screen__background">
