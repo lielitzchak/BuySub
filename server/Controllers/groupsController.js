@@ -167,7 +167,7 @@ const adminAddAdmin = async (req, res) => {
 
 const exitGroup = async(req,res) => {
 
-    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
+    if(await User.exists({email: req.params.email}) == false) return res.status(400).send({message:"User not exist"});
 
     await User.findOne({ _id: req.params.id }).then(async(userMemberToRemove) => {
         if(userMemberToRemove.role.includes("Admin")){
