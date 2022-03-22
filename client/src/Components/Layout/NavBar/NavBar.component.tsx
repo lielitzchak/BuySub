@@ -143,6 +143,15 @@ const NavBar = (): JSX.Element => {
                   <Avatar alt="user" src={auth.image} />
                 </IconButton>
               </Tooltip>
+
+              {/* <Tooltip title="Dark mode">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <div>
+                    <input type="checkbox" id="toggle" />
+                    <label htmlFor="toggle"></label>
+                  </div>
+                </IconButton>
+              </Tooltip> */}
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
