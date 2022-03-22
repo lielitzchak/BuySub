@@ -53,3 +53,19 @@ export const joinGroup = async (groupDetailsToJoin: any,id: any): Promise<any> =
     .then((res) => res.json())
     .catch((er) => console.log(er));
 };
+
+////////////////////////////////////////////////////////////////////////
+export const updateGroup = async (id:any , groupToEdit:any): Promise<any> => {
+  let options = {
+    method: "PUT",
+    headers: { 
+      "content-type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+     },
+    body: JSON.stringify(groupToEdit),
+  };
+  return await fetch(`${basic_url}/groups/${id}`, options)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+////////////////////////////////////////////////////////////////////////

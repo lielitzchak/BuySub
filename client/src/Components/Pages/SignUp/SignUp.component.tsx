@@ -79,7 +79,7 @@ const SingUp = (): JSX.Element => {
                 placeholder="image"
                 name="image"
                 onChange={updateUserInfo}
-                type="url"
+                type="text"
               />
             </div>
             <div className="login__field">
