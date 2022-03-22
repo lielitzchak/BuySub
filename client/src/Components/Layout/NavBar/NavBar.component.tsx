@@ -16,8 +16,7 @@ import LogOut from "../../Features/LogOut/LogOut.component";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { useContext, useState } from "react";
 
-const pages = ["Home", "SignUp", "Profile", "Team"];
-const settings = ["Profile", "Account", "Logout"];
+const settings = ["Profile", "Logout"];
 
 const NavBar = (): JSX.Element => {
   const { auth, setAuth }: any = useContext(authContext);
@@ -46,18 +45,6 @@ const NavBar = (): JSX.Element => {
 
   return (
     <nav>
-      {/* {auth.email ? "" : <Link to="/SignUp">SignUp</Link>} */}
-      {auth.email ? <Link to="/Profile">Profile</Link> : ""}
-      {auth.email && auth.groupName !== "" ? <Link to="/Team">Team</Link> : ""}
-      {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? (
-        <Link to="/Admin">Admin</Link>
-      ) : (
-        ""
-      )}
-      {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>}
-      <h1>{auth.email}</h1>
-      <h1>{auth.groupName}</h1>
-
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -99,20 +86,43 @@ const NavBar = (): JSX.Element => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                      {page === "Home" ? (
-                        <Link to={"/"}>{page}</Link>
-                      ) : auth.email && page === "Profile" ? (
-                        <Link to={`/${page}`}>{page}</Link>
-                      ) : (
-                        <Link to={`/${page}`}>{page}</Link>
-                      )}
+                        <Link to={"/"}>Home</Link>
                     </Typography>
                   </MenuItem>
-                ))}
+
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                      {auth.email ? "" : <Link to="/SignUp">SignUp</Link>}                  
+                    </Typography>
+                  </MenuItem>
+
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    {auth.email ? <Link to="/Profile">Profile</Link> : ""}               
+                    </Typography>
+                  </MenuItem>
+
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    {auth.email && auth.groupName !== "" ? <Link to="/Team">Team</Link> : ""}              
+                    </Typography>
+                  </MenuItem>
+
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <Link to="/Admin">Admin</Link> : ""}             
+                    </Typography>
+                  </MenuItem>
+
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>}             
+                    </Typography>
+                  </MenuItem>
               </Menu>
+
             </Box>
             <Typography
               variant="h6"
@@ -123,22 +133,44 @@ const NavBar = (): JSX.Element => {
               BuySub
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
+                <Button onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
-                  {page === "Home" ? (
-                    <Link to={"/"}>{page}</Link>
-                  ) : auth.email && page === "Profile" ? (
-                    <Link to={`/${page}`}>{page}</Link>
-                  ) : (
-                    <Link to={`/${page}`}>{page}</Link>
-                  )}
+                        <Link to={"/"}>Home</Link>
                 </Button>
-              ))}
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                  {auth.email ? "" : <Link to="/SignUp">SignUp</Link>}
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                  {auth.email ? <Link to="/Profile">Profile</Link> : ""}
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                  {auth.email && auth.groupName !== "" ? <Link to="/Team">Team</Link> : ""}
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <Link to="/Admin">Admin</Link> : ""}
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                 {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>} 
+                </Button>
+
             </Box>
+            
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
@@ -171,12 +203,19 @@ const NavBar = (): JSX.Element => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem  onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center"> 
+                    {auth.email ? "" : <Link to="/SignUp">SignUp</Link>}
+                    </Typography>
                   </MenuItem>
-                ))}
+
+                  <MenuItem  onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center"> 
+                    {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>} 
+                    </Typography>
+                  </MenuItem>
               </Menu>
+              
             </Box>
           </Toolbar>
         </Container>
