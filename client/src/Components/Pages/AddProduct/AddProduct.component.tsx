@@ -40,6 +40,9 @@ export default function AddProduct() {
             <label>Expiration Date</label>
             <input type="date" name="expirationDate" onChange={updateProductInfo} />
 
+            <label>image product</label>
+            <input type="text" name="productImage" onChange={updateProductInfo} />
+
             <button>Add Product</button>
         </form>    
 
