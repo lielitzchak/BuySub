@@ -123,7 +123,7 @@ let deleteGroup = async (req, res) => {
 }
 
 const adminAddMember = async (req, res) => {
-    if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
+    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
     const userToAddAsMember = await User.findOne({email : req.body.email})
     
     await Group.findOne({ groupName: req.params.groupName }).then((group) => {
@@ -138,8 +138,8 @@ const adminAddMember = async (req, res) => {
 
 const adminRemoveMember = async (req, res) => {
 
-   if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
-   const userMemberToRemove = await User.findOne({ email: req.body.email });
+    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
+    const userMemberToRemove = await User.findOne({ email: req.body.email });
 
    let groupToRemoveMember = await Group.findOne({ groupName : req.params.groupName })
    const member = groupToRemoveMember.members
@@ -151,7 +151,7 @@ const adminRemoveMember = async (req, res) => {
 
 const adminAddAdmin = async (req, res) => {
   try {
-    if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
+    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
     const userToBecomeAdmin = await User.findOne({ email: req.body.email });
 
     await Group.findOne({ groupName: req.params.groupName }).then(() => {
@@ -165,6 +165,48 @@ const adminAddAdmin = async (req, res) => {
   }
 };
 
+const exitGroup = async(req,res) => {
+
+    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
+
+    await User.findOne({ _id: req.params.id }).then(async(userMemberToRemove) => {
+        if(userMemberToRemove.role.includes("Admin")){
+
+            await Group.findOne({ groupName : req.params.groupName }).then((group) => {
+    
+                userMemberToRemove.groupName = '';
+                const RemoveAdminRole = userMemberToRemove.role
+                RemoveAdminRole.splice(RemoveAdminRole.indexOf('Admin'),1)
+                const member = group.members
+                member.splice(member.indexOf(userMemberToRemove._id),1)
+                userMemberToRemove.save();
+                let random = Math.floor(Math.random() * group.members.length);
+                console.log(random);
+                let randomId = group.members[random];
+                console.log(randomId);
+                User.findOne({ _id: randomId }).then((user) => {
+                    console.log(user);
+                    user.role.push('Admin');
+                    user.save();
+                })
+                group.save();
+            })
+    
+            res.send({Message : `The User ${userMemberToRemove.email} Removed and Exit Successfully`})
+    
+        }else{
+             await Group.findOne({ groupName : req.params.groupName }).then((group) => {
+    
+                userMemberToRemove.groupName = '';
+                const member = group.members
+                member.splice(member.indexOf(userMemberToRemove._id),1)
+                group.save();
+                res.send({Message : `The User ${userMemberToRemove.email} Removed and Exit Successfully`})
+            })
+        }
+    }) 
+}
+
 module.exports = {
     getGroups,
     getGroupById,
@@ -177,4 +219,5 @@ module.exports = {
     adminAddMember,
     adminRemoveMember,
     adminAddAdmin,
+    exitGroup
 };
