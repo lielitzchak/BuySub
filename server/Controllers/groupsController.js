@@ -84,7 +84,7 @@ let updateGroup = async (req, res) => {
 
     if(groupToUpdate.groupName != req.body.groupName.toLowerCase()){
 
-      await  User.find({ groupName: groupToUpdate.groupName }).then((usersToUpdate) => {
+      await User.find({ groupName: groupToUpdate.groupName }).then((usersToUpdate) => {
 
            console.log(usersToUpdate);
            usersToUpdate.forEach((user) => {
@@ -92,7 +92,7 @@ let updateGroup = async (req, res) => {
                user.save();
            })
            
-       })
+      })
    }
 
     await Group.findOne({ _id: req.params.id }).then((data) => {
@@ -123,27 +123,43 @@ let deleteGroup = async (req, res) => {
 }
 
 const adminAddMember = async (req, res) => {
-    const userToAdd = res.body;
-    let group = await Group.findOne({ groupName: req.params.groupName });
-    group.members.push(userToAdd);
-    userToAdd.groupName = group.groupName;
-    await group.save();
-    await userToAdd.save();
+    if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
+    const userToAddAsMember = await User.findOne({email : req.body.email})
+    
+    await Group.findOne({ groupName: req.params.groupName }).then((group) => {
+        // if(userToAddAsMember.role())
+        group.members.push(userToAddAsMember._id);
+        userToAddAsMember.groupName = group.groupName;
+        group.save();
+        userToAddAsMember.save();
+        res.send({message :`The User ${userToAddAsMember.email} Added To ${group.groupName} Group`})
+    })
 };
 
 const adminRemoveMember = async (req, res) => {
-    let group = await Group.findOne({ _id: req.params.id });
-    let deleteMember = { ...req.body };
-    let indexToDelete = group.members.indexOf(deleteMember._id);
-    indexToDelete
-        ? group.members.splice(indexToDelete, 1) + res.send(group)
-        : res.send({ massaged: "user not found" });
+
+   if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
+   const userMemberToRemove = await User.findOne({ email: req.body.email });
+
+   let groupToRemoveMember = await Group.findOne({ groupName : req.params.groupName })
+   const member = groupToRemoveMember.members
+   member.splice(member.indexOf(userMemberToRemove._id),1)
+   groupToRemoveMember.save();
+
+   res.send({Message : `The User ${userMemberToRemove.email} Removed Successfully`})
 };
+
 const adminAddAdmin = async (req, res) => {
   try {
-    const userAddToAdmin = await User.findOne({ email: req.body.email });
-    userAddToAdmin.role.push("Admin");
-    res.send({ massaged: "admin added successfully" });
+    if(User.exists(req.body.email) == false) return res.status(400).send({message:"User not exist"});
+    const userToBecomeAdmin = await User.findOne({ email: req.body.email });
+
+    await Group.findOne({ groupName: req.params.groupName }).then(() => {
+        // if(userToAddAsMember.role())
+        userToBecomeAdmin.role.push("Admin");
+        userToBecomeAdmin.save();
+        res.send({message :`The User ${userToBecomeAdmin.email} Is Changed To Be Admin`})
+    })
   } catch (error) {
     res.send({ massaged: "error" });
   }
