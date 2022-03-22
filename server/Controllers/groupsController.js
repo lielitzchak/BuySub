@@ -61,7 +61,7 @@ let joinGroup = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     console.log(user);
 
-    const groupToJoin = await Group.findOne({ groupName: req.body.groupName }).then((group) => {
+    const groupToJoin = await Group.findOne({ groupName: req.body.groupName.toLowerCase() }).then((group) => {
         bcrypt.compare(req.body.password,group.password,async (err, isMatch) => {
             if (err) return res.status(400).send({ message: "error in pas" });
             if (!isMatch)
