@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
   },
   productImage: {
     type: String,
-    default : "https://cdn.pixabay.com/photo/2014/04/03/11/51/milk-312369__480.png"
+    default : "https://cdn.pixabay.com/photo/2017/01/31/19/38/comic-2026751__340.png"
   },
   expirationDate: {
     type: Date,
