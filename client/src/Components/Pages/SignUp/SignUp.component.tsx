@@ -24,7 +24,7 @@ const SingUp = (): JSX.Element => {
         setAuth(tokenDecoded);
         // auth = tokenDecoded
         console.log(auth);
-        navigate("/CreateOrJoinTeam");
+        navigate("/");
       }
     });
   };

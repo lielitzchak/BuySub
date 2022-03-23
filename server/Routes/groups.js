@@ -13,6 +13,7 @@ const {
   adminAddMember,
   adminRemoveMember,
   adminAddAdmin,
+  adminRemoveAdmin,
   exitGroup
 } = require("../Controllers/groupsController");
 
@@ -32,11 +33,13 @@ router.put("/groups/:id", updateGroup);
 
 router.delete("/groups/:id", deleteGroup);
 
-router.put("/groups/admin/removeMember/:groupName", adminRemoveMember);
+router.put("/groups/admin/removeMember/:id/:groupName", adminRemoveMember);
 
 router.post("/groups/admin/adminAddMember/:groupName", adminAddMember);
 
-router.post("/groups/admin/adminAddAdmin/:groupName", adminAddAdmin);
+router.post("/groups/admin/adminAddAdmin/:id", adminAddAdmin);
+
+router.put("/groups/admin/adminRemoveAdmin/:id", adminRemoveAdmin);
 
 router.put("/groups/admin/exitGroup/:id/:groupName", exitGroup);
 

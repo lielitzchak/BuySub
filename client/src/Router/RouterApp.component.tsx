@@ -5,7 +5,6 @@ import Footer from "../Components/Layout/Footer/Footer.component";
 import SignUp from "../Components/Pages/SignUp/SignUp.component";
 import Login from "../Components/Pages/Login/Login.component";
 import Page404 from "../Components/Pages/Page404/Page404.component";
-import CreateOrJoinTeam from "../Components/Pages/CreateOrJoinTeam/CreateOrJoinTeam.component";
 import Team from "../Components/Pages/Team/Team.component";
 import { Admin } from "../Components/Pages/Admin/Admin.component";
 import Inventory from "../Components/Pages/Inventory/Inventory.component";
@@ -15,6 +14,8 @@ import Unauthorized from "../Components/Pages/Unauthorized/Unauthorized.componen
 import RequiredAuth from "../Components/Pages/RequiredAuth/RequiredAuth";
 import Permission from "../Components/Pages/Permission/Permission";
 import AddProduct from "../Components/Pages/AddProduct/AddProduct.component";
+import CreateTeam from "../Components/Pages/CreateTeam/CreateTeam.componenet";
+import JoinTeam from "../Components/Pages/JoinTeam/JoinTeam.component";
 
 const RouterApp = (): JSX.Element => {
   return (
@@ -41,7 +42,9 @@ const RouterApp = (): JSX.Element => {
                  <Route path="/Admin" element={<Admin />} />
              </Route>
 
-             <Route path="/CreateOrJoinTeam" element={<CreateOrJoinTeam />} />
+             <Route path="/CreateTeam" element={<CreateTeam/>}/>
+             <Route path="/JoinTeam" element={<JoinTeam/>}/>
+
         </Route>
 
         <Route path="*" element={<Page404 />} />

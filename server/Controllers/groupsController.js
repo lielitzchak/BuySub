@@ -124,10 +124,9 @@ let deleteGroup = async (req, res) => {
 
 const adminAddMember = async (req, res) => {
     if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
-    const userToAddAsMember = await User.findOne({email : req.body.email})
+    const userToAddAsMember = await User.findOne({email: req.body.email})
     
     await Group.findOne({ groupName: req.params.groupName }).then((group) => {
-        // if(userToAddAsMember.role())
         group.members.push(userToAddAsMember._id);
         userToAddAsMember.groupName = group.groupName;
         group.save();
@@ -138,8 +137,8 @@ const adminAddMember = async (req, res) => {
 
 const adminRemoveMember = async (req, res) => {
 
-    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
-    const userMemberToRemove = await User.findOne({ email: req.body.email });
+    if(await User.exists({_id: req.params.id}) == false) return res.status(400).send({message:"User not exist"});
+    const userMemberToRemove = await User.findOne({_id: req.params.id});
 
      await Group.findOne({ groupName : req.params.groupName }).then((groupToRemoveMember) => {
         if(userMemberToRemove.role.includes("Admin")){
@@ -169,15 +168,25 @@ const adminRemoveMember = async (req, res) => {
 
 const adminAddAdmin = async (req, res) => {
   try {
-    if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
-    const userToBecomeAdmin = await User.findOne({ email: req.body.email });
+        await User.findOne({_id: req.params.id}).then((userToBecomeAdmin) => {
+            userToBecomeAdmin.role.push("Admin");
+            userToBecomeAdmin.save();
+            res.send({message :`The User ${userToBecomeAdmin.email} Is Changed To Be Admin`})
+        })
+  } catch (error) {
+    res.send({ massaged: "error" });
+  }
+};
 
-    await Group.findOne({ groupName: req.params.groupName }).then(() => {
-        // if(userToAddAsMember.role())
-        userToBecomeAdmin.role.push("Admin");
-        userToBecomeAdmin.save();
-        res.send({message :`The User ${userToBecomeAdmin.email} Is Changed To Be Admin`})
-    })
+const adminRemoveAdmin = async (req, res) => {
+  try {
+        await User.findOne({_id: req.params.id}).then((userToRemoveAdmin) => {
+
+            const RemoveAdminRole = userToRemoveAdmin.role
+            RemoveAdminRole.splice(RemoveAdminRole.indexOf('Admin'),1)
+            userToRemoveAdmin.save();
+            res.send({message :`The User ${userToRemoveAdmin.email} Is Not Admin Now`})
+        })
   } catch (error) {
     res.send({ massaged: "error" });
   }
@@ -237,5 +246,6 @@ module.exports = {
     adminAddMember,
     adminRemoveMember,
     adminAddAdmin,
+    adminRemoveAdmin,
     exitGroup
 };
