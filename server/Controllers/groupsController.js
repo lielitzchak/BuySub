@@ -141,12 +141,30 @@ const adminRemoveMember = async (req, res) => {
     if(await User.exists({email: req.body.email}) == false) return res.status(400).send({message:"User not exist"});
     const userMemberToRemove = await User.findOne({ email: req.body.email });
 
-   let groupToRemoveMember = await Group.findOne({ groupName : req.params.groupName })
-   const member = groupToRemoveMember.members
-   member.splice(member.indexOf(userMemberToRemove._id),1)
-   groupToRemoveMember.save();
+     await Group.findOne({ groupName : req.params.groupName }).then((groupToRemoveMember) => {
+        if(userMemberToRemove.role.includes("Admin")){
 
-   res.send({Message : `The User ${userMemberToRemove.email} Removed Successfully`})
+            const member = groupToRemoveMember.members
+            member.splice(member.indexOf(userMemberToRemove._id),1)
+
+            userMemberToRemove.groupName = '';
+            const RemoveAdminRole = userMemberToRemove.role
+            RemoveAdminRole.splice(RemoveAdminRole.indexOf('Admin'),1)
+            userMemberToRemove.save()
+            groupToRemoveMember.save();
+            res.send({Message : `The User ${userMemberToRemove.email} Removed Successfully`})
+        }else{
+            const member = groupToRemoveMember.members
+            member.splice(member.indexOf(userMemberToRemove._id),1)
+            userMemberToRemove.groupName = '';
+            
+            userMemberToRemove.save()
+            groupToRemoveMember.save();
+            res.send({Message : `The User ${userMemberToRemove.email} Removed Successfully`})
+
+        }
+   })
+
 };
 
 const adminAddAdmin = async (req, res) => {
