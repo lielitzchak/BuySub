@@ -116,11 +116,6 @@ const NavBar = (): JSX.Element => {
                     </Typography>
                   </MenuItem>
 
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">
-                    {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>}             
-                    </Typography>
-                  </MenuItem>
               </Menu>
 
             </Box>
@@ -161,12 +156,6 @@ const NavBar = (): JSX.Element => {
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
                 {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <Link to="/Admin">Admin</Link> : ""}
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                 {auth.email ? <LogOut /> : <Link to="/Login">Login</Link>} 
                 </Button>
 
             </Box>

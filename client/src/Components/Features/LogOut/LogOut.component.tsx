@@ -16,6 +16,6 @@ const LogOut = (): JSX.Element => {
       })
       .catch((err) => console.log(err));
   };
-  return <button onClick={LogOut}>Log out</button>;
+  return <span onClick={LogOut}>Log out</span>;
 };
 export default LogOut;
