@@ -78,7 +78,6 @@ export const adminRemoveMember = async (id:any,groupName: any): Promise<any> => 
       "content-type": "application/json",
       "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
      },
-    // body: JSON.stringify(groupNameToEdit),
   };
   return await fetch(`${basic_url}/groups/admin/removeMember/${id}/${groupName}`, options)
     .then((res) => res.json())
@@ -106,7 +105,6 @@ export const adminAddAdmin = async (id: any): Promise<any> => {
       "content-type": "application/json",
       "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
      },
-    // body: JSON.stringify(groupName),
   };
   return await fetch(`${basic_url}/groups/admin/adminAddAdmin/${id}`, options)
     .then((res) => res.json())
@@ -121,7 +119,6 @@ export const adminRemoveAdmin = async (id:any): Promise<any> => {
       "content-type": "application/json",
       "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
      },
-    // body: JSON.stringify(groupNameToEdit),
   };
   return await fetch(`${basic_url}/groups/admin/adminRemoveAdmin/${id}`, options)
     .then((res) => res.json())
@@ -135,7 +132,6 @@ export const exitGroup = async (id:any, groupName:any): Promise<any> => {
       "content-type": "application/json",
       "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
      },
-    // body: JSON.stringify(groupNameToEdit),
   };
   return await fetch(`${basic_url}/groups/admin/exitGroup/${id}/${groupName}`, options)
     .then((res) => res.json())
