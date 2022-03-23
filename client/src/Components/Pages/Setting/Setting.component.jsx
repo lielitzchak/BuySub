@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
-import { getGroupInfo } from "../../../Services/GroupsService.service";
+import { exitGroup,getGroupInfo } from "../../../Services/GroupsService.service";
 import UpdateGroup from "../../Features/UpdateGroup/UpdateGroup.component";
 
 
 export default function Setting() {
   const { auth } = useContext(authContext);
   const [groupInfo,setGroupInfo] = useState({});
+  const navigate = useNavigate()
 
   useEffect(() => {
 
@@ -17,6 +19,13 @@ export default function Setting() {
   },[])
 
 
+  let exitTheGroup = ()=>{
+    exitGroup(auth.id,auth.groupName)
+    .then((data)=> console.log(data))
+    .then((err)=> console.log(err))
+    navigate("/");
+
+  }
   // let showFormToEditGroup = ()=>{
   //   setshowUpdate(!showUpdate);
   // }
@@ -25,6 +34,7 @@ export default function Setting() {
   return (
     <section>
       <h1>Setting</h1>
+      <button onClick={exitTheGroup}>Exit The Group</button>
       <UpdateGroup item={groupInfo}/>
       
       {/* <button onClick={showFormToEditGroup}>Edit Group Info</button> */}
