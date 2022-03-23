@@ -205,7 +205,7 @@ const NavBar = (): JSX.Element => {
               >
                   <MenuItem  onClick={handleCloseUserMenu}>
                     <Typography textAlign="center"> 
-                    {auth.email ? "" : <Link to="/SignUp">SignUp</Link>}
+                    {auth.email ? <Link to="/Profile">Profile</Link> : ""}
                     </Typography>
                   </MenuItem>
 
