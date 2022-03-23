@@ -16,7 +16,6 @@ import LogOut from "../../Features/LogOut/LogOut.component";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { useContext, useState } from "react";
 
-const settings = ["Profile", "Logout"];
 
 const NavBar = (): JSX.Element => {
   const { auth, setAuth }: any = useContext(authContext);
@@ -116,6 +115,18 @@ const NavBar = (): JSX.Element => {
                     </Typography>
                   </MenuItem>
 
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    {auth.email && auth.groupName == '' ? <Link to="/CreateTeam">Create Team</Link> : '' }             
+                    </Typography>
+                  </MenuItem>
+
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    {auth.email && auth.groupName == '' ? <Link to="/JoinTeam">Join Team</Link> : '' }             
+                    </Typography>
+                  </MenuItem>
+
               </Menu>
 
             </Box>
@@ -156,6 +167,18 @@ const NavBar = (): JSX.Element => {
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
                 {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <Link to="/Admin">Admin</Link> : ""}
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                {auth.email && auth.groupName == '' ? <Link to="/CreateTeam">Create Team</Link> : '' }  
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                {auth.email && auth.groupName == '' ? <Link to="/JoinTeam">Join Team</Link> : '' }   
                 </Button>
 
             </Box>
