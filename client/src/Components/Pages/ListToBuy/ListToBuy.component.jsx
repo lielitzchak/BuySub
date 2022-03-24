@@ -28,6 +28,7 @@ export default function ListToBuy() {
         console.log(data)
         setProductInfo(productInfo)
       })
+      .catch((err)=>console.log(err))
   }
 
   return (
