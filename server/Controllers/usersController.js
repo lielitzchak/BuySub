@@ -15,13 +15,14 @@ const getUserById = async (req, res) => {
 const addUser = async (req, res) => {
   const { email, password } = req.body;
 
-  if (await User.exists({ email: email }))
-    return res.status(400).send({ message: "Email Already Exists" });
+  if (await User.exists({ email: email })) return res.status(400).send({ message: "Email Already Exists" });
 
   bcrypt.hash(password, 10, async (err, hashPassword) => {
     if (err) return res.status(500).send({ message: err });
 
     req.body.password = hashPassword;
+    req.body.confirmPassword = hashPassword;
+
     await User.create(req.body)
       .then((result) =>
         res.status(200).send({ message: "User has been Added", result })
@@ -33,9 +34,37 @@ const addUser = async (req, res) => {
 const updateUser = async (req, res) => {
   await User.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
     User.findOne({ _id: req.params.id }).then((data) => {
-      res.send(data);
+      res.send({message :'You Succssfully Updated Your Details',data});
     });
   });
+};
+
+const changeUserPassword = async (req, res) => {
+  await User.findOneAndUpdate({ _id: req.params.id }, req.body).then((user) => {
+    
+        bcrypt.compare(req.body.confirmPassword ,user.confirmPassword,async(err,isMatch)=>{
+        if(err) return res.status(400).send({message:"error in pas"})
+        if(!isMatch) return res.status(403).send({message:"Password incorrect"})
+        user.password = '';
+        user.confirmPassword = '';
+       await user.save();
+
+       bcrypt.hash(req.body.password, 10, async (err, hashPassword) => {
+        if (err) return res.status(500).send({ message: err });
+    
+        req.body.password = hashPassword;
+        req.body.confirmPassword = hashPassword;
+        await user.save();
+        User.findOne({ _id: req.params.id }).then((data) => {
+          res.send({message :'You Changed Succssfully Your Password',data});
+        });
+
+      })
+    })
+
+
+  })
+  
 };
 
 const deleteUser = async (req, res) => {
@@ -56,5 +85,6 @@ module.exports = {
   getUserById,
   addUser,
   updateUser,
+  changeUserPassword,
   deleteUser,
 };
