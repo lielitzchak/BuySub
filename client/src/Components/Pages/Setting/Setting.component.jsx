@@ -8,6 +8,8 @@ import UpdateGroup from "../../Features/UpdateGroup/UpdateGroup.component";
 export default function Setting() {
   const { auth } = useContext(authContext);
   const [groupInfo,setGroupInfo] = useState({});
+  const [showUpdate, setshowUpdate] = useState(false)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -35,7 +37,9 @@ export default function Setting() {
     <section>
       <h1>Setting</h1>
       <button onClick={exitTheGroup}>Exit The Group</button>
-      <UpdateGroup item={groupInfo}/>
+      
+
+      {showUpdate ?<UpdateGroup item={groupInfo} showUpdate={showUpdate} setshowUpdate={setshowUpdate} /> : <button onClick={() => setshowUpdate(!showUpdate)}>Edit Group Info</button>}
       
       {/* <button onClick={showFormToEditGroup}>Edit Group Info</button> */}
       <img src={groupInfo.imageGroup} alt="group" />
