@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
-* {
-  border: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -149,13 +142,6 @@
   top: 420px;
   right: 50px;
   border-radius: 60px;
-}
-
-* {
-  border: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .container_signUp {
@@ -408,56 +394,4 @@ h6 {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-
-/* input[type="checkbox"] {
-  visibility: hidden;
-}
-
-input[type="checkbox"]:checked + label {
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-  background-color: #000;
-}
-
-input[type="checkbox"]:checked + label:before {
-  -webkit-transform: translateX(90px);
-          transform: translateX(90px);
-  background-color: #FFF;
-} */
-
-/* label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 180px;
-  height: 90px;
-  border: 6px solid;
-  border-radius: 99em;
-  position: relative;
-  -webkit-transition: -webkit-transform .75s ease-in-out;
-  transition: -webkit-transform .75s ease-in-out;
-  transition: transform .75s ease-in-out;
-  transition: transform .75s ease-in-out, -webkit-transform .75s ease-in-out;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
-  cursor: pointer;
-} */
-
-/* label:before {
-  -webkit-transition: -webkit-transform .75s ease;
-  transition: -webkit-transform .75s ease;
-  transition: transform .75s ease;
-  transition: transform .75s ease, -webkit-transform .75s ease;
-  -webkit-transition-delay: .5s;
-          transition-delay: .5s;
-  content: "";
-  display: block;
-  position: absolute;
-  width: 54px;
-  height: 54px;
-  background-color: #000;
-  border-radius: 50%;
-  top: 12px;
-  left: 12px;
-} */
 /*# sourceMappingURL=index.css.map */
