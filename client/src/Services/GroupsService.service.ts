@@ -85,7 +85,7 @@ export const updateGroup = async (id:any , groupToEdit:any): Promise<any> => {
 ////////////////////////////////////////////////////////////////////////
 
 
-export const deleteProductFromListToBuy = async (id:any , groupName:any): Promise<any> => {
+export const deleteProductFromListToBuy = async (groupName:any, id:any): Promise<any> => {
   let options = {
     method: "DELETE",
     headers: { 
@@ -93,7 +93,7 @@ export const deleteProductFromListToBuy = async (id:any , groupName:any): Promis
       "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
      },
   };
-  return await fetch(`${basic_url}/groups/ListToBuy/${id}/${groupName}`, options)
+  return await fetch(`${basic_url}/groups/ListToBuy/${groupName}/${id}`, options)
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };

@@ -55,7 +55,7 @@ export default function Inventory() {
       
       <div>Inventory Page</div>
 
-      <section>
+      {/* <section>
         <h1>Add Product to Inventory</h1>
         <form action="" autoComplete="on" onSubmit={addProductToGroup}>
 
@@ -77,7 +77,7 @@ export default function Inventory() {
             <button>Add Product</button>
         </form>    
 
-    </section> 
+    </section>  */}
 
       <section>
         {groupProducts.length >= 1

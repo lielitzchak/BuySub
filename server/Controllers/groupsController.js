@@ -112,15 +112,16 @@ let updateGroup = async (req, res) => {
 
 let deleteProductFromListToBuy = async (req,res) => {
     
-    await Group.findByIdAndUpdate({groupName: req.params.groupName}).then((group) => {
+    await Group.findOne({groupName: req.params.groupName}).then((group) => {
        const productsFromList = group.listToBuy;
-       productsFromList.forEach((item) => {
+       productsFromList.forEach((item,index) => {
             if(item._id == req.params.id){
 
-                productsFromList.splice(item,1);
+                productsFromList.splice(index,1);
+                group.save();
             }
        })
-       res.send({Message : `The Product ${productToDelete.productName} Deleted From List`})
+       res.send({Message : `The Product Deleted From The List`})
      })  
  };
 
