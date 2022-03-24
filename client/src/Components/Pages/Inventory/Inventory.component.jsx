@@ -3,6 +3,7 @@ import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
+import ListToBuy from "../ListToBuy/ListToBuy.component";
 
 export default function Inventory() {
 
@@ -27,6 +28,11 @@ export default function Inventory() {
 
   }, [])
 
+  let addToGroupList = (item) => {
+    <ListToBuy groupListToBuy={item}/>
+  }
+
+
 
   return (
 
@@ -49,7 +55,7 @@ export default function Inventory() {
                 <h1>Price : {price}</h1>
                 <h1>Quantity : {quantity}</h1>
                 <h1>Expiration Date :{expirationDate}</h1>
-                
+                <button onClick={() => addToGroupList(item)}>Add To List</button>
                 <UpdateProduct item={item} />
               </article>
             )
