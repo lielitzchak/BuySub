@@ -11,7 +11,7 @@ router.post('/products/:groupName',addProduct)
 
 router.put('/products/:id',updateProduct)
 
-router.delete('/products/:id',deleteProduct)
+router.delete('/products/:id/:groupName',deleteProduct)
 
 
 module.exports = router;

@@ -110,6 +110,20 @@ let updateGroup = async (req, res) => {
      });
 };
 
+let deleteProductFromListToBuy = async (req,res) => {
+    
+    await Group.findByIdAndUpdate({groupName: req.params.groupName}).then((group) => {
+       const productsFromList = group.listToBuy;
+       productsFromList.forEach((item) => {
+            if(item._id == req.params.id){
+
+                productsFromList.splice(item,1);
+            }
+       })
+       res.send({Message : `The Product ${productToDelete.productName} Deleted From List`})
+     })  
+ };
+
 
 let deleteGroup = async (req, res) => {
     const groupToDelete = await Group.findByIdAndRemove({ _id: req.params.id });
@@ -253,6 +267,7 @@ module.exports = {
     addGroup,
     joinGroup,
     updateGroup,
+    deleteProductFromListToBuy,
     deleteGroup,
     adminAddMember,
     adminRemoveMember,

@@ -24,7 +24,7 @@ export default function ListToBuy() {
     {groupListToBuy.length >= 1
      ?
      groupListToBuy.map((item) => {
-       const { productName, quantity, expirationDate, price, _id,productImage } = item;
+       const { productName, quantity,price, _id,productImage } = item;
 
        return (
          <article key={_id}>

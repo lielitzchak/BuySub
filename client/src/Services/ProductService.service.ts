@@ -38,3 +38,19 @@ export const updateProduct = async (id:any , productToEdit:any): Promise<any> =>
       .then((res) => res.json())
       .catch((err) => console.log(err));
   };
+
+
+export const deleteProduct = async (id:any, groupName:any): Promise<any> => {
+    let options = {
+      method: "DELETE",
+      headers: { 
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+       },
+    };
+    return await fetch(`${basic_url}/products/${id}/${groupName}`, options)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  };
+
+    
