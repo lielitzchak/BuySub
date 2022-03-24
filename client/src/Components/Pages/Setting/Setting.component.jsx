@@ -28,9 +28,7 @@ export default function Setting() {
     navigate("/");
 
   }
-  // let showFormToEditGroup = ()=>{
-  //   setshowUpdate(!showUpdate);
-  // }
+ 
 
 
   return (
