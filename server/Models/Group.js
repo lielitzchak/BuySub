@@ -29,9 +29,9 @@ const groupSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Product'
   }],
-  listToBuy:[{
+  listToBuy:{
       type: Array
-  }]
+  }
 },
   { timestamps: true }
 );

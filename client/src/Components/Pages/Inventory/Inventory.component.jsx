@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
-import { getGroupProducts } from "../../../Services/GroupsService.service";
+import { addProductToListToBuy, getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
 import ListToBuy from "../ListToBuy/ListToBuy.component";
@@ -29,7 +29,12 @@ export default function Inventory() {
   }, [])
 
   let addToGroupList = (item) => {
-    <ListToBuy groupListToBuy={item}/>
+    addProductToListToBuy(auth.groupName,item).then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    })
+    // <ListToBuy groupListToBuy={item}/>
   }
 
 
