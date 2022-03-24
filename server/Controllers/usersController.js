@@ -40,8 +40,8 @@ const updateUser = async (req, res) => {
 };
 
 const changeUserPassword = async (req, res) => {
-  await User.findOneAndUpdate({ _id: req.params.id }, req.body).then((user) => {
-    
+  await User.findOne({ _id: req.params.id }).then((user) => {
+      console.log(user);
         bcrypt.compare(req.body.confirmPassword ,user.confirmPassword,async(err,isMatch)=>{
         if(err) return res.status(400).send({message:"error in pas"})
         if(!isMatch) return res.status(403).send({message:"Password incorrect"})
@@ -49,17 +49,19 @@ const changeUserPassword = async (req, res) => {
         user.confirmPassword = '';
        await user.save();
 
-       bcrypt.hash(req.body.password, 10, async (err, hashPassword) => {
-        if (err) return res.status(500).send({ message: err });
-    
-        req.body.password = hashPassword;
-        req.body.confirmPassword = hashPassword;
-        await user.save();
-        User.findOne({ _id: req.params.id }).then((data) => {
-          res.send({message :'You Changed Succssfully Your Password',data});
-        });
 
-      })
+    })
+
+    bcrypt.hash(req.body.password, 10, async (err, hashPassword) => {
+      if (err) return res.status(500).send({ message: err });
+  
+      req.body.password = hashPassword;
+      req.body.confirmPassword = hashPassword;
+      await user.save();
+      User.findOne({ _id: req.params.id }).then((data) => {
+        res.send({message :'You Changed Succssfully Your Password',data});
+      });
+
     })
 
 
