@@ -9,6 +9,7 @@ export default function Inventory() {
 
   const { auth,loading, setLoading  } = useContext(authContext);
   const [groupProducts, setGroupProducts] = useState([])
+  // const [productInfo, setProductInfo] = useState({})
   
   useEffect(() => {
     setLoading(true)
@@ -53,6 +54,30 @@ export default function Inventory() {
     <section>
       
       <div>Inventory Page</div>
+
+      <section>
+        <h1>Add Product to Inventory</h1>
+        <form action="" autoComplete="on" onSubmit={addProductToGroup}>
+
+            <label>Product Name</label>
+            <input type="text" name="productName" onChange={updateProductInfo} required />
+
+            <label>Price</label>
+            <input type="text" name="price" onChange={updateProductInfo} />
+
+            <label>Quantity</label>
+            <input type="number" name="quantity" onChange={updateProductInfo} required />
+
+            <label>Expiration Date</label>
+            <input type="date" name="expirationDate" onChange={updateProductInfo} />
+
+            <label>image product</label>
+            <input type="text" name="productImage" onChange={updateProductInfo} />
+
+            <button>Add Product</button>
+        </form>    
+
+    </section> 
 
       <section>
         {groupProducts.length >= 1
