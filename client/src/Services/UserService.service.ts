@@ -39,7 +39,7 @@ export const addUser = async (user: any): Promise<any> => {
     .catch((er: any) => console.log(er));
 };
 
-export const updateUser = async (id: string, newUser: any): Promise<any> => {
+export const updateUser = async (id: string, updatedUserInfo: any): Promise<any> => {
   try {
     const options = {
       method: "PUT",
@@ -47,12 +47,28 @@ export const updateUser = async (id: string, newUser: any): Promise<any> => {
         "content-type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
       },
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(updatedUserInfo),
     };
-    return await fetch(`${basic_url}/${id}`, options)
+    return await fetch(`${basic_url}/users/${id}`, options)
       .then((res) => res.json().then((data) => data))
-      .catch((er) => console.log(er));
-  } catch {}
+      .catch((err) => console.log(err));
+  } catch{}
+};
+
+export const changeUserPassword = async (id: string, updatedUserPassword: any): Promise<any> => {
+  try {
+    const options = {
+      method: "PUT",
+      headers: { 
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+      },
+      body: JSON.stringify(updatedUserPassword),
+    };
+    return await fetch(`${basic_url}/users/password/${id}`, options)
+      .then((res) => res.json().then((data) => data))
+      .catch((err) => console.log(err));
+  } catch{}
 };
 
 export const deleteSingleUser = async (id: any) => {
