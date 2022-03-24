@@ -4,61 +4,59 @@ import { updateGroup } from "../../../Services/GroupsService.service";
 export default function UpdateGroup(props: any) {
     const [groupDetail, setgroupDetail]: any = useState({});
     const [prevgrouptDetail, setPrevgrouptDetail]: any = useState(props.item);
-    const [showUpdate, setshowUpdate] = useState(false)
 
 
     let updateGroupInfo = (event: any): void => {
-        groupDetail[event.target.name] = event.target.value;        
-        if (groupDetail.color == ""){
+        groupDetail[event.target.name] = event.target.value;
+        if (groupDetail.color == "") {
             groupDetail.color = prevgrouptDetail.color
         }
-        if (groupDetail.imageGroup == ""){
+        if (groupDetail.imageGroup == "") {
             groupDetail.imageGroup = prevgrouptDetail.imageGroup
         }
     }
 
 
-    let editProduct = (event: any): void => {
+    let editGroupInfo = (event: any): void => {
         event.preventDefault();
         updateGroup(props.item._id, groupDetail)
-            .then((res) => { console.log(res) })
-            .then(() => { setshowUpdate(!showUpdate) })
-            .then(() => { setgroupDetail(groupDetail) })
-            .catch((err:any) => {
+            .then((data) => {
+                console.log(data)
+                props.setshowUpdate(!props.showUpdate)
+            })
+            .catch((err: any) => {
                 console.log(err);
             });
-            
+
 
     }
-    console.log(prevgrouptDetail);
-    let cancel = ()=>{
-        setshowUpdate(!showUpdate)
+
+    let cancel = () => {
+        props.setshowUpdate(!props.showUpdate)
     }
 
     return (
         <>
-            {showUpdate ?
+            {props.showUpdate ?
                 <section>
-                    <h1>Update Product</h1>
-                    <form action="" autoComplete="on" onSubmit={editProduct}>
+                    <h1>Update Group</h1>
+                    <form action="" autoComplete="on" onSubmit={editGroupInfo}>
 
                         <label>group Name</label>
-                        <input type="text" name="groupName" placeholder={prevgrouptDetail.groupName}   onChange={updateGroupInfo} required />
+                        <input type="text" name="groupName" placeholder={prevgrouptDetail.groupName} onChange={updateGroupInfo} required />
 
                         <label>color</label>
-                        <input type="color" name="color"  onChange={updateGroupInfo} required />
+                        <input type="color" name="color" onChange={updateGroupInfo} required />
 
                         <label>image Group</label>
                         <input type="text" name="imageGroup" placeholder={prevgrouptDetail.imageGroup} onChange={updateGroupInfo} />
 
-                        <button>Update Product</button>
+                        <button>Update Group</button>
                     </form>
-                <button onClick={cancel}>Cancel</button> 
-
-                    {console.log(prevgrouptDetail)}
+                    <button onClick={cancel}>Cancel</button>
 
                 </section> :
-                <button onClick={() => setshowUpdate(!showUpdate)}>Edit Group Info</button>}
+                <button onClick={() => props.setshowUpdate(!props.showUpdate)}>Edit Group Info</button>}
         </>
 
     )
