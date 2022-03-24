@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
-import { addProductToListToBuy, getGroupInfo } from "../../../Services/GroupsService.service";
+import { addProductToListToBuy, deleteProductFromListToBuy, getGroupInfo } from "../../../Services/GroupsService.service";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
 
 export default function ListToBuy() {
@@ -22,11 +22,23 @@ export default function ListToBuy() {
   }
 
   let addProductToList = (event) => {
-    event.preventdefaut();
+    event.preventDefault();
     addProductToListToBuy(auth.groupName, productInfo)
       .then((data) => {
         console.log(data)
         setProductInfo(productInfo)
+      }).catch((err) => {
+        console.log(err);
+      })
+  }
+
+  let deleteProductFromList = (id) => {
+    deleteProductFromListToBuy(auth.groupName,id)
+      .then((data) => {
+        console.log(data)
+        setProductInfo(productInfo)
+      }).catch((err) => {
+        console.log(err);
       })
       .catch((err)=>console.log(err))
   }
@@ -66,7 +78,7 @@ export default function ListToBuy() {
       {groupListToBuy.length >= 1
         ?
         groupListToBuy.map((item) => {
-          const { productName, quantity, expirationDate, price, _id, productImage } = item;
+          const { productName, quantity, price, _id, productImage } = item;
 
           return (
             <article key={_id}>
@@ -75,6 +87,7 @@ export default function ListToBuy() {
               <h1>Price : {price}</h1>
               <h1>Quantity : {quantity}</h1>
               <UpdateProduct item={item} />
+              <button onClick={() => {deleteProductFromList(_id)}}>Delete</button>
             </article>
           )
         })

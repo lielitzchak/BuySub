@@ -35,7 +35,7 @@ router.post("/groups/join/:id", joinGroup);
 
 router.put("/groups/:id", updateGroup);
 
-router.delete("/groups/ListToBuy/:id/:groupName", deleteProductFromListToBuy);
+router.delete("/groups/ListToBuy/:groupName/:id", deleteProductFromListToBuy);
 
 router.delete("/groups/:id", deleteGroup);
 
