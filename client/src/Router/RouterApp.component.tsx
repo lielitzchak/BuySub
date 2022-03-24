@@ -16,6 +16,7 @@ import Permission from "../Components/Pages/Permission/Permission";
 import AddProduct from "../Components/Pages/AddProduct/AddProduct.component";
 import CreateTeam from "../Components/Pages/CreateTeam/CreateTeam.componenet";
 import JoinTeam from "../Components/Pages/JoinTeam/JoinTeam.component";
+import ListToBuy from "../Components/Pages/ListToBuy/ListToBuy.component";
 
 const RouterApp = (): JSX.Element => {
   return (
@@ -34,6 +35,7 @@ const RouterApp = (): JSX.Element => {
              <Route path="/Team" element={<Team />}>
                <Route index element={<Inventory />} />
                <Route path="AddProduct" element={<AddProduct />} />
+               <Route path="ListToBuy" element={<ListToBuy />} />
                <Route path="Inventory" element={<Inventory />}/>
                <Route path="Setting" element={<Setting />} />
              </Route>

@@ -43,6 +43,7 @@ export default function Setting() {
       <img src={groupInfo.imageGroup} alt="group" />
       
       <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
+      <h1>ListToBuy : {groupInfo.listToBuy ? groupInfo.listToBuy.length : 0}</h1>
       <h1>Group Name : {groupInfo.groupName}</h1>
       <h1>CreatedAt : {groupInfo.createdAt}</h1>
       <section>
