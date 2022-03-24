@@ -38,6 +38,16 @@ let getGroupById = async (req, res) => {
     });
 };
 
+
+let addProductToListToBuy = async (req,res) => {
+    const group = await Group.findOne({groupName : req.params.groupName}); 
+    group.listToBuy.push(req.body); 
+    await group.save();
+    
+    res.send({message :'The Product added ti listSucessfully',group})  
+ };
+ 
+
 let addGroup = async (req, res) => {
     const user = await User.findOne({ _id: req.params.id });
     console.log(user);
@@ -239,6 +249,7 @@ module.exports = {
     getGroupById,
     getGroupProducts,
     getGroupInfo,
+    addProductToListToBuy,
     addGroup,
     joinGroup,
     updateGroup,
