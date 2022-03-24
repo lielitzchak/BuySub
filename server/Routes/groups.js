@@ -7,6 +7,7 @@ const {
   getGroupProducts,
   getGroupInfo,
   addGroup,
+  addProductToListToBuy,
   joinGroup,
   updateGroup,
   deleteGroup,
@@ -26,6 +27,8 @@ router.get("/groups/products/:groupName", getGroupProducts);
 router.get("/groups/groupInfo/:groupName", getGroupInfo);
 
 router.post("/groups/:id", addGroup);
+
+router.post("/groups/ListToBuy/:groupName", addProductToListToBuy);
 
 router.post("/groups/join/:id", joinGroup);
 

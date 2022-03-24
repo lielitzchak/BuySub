@@ -40,6 +40,20 @@ export const addGroup = async (newGroup: any, id: any): Promise<any> => {
     .catch((er) => console.log(er));
 };
 
+export const addProductToListToBuy = async (groupName:any,productToAdd: any): Promise<any> => {
+  let options = {
+    method: "POST",
+    headers: { 
+      "content-type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+     },
+    body: JSON.stringify(productToAdd),
+  };
+  return await fetch(`${basic_url}/groups/ListToBuy/${groupName}`, options)
+    .then((res) => res.json())
+    .catch((er) => console.log(er));
+};
+
 export const joinGroup = async (groupDetailsToJoin: any,id: any): Promise<any> => {
   let options = {
     method: "POST",
