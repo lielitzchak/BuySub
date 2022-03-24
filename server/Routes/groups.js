@@ -10,6 +10,7 @@ const {
   addProductToListToBuy,
   joinGroup,
   updateGroup,
+  deleteProductFromListToBuy,
   deleteGroup,
   adminAddMember,
   adminRemoveMember,
@@ -33,6 +34,8 @@ router.post("/groups/ListToBuy/:groupName", addProductToListToBuy);
 router.post("/groups/join/:id", joinGroup);
 
 router.put("/groups/:id", updateGroup);
+
+router.delete("/groups/ListToBuy/:id/:groupName", deleteProductFromListToBuy);
 
 router.delete("/groups/:id", deleteGroup);
 

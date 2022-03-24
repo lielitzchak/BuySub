@@ -3,7 +3,7 @@ import { authContext } from "../../../Context/AuthProvider.component";
 import { addProductToListToBuy, getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
-import ListToBuy from "../ListToBuy/ListToBuy.component";
+import { deleteProduct } from "../../../Services/ProductService.service";
 
 export default function Inventory() {
 
@@ -38,7 +38,14 @@ export default function Inventory() {
     // <ListToBuy groupListToBuy={item}/>
   }
 
+  let deleteProductFromInventory = (id) => {
 
+    deleteProduct(id,auth.groupName).then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
 
   return (
 
@@ -86,6 +93,7 @@ export default function Inventory() {
                 <h1>Quantity : {quantity}</h1>
                 <h1>Expiration Date :{expirationDate}</h1>
                 <button onClick={() => addToGroupList(item)}>Add To List</button>
+                <button onClick={() => deleteProductFromInventory(item._id)}>Delete</button>
                 <UpdateProduct item={item} />
               </article>
             )
