@@ -33,7 +33,6 @@ export default function UpdateProduct(props: any) {
             
 
     }
-    console.log(prevProductDetail);
     let cancel = ()=>{
         setshowUpdate(!showUpdate)
     }

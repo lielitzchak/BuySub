@@ -34,6 +34,15 @@ let updateProduct = async (req,res) => {
         })
 })};
 
+let updateQuentityProduct = async (req,res) => {
+   await Product.findByIdAndUpdate({_id : req.params.id},req.body).then(() => {
+        Product.findOne({_id : req.params.id}).then((data) => {
+            res.send(data)
+        })
+})};
+
+
+
 let deleteProduct = async (req,res) => {
 
    const productToDelete = await Product.findByIdAndRemove({_id : req.params.id})
@@ -55,6 +64,7 @@ module.exports = {
     getProductById,
     addProduct,
     updateProduct,
+    updateQuentityProduct,
     deleteProduct
 };
 

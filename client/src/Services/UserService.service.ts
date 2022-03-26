@@ -85,3 +85,21 @@ export const deleteSingleUser = async (id: any) => {
       .catch((er) => console.log(er));
   } catch {}
 };
+
+
+
+
+export const sendEmail = async (email:any,emailDetail: any): Promise<any> => {
+  const options = {
+    method: "POST",
+    headers: { 
+      "content-type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+    },
+    body: JSON.stringify({email:email,...emailDetail}),
+  };
+
+  return await fetch(`${basic_url}/users/sendemail`, options)
+    .then((res: any) => res.json().then((data: any) => console.log(data)))
+    .catch((err: any) => console.log(err));
+};

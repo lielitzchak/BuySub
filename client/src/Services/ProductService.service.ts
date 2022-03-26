@@ -32,7 +32,21 @@ export const updateProduct = async (id:any , productToEdit:any): Promise<any> =>
         "content-type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
        },
-      body: JSON.stringify(productToEdit),
+      body: JSON.stringify(productToEdit)
+    };
+    return await fetch(`${basic_url}/products/${id}`, options)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  };
+
+export const updateQuentityProduct = async (id:any , productToEdit:any): Promise<any> => {
+    let options = {
+      method: "PUT",
+      headers: { 
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+       },
+      body: JSON.stringify(productToEdit)
     };
     return await fetch(`${basic_url}/products/${id}`, options)
       .then((res) => res.json())

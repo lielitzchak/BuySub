@@ -1,6 +1,8 @@
 const User = require("../Models/User");
 const Group = require("../Models/Group");
 const bcrypt = require("bcrypt");
+const nodemailer = require('nodemailer');
+
 
 const getUsers = async (req, res) => {
   await User.find({}).then((data) => {
@@ -81,6 +83,45 @@ const deleteUser = async (req, res) => {
   })  
 };
 
+const sendEmail = async (req, res) => {
+console.log(req.body);
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD 
+    },
+    tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false
+  },
+});
+
+// let mailOptions = {
+//     from: process.env.EMAIL, // TODO: email sender
+//     to: req.body.email, // TODO: email receiver
+//     subject: req.body.subject,
+//     text: req.body.text
+// };
+
+let mailOptions = {
+    from: req.body.email, // TODO: email sender
+    to: process.env.EMAIL, // TODO: email receiver
+    subject: req.body.subject,
+    text: `from ${req.body.email} : \n ${req.body.text}`
+};
+
+  transporter.sendMail(mailOptions, (err, data) => {
+      if (err) {
+        console.log(err);
+         return res.send('The Email Did Not Sent')
+      }
+     return res.send(`The Email Is Sent Successfully`)
+  });
+
+};
+
 
 module.exports = {
   getUsers,
@@ -89,4 +130,5 @@ module.exports = {
   updateUser,
   changeUserPassword,
   deleteUser,
+  sendEmail
 };
