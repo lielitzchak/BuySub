@@ -3,13 +3,14 @@ import { authContext } from "../../../Context/AuthProvider.component";
 import { addProductToListToBuy, getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
-import { addProduct, deleteProduct } from "../../../Services/ProductService.service";
+import { addProduct, deleteProduct, updateProduct, updateQuentityProduct } from "../../../Services/ProductService.service";
 
 export default function Inventory() {
 
   const { auth, loading, setLoading } = useContext(authContext);
   const [groupProducts, setGroupProducts] = useState([])
   const [productInfo, setProductInfo] = useState({})
+  const [quantityCounter, setQuantityCounter] = useState('')
   const [showFormToAddProductToInventory, setShowFormToAddProductToInventory] = useState(false);
 
 
@@ -68,6 +69,48 @@ export default function Inventory() {
     setShowFormToAddProductToInventory(!showFormToAddProductToInventory);
   }
 
+  let addToQuentity = (id,quantity) => {
+    setQuantityCounter(quantity +1)
+    updateQuentityProduct(id,quantityCounter).then((data) => {
+      console.log(data)
+      setQuantityCounter(quantityCounter)
+    })
+    .catch((err) => console.log(err))
+  }
+
+  let substractTheQuentity = (id,quantity) => {
+    console.log(id,quantity,quantityCounter);
+    setQuantityCounter(quantity -1)
+    console.log(id,quantity,quantityCounter);
+
+    updateQuentityProduct(id,quantityCounter).then((data) => {
+      console.log(data)
+      setQuantityCounter(quantityCounter)
+    })
+    .catch((err) => console.log(err))
+  }
+  // let addToQuentity = (id,quantity) => {
+  //   setQuantityCounter(quantity +1)
+  //   updateProduct(id,quantityCounter).then((data) => {
+  //     console.log(data)
+  //     setQuantityCounter(quantityCounter)
+  //   })
+  //   .catch((err) => console.log(err))
+  // }
+
+  // let substractTheQuentity = (id,quantity) => {
+  //   console.log(id,quantity,quantityCounter);
+  //   setQuantityCounter(quantity -1)
+  //   console.log(id,quantity,quantityCounter);
+
+  //   updateProduct(id,quantityCounter).then((data) => {
+  //     console.log(data)
+  //     setQuantityCounter(quantityCounter)
+  //   })
+  //   .catch((err) => console.log(err))
+  // }
+
+
   return (
 
     loading ? <Loading /> :
@@ -115,10 +158,12 @@ export default function Inventory() {
                   <img src={productImage} alt="product" />
                   <h1>Product Name : {productName}</h1>
                   <h1>Price : {price}</h1>
+                  <button onClick={() => addToQuentity(_id,quantity)}>Up +</button>
                   <h1>Quantity : {quantity}</h1>
+                  <button onClick={() => substractTheQuentity(_id,quantity)}>Down -</button>
                   <h1>Expiration Date :{expirationDate}</h1>
                   <button onClick={() => addToGroupList(item)}>Add To List</button>
-                  <button onClick={() => deleteProductFromInventory(item._id)}>Delete</button>
+                  <button onClick={() => deleteProductFromInventory(_id)}>Delete</button>
                   <UpdateProduct item={item} />
                 </article>
               )

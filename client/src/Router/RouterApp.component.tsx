@@ -17,6 +17,7 @@ import AddProduct from "../Components/Pages/AddProduct/AddProduct.component";
 import CreateTeam from "../Components/Pages/CreateTeam/CreateTeam.componenet";
 import JoinTeam from "../Components/Pages/JoinTeam/JoinTeam.component";
 import ListToBuy from "../Components/Pages/ListToBuy/ListToBuy.component";
+import ContactUs from "../Components/Pages/ContactUs/ContactUs.component";
 
 const RouterApp = (): JSX.Element => {
   return (
@@ -27,6 +28,7 @@ const RouterApp = (): JSX.Element => {
         <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/Unauthorized" element={<Unauthorized />} />
 
         {/** Private Routes **/}

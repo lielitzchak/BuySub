@@ -127,6 +127,12 @@ const NavBar = (): JSX.Element => {
                     </Typography>
                   </MenuItem>
 
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                    <Link to="/ContactUs">Contact Us</Link>              
+                    </Typography>
+                  </MenuItem>
+
               </Menu>
 
             </Box>
@@ -179,6 +185,12 @@ const NavBar = (): JSX.Element => {
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
                 {auth.email && auth.groupName == '' ? <Link to="/JoinTeam">Join Team</Link> : '' }   
+                </Button>
+
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                  <Link to="/ContactUs">Contact Us</Link>
                 </Button>
 
             </Box>
