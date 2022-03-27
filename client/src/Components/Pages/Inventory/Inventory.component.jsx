@@ -20,8 +20,7 @@ export default function Inventory() {
       console.log(data);
       if (data.length >= 1) {
         setGroupProducts(data)
-        console.log(groupProducts);
-
+        
       } else {
         console.log('empty');
       }
@@ -31,6 +30,8 @@ export default function Inventory() {
     }).finally(() => setLoading(false))
 
   }, [])
+
+
 
   let addToGroupList = (item) => {
     addProductToListToBuy(auth.groupName, item).then((data) => {
@@ -140,12 +141,12 @@ export default function Inventory() {
               const { productName, quantity, expirationDate, price, _id, productImage } = item;
 
               return (
-                <article key={_id}>
+                <article style={{backgroundColor: quantity >= 3 ? '#d60f73' : '#91041e'}} key={_id}>
                   <img src={productImage} alt="product" />
                   <h1>Product Name : {productName}</h1>
                   <h1>Price : {price}</h1>
                   <button onClick={() => addToQuentity(_id,quantity)}>Up +</button>
-                  <h1>Quantity : {quantityCounter}</h1>
+                  <h1>Quantity : {quantity}</h1>
                   <button onClick={() => substractTheQuentity(_id,quantity)}>Down -</button>
                   <h1>Expiration Date :{expirationDate}</h1>
                   <button onClick={() => addToGroupList(item)}>Add To List</button>
