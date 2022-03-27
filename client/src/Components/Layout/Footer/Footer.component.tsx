@@ -3,8 +3,8 @@ import imgFooter from "/footerImg.png";
 export default function Footer() {
   return (
     <footer>
-      <img src={imgFooter} alt="imgFooter" />
-      <div className="footer footer">
+      {/* <img src={imgFooter} alt="imgFooter" /> */}
+      {/* <div className="footer footer">
         <div>
           <h6>About</h6>
           <p className="text-justify">
@@ -101,7 +101,7 @@ export default function Footer() {
             Ascha Itzchak
           </a>
         </p>
-      </div>
+      </div> */}
     </footer>
   );
 }
