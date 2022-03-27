@@ -1,8 +1,13 @@
 import { Link, Route } from "react-router-dom";
 export default function Footer() {
   return (
-    <>
-      <footer className="footer">
+    <footer>
+      <div id="a">Div A</div>
+      <div>random other elements</div>
+      <div>random other elements</div>
+      <div>random other elements</div>
+      <div id="b">Div B</div>
+      <div className="footer">
         <div>
           <h6>About</h6>
           <p className="text-justify">
@@ -68,20 +73,22 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-      </footer>
+      </div>
       <div className="copyright">
         <p className="copyright-text">
           Copyright &copy; 2022 All Rights Reserved by
-           <a href="https://www.linkedin.com/in/lielitzchak/" target="_blank"> Liel Itzchak </a>
+          <a href="https://www.linkedin.com/in/lielitzchak/" rel="noreferrer" target="_blank">
+            Liel Itzchak
+          </a>
           {/* <Link
             to={{
               pathname: "",
             }}
             target="_blank"
           /> */}
-          Eliyahu , Ascha , 
+          Eliyahu , Ascha ,
         </p>
       </div>
-    </>
+    </footer>
   );
 }
