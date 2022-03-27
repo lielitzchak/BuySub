@@ -35,11 +35,15 @@ let updateProduct = async (req,res) => {
 })};
 
 let updateQuentityProduct = async (req,res) => {
-   await Product.findByIdAndUpdate({_id : req.params.id},req.body).then(() => {
+   await Product.findOne({_id : req.params.id}).then(async(product) => {
+      console.log(req.body);
+      product.quantity = req.body.productToEdit 
+     await product.save();
         Product.findOne({_id : req.params.id}).then((data) => {
             res.send(data)
         })
-})};
+})
+};
 
 
 
