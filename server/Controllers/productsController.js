@@ -35,20 +35,22 @@ let updateProduct = async (req,res) => {
 })};
 
 let updateQuentityProduct = async (req,res) => {
-   await Product.findOneAndUpdate({_id : req.params.id},req.body).then((product) => {
-      // product.quantity = req.body.quantity 
-      // product.save();
-        Product.findOne({_id : req.params.id}).then((data) => {
-            res.send(data)
-        })
-})
-//    await Product.find({_id : req.params.id}).then((product) => {
-//       product.quantity = req.body.quantity 
-//       product.save();
+//    await Product.findOneAndUpdate({_id :req.params.id},req.body).then((product) => {
+//       console.log(req.body);
+//       // product.quantity = req.body.quantity 
+//       // product.save();
 //         Product.findOne({_id : req.params.id}).then((data) => {
 //             res.send(data)
 //         })
 // })
+   await Product.findOne({_id : req.params.id}).then(async(product) => {
+      console.log(req.body);
+      product.quantity = req.body.productToEdit 
+     await product.save();
+        Product.findOne({_id : req.params.id}).then((data) => {
+            res.send(data)
+        })
+})
 };
 
 
