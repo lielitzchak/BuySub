@@ -1,7 +1,8 @@
-import imgFooter from "/footerImg.png";
+// import imgFooter from "/footerImg.png";
 
 export default function Footer() {
   return (
+
     <footer>
       {/* <img src={imgFooter} alt="imgFooter" /> */}
       {/* <div className="footer footer">
@@ -18,35 +19,36 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="col-xs-6 col-md-3">
-          <h6>Categories</h6>
-          <ul className="footer-links">
-            <li>
-              <a href="http://scanfcode.com/category/c-language/">C</a>
-            </li>
-            <li>
-              <a href="http://scanfcode.com/category/front-end-development/">
-                UI Design
-              </a>
-            </li>
-            <li>
-              <a href="http://scanfcode.com/category/back-end-development/">
-                PHP
-              </a>
-            </li>
-            <li>
-              <a href="http://scanfcode.com/category/java-programming-language/">
-                Java
-              </a>
-            </li>
-            <li>
-              <a href="http://scanfcode.com/category/android/">Android</a>
-            </li>
-            <li>
-              <a href="http://scanfcode.com/category/templates/">Templates</a>
-            </li>
-          </ul>
-        </div>
+
+    //     <div className="col-xs-6 col-md-3">
+    //       <h6>Categories</h6>
+    //       <ul className="footer-links">
+    //         <li>
+    //           <a href="http://scanfcode.com/category/c-language/">C</a>
+    //         </li>
+    //         <li>
+    //           <a href="http://scanfcode.com/category/front-end-development/">
+    //             UI Design
+    //           </a>
+    //         </li>
+    //         <li>
+    //           <a href="http://scanfcode.com/category/back-end-development/">
+    //             PHP
+    //           </a>
+    //         </li>
+    //         <li>
+    //           <a href="http://scanfcode.com/category/java-programming-language/">
+    //             Java
+    //           </a>
+    //         </li>
+    //         <li>
+    //           <a href="http://scanfcode.com/category/android/">Android</a>
+    //         </li>
+    //         <li>
+    //           <a href="http://scanfcode.com/category/templates/">Templates</a>
+    //         </li>
+    //       </ul>
+    //     </div>
 
         <div className="col-xs-6 col-md-3">
           <h6>Quick Links</h6>
@@ -103,5 +105,6 @@ export default function Footer() {
         </p>
       </div> */}
     </footer>
+
   );
 }
