@@ -1,13 +1,16 @@
 * {
     border: 0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    body {
+        margin: 0;
+        padding: 0;
+        @import "./Components//Pages/Login/Login";
+        @import "./Components/Pages/SignUp/SignUp";
+        @import "./Components/Pages/Profile/Profile";
+        @import "./Components/Layout/Footer/Footer";
+    }
+
 }
-
-
-
-@import "./Components//Pages/Login/Login";
-@import "./Components/Pages/SignUp/SignUp";
-@import "./Components/Pages/Profile/Profile";
-@import "./Components/Layout/Footer/Footer";
-// @import "./Components/Layout/NavBar/NavBar";
