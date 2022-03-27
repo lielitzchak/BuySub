@@ -11,7 +11,7 @@ router.post('/products/:groupName',addProduct)
 
 router.put('/products/:id',updateProduct)
 
-router.put('/products/:id',updateQuentityProduct)
+router.put('/products/quentity/:id',updateQuentityProduct)
 
 router.delete('/products/:id/:groupName',deleteProduct)
 
