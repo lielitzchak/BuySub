@@ -1,13 +1,10 @@
-import { Link, Route } from "react-router-dom";
+import imgFooter from "/footerImg.png";
+
 export default function Footer() {
   return (
     <footer>
-      <div id="a">Div A</div>
-      <div>random other elements</div>
-      <div>random other elements</div>
-      <div>random other elements</div>
-      <div id="b">Div B</div>
-      <div className="footer">
+      <img src={imgFooter} alt="imgFooter" />
+      <div className="footer footer">
         <div>
           <h6>About</h6>
           <p className="text-justify">
@@ -77,16 +74,32 @@ export default function Footer() {
       <div className="copyright">
         <p className="copyright-text">
           Copyright &copy; 2022 All Rights Reserved by
-          <a href="https://www.linkedin.com/in/lielitzchak/" rel="noreferrer" target="_blank">
-            Liel Itzchak
-          </a>
-          {/* <Link
-            to={{
-              pathname: "",
-            }}
+          <a
+            href="https://www.linkedin.com/in/lielitzchak/"
+            rel="noreferrer"
             target="_blank"
-          /> */}
-          Eliyahu , Ascha ,
+          >
+            {" "}
+            Liel Itzchak
+          </a>{" "}
+          ,{" "}
+          <a
+            href="https://www.linkedin.com/in/lielitzchak/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            {" "}
+            Eliyahu Itzchak
+          </a>{" "}
+          ,{" "}
+          <a
+            href="https://www.linkedin.com/in/lielitzchak/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            {" "}
+            Ascha Itzchak
+          </a>
         </p>
       </div>
     </footer>
