@@ -151,7 +151,7 @@ export default function Inventory() {
 
 
         <section>
-          {groupProducts.length >= 1
+          {groupProducts && groupProducts.length >= 1
             ?
             groupProducts.map((item) => {
               const { productName, quantity, expirationDate, price, _id, productImage } = item;
