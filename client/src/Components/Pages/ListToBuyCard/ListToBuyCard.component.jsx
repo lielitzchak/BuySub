@@ -1,22 +1,40 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { authContext } from "../../../Context/AuthProvider.component"
+import { updateListToBuyQuentityProduct } from "../../../Services/GroupsService.service"
 
 export default function ListToBuyCard(props) {
-    const { productName, quantity, price, _id, productImage,deleteProductFromList } = props.item
-
+    const {auth} = useContext(authContext);
+    const { productName, quantity, price, _id, productImage,deleteProductFromList} = props.item
     const [quantityCounter, setQuantityCounter] = useState(quantity)
 
     let addToQuentity = (id,quantity) => {
+
         setQuantityCounter(quantity => quantity +1)
-        setQuantityCounter( quantityCounter => quantityCounter)
         console.log(id,quantity,quantityCounter);
-      }
+        updateListToBuyQuentityProduct(auth.groupName,id,quantityCounter +1).then((data) => {
+            console.log(data);
+            setQuantityCounter(quantityCounter => quantityCounter)
+            console.log(id,quantity,quantityCounter);
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
     
       let substractTheQuentity = (id,quantity) => {
-        
+
         if(quantityCounter == 0) return
         setQuantityCounter(quantity => quantity -1)
-        setQuantityCounter(quantityCounter => quantityCounter)
-        console.log(id,quantity,quantityCounter);
+
+        updateListToBuyQuentityProduct(auth.groupName,id,quantityCounter -1).then((data) => {
+            console.log(data);
+            setQuantityCounter(quantityCounter => quantityCounter)
+            console.log(id,quantity,quantityCounter);
+
+        }).catch((err) => {
+            console.log(err);
+        })
+                // setGroupListToBuy(props.groupListToBuy => props.groupListToBuy);
       }
 
       

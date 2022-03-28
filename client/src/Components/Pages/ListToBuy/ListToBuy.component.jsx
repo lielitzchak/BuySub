@@ -10,7 +10,6 @@ export default function ListToBuy() {
   const [groupListToBuy, setGroupListToBuy] = useState({})
   const [productInfo, setProductInfo] = useState({});
   const [showFormToAddProductToList, setShowFormToAddProductToList] = useState(false);
-  const [quantityCounter, setQuantityCounter] = useState(0)
 
 
   useEffect(() => {
@@ -36,20 +35,6 @@ export default function ListToBuy() {
       })
   }
 
-  // let addToQuentity = (id,quantity) => {
-  //   setQuantityCounter(quantity => quantity +1)
-  //   setQuantityCounter( quantityCounter => quantityCounter)
-  //   console.log(id,quantity,quantityCounter);
-  // }
-
-  // let substractTheQuentity = (id,quantity) => {
-    
-  //   if(quantityCounter == 0) return
-  //   setQuantityCounter(quantity => quantity -1)
-  //   setQuantityCounter(quantityCounter => quantityCounter)
-  //   console.log(id,quantity,quantityCounter);
-  // }
-
   let deleteProductFromList = (id) => {
     deleteProductFromListToBuy(auth.groupName, id)
       .then((data) => {
@@ -60,6 +45,8 @@ export default function ListToBuy() {
       })
       .catch((err) => console.log(err))
   }
+
+  
 
   let handleListToBuy = (listToBuy) => {
 
@@ -131,22 +118,8 @@ export default function ListToBuy() {
       {groupListToBuy.length >= 1
         ?
         groupListToBuy.map((item) => {
-          // const { productName, quantity, price, _id, productImage } = item;
 
-          return (
-            // <article key={_id}>
-            //   <img src={productImage} alt="product" />
-            //   <h1>Product Name : {productName}</h1>
-            //   <h1>Price : {price}</h1>
-            //   <button onClick={() => addToQuentity(_id ? _id : productName,quantity)}>Up +</button>
-            //   <h1>Quantity : {quantity}</h1>
-            //   <button onClick={() => substractTheQuentity(_id ? _id : productName,quantity)}>Down -</button>
-            //   <h1>id : {_id}</h1>
-            //   {/* <UpdateProduct item={item} /> */}
-            //   <button onClick={() => { deleteProductFromList(_id ? _id : productName) }}>Delete</button>
-            // </article>
-            <ListToBuyCard item={item} deleteProductFromList={deleteProductFromList}/>
-          )
+          return <ListToBuyCard item={item} deleteProductFromList={deleteProductFromList} groupListToBuy={groupListToBuy} setGroupListToBuy={setGroupListToBuy}/>
         })
         :
         <h1>The Are No Products In The List</h1>}
