@@ -1,3 +1,115 @@
-.programmers {
-    
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+@mixin FlexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    width: 100%;
+
+    .card {
+        background-color: #222831;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        width: 100%;
+
+        .card__name {
+            margin-top: 15px;
+            font-size: 1.5em;
+        }
+
+        .card__image {
+            height: 160px;
+            width: 160px;
+            border-radius: 50%;
+            border: 5px solid #272133;
+            margin-top: 20px;
+            box-shadow: 0 10px 50px rgb(25, 105, 235);
+        }
+
+        .social-icons {
+            padding: 0;
+            list-style: none;
+            margin: 1em;
+
+            li {
+                display: inline-block;
+                margin: 0.15em;
+                position: relative;
+                font-size: 1em;
+            }
+
+            i {
+                color: #fff;
+                position: absolute;
+                top: 0.95em;
+                left: 0.96em;
+                transition: all 265ms ease-out;
+            }
+
+            a {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.social-icons a:before {
+    transform: scale(1);
+    content: "text";
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: block;
+    background: linear-gradient(287deg, rgba(180,180,187,1) 37%, rgba(0,138,255,1) 100%);
+    transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+    transform: scale(0);
+    transition: all 265ms ease-in;
+}
+
+.social-icons a:hover i {
+    transform: scale(2.2);
+
+    // color: #ff003c;
+    background: -webkit-linear-gradient(45deg, #51ff00, rgb(25, 105, 235));
+    -webkit-text-fill-color: transparent;
+    transition: all 265ms ease-in;
+}
+
+.homePage {
+    .aboutApp {
+        padding: 1%;
+        @include FlexCenter;
+        width: 100%;
+
+        .img {
+            height: 100%;
+        }
+
+        .aboutText {
+            color: black;
+        }
+
+
+
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .aboutUs {
+        .programmers {
+            @include FlexCenter;
+            justify-content: space-evenly;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 * {
   border: 0;
@@ -430,5 +431,137 @@
   list-style: none;
   color: white;
   text-decoration: none;
+}
+
+* .container {
+  width: 100%;
+}
+
+* .container .card {
+  background-color: #222831;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  width: 100%;
+}
+
+* .container .card .card__name {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+* .container .card .card__image {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 5px solid #272133;
+  margin-top: 20px;
+  -webkit-box-shadow: 0 10px 50px #1969eb;
+          box-shadow: 0 10px 50px #1969eb;
+}
+
+* .container .card .social-icons {
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+}
+
+* .container .card .social-icons li {
+  display: inline-block;
+  margin: 0.15em;
+  position: relative;
+  font-size: 1em;
+}
+
+* .container .card .social-icons i {
+  color: #fff;
+  position: absolute;
+  top: 0.95em;
+  left: 0.96em;
+  -webkit-transition: all 265ms ease-out;
+  transition: all 265ms ease-out;
+}
+
+* .container .card .social-icons a {
+  display: inline-block;
+}
+
+* .social-icons a:before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  content: "text";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(287deg, #b4b4bb 37%, #008aff 100%);
+  -webkit-transition: all 265ms ease-out;
+  transition: all 265ms ease-out;
+}
+
+* .social-icons a:hover:before {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: all 265ms ease-in;
+  transition: all 265ms ease-in;
+}
+
+* .social-icons a:hover i {
+  -webkit-transform: scale(2.2);
+          transform: scale(2.2);
+  background: -webkit-linear-gradient(45deg, #51ff00, #1969eb);
+  -webkit-text-fill-color: transparent;
+  -webkit-transition: all 265ms ease-in;
+  transition: all 265ms ease-in;
+}
+
+* .homePage .aboutApp {
+  padding: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+* .homePage .aboutApp .img {
+  height: 100%;
+}
+
+* .homePage .aboutApp .aboutText {
+  color: black;
+}
+
+* .homePage .title {
+  text-align: center;
+}
+
+* .homePage .aboutUs .programmers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 /*# sourceMappingURL=index.css.map */
