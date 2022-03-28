@@ -46,7 +46,6 @@ let updateQuentityProduct = async (req,res) => {
 };
 
 
-
 let deleteProduct = async (req,res) => {
 
    const productToDelete = await Product.findByIdAndRemove({_id : req.params.id})

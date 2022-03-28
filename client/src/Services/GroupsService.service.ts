@@ -84,6 +84,20 @@ export const updateGroup = async (id:any , groupToEdit:any): Promise<any> => {
 };
 ////////////////////////////////////////////////////////////////////////
 
+export const updateListToBuyQuentityProduct = async (groupName:any,id:any , productToEdit:any): Promise<any> => {
+  let options = {
+    method: "PUT",
+    headers: { 
+      "content-type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
+     },
+    body: JSON.stringify({productToEdit})
+  };
+  return await fetch(`${basic_url}/groups/quentity/${groupName}/${id}`, options)
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
 
 export const deleteProductFromListToBuy = async (groupName:any, id:any): Promise<any> => {
   let options = {

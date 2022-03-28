@@ -109,6 +109,28 @@ let updateGroup = async (req, res) => {
      });
 };
 
+let updateListToBuyQuentityProduct = async (req,res) => {
+
+    const groupId = await Group.findOne({groupName : req.params.groupName})
+
+    await Group.findOne({_id : groupId}).then((group) => {
+        group.listToBuy.forEach((item) => {
+            if(item._id == req.params.id || item.productName == req.params.id){
+                item.quantity = req.body.productToEdit
+                console.log(item);
+                group.save();
+            }
+       })
+    
+       Group.findOne({groupName : req.params.groupName}).then((data) => {
+        res.send({message :'The Product Update listSucessfully',data: data.listToBuy})  
+      })
+    })
+
+
+ };
+
+
 let deleteProductFromListToBuy = async (req,res) => {
     
     await Group.findOne({groupName: req.params.groupName}).then((group) => {
@@ -267,6 +289,7 @@ module.exports = {
     addGroup,
     joinGroup,
     updateGroup,
+    updateListToBuyQuentityProduct,
     deleteProductFromListToBuy,
     deleteGroup,
     adminAddMember,
