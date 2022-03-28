@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
-import { addProductToListToBuy, getGroupProducts } from "../../../Services/GroupsService.service";
+import { getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
-import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
-import { addProduct, deleteProduct,updateQuentityProduct } from "../../../Services/ProductService.service";
+import { addProduct} from "../../../Services/ProductService.service";
+import InventoryCard from "../InventoryCard/InventoryCard.component";
 
 export default function Inventory() {
 
   const { auth, loading, setLoading } = useContext(authContext);
   const [groupProducts, setGroupProducts] = useState([])
   const [productInfo, setProductInfo] = useState({})
-  const [quantityCounter, setQuantityCounter] = useState(0)
   const [showFormToAddProductToInventory, setShowFormToAddProductToInventory] = useState(false);
 
 
@@ -31,26 +30,6 @@ export default function Inventory() {
 
   }, [])
 
-
-
-  let addToGroupList = (item) => {
-    addProductToListToBuy(auth.groupName, item).then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    })
-    // <ListToBuy groupListToBuy={item}/>
-  }
-
-  let deleteProductFromInventory = (id) => {
-
-    deleteProduct(id, auth.groupName).then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-
   let updateProductInfo = (event) => {
     productInfo[event.target.name] = event.target.value;
   }
@@ -60,7 +39,6 @@ export default function Inventory() {
     addProduct(productInfo, auth.groupName)
       .then((data) => {
         console.log(data)
-        setProductInfo(productInfo)
       })
       .catch((err) => console.log(err))
 
@@ -69,34 +47,6 @@ export default function Inventory() {
   let cancelAddProductToInventory = () => {
     setShowFormToAddProductToInventory(!showFormToAddProductToInventory);
   }
-
-  let addToQuentity = (id,quantity) => {
-    setQuantityCounter(quantity => quantity +1)
-
-
-    console.log(id,quantity,quantityCounter);
-
-    updateQuentityProduct(id,quantityCounter +1).then((data) => {
-      console.log(data)
-          setQuantityCounter( quantityCounter => quantityCounter)
-    })
-    .catch((err) => console.log(err))
-  }
-
-  let substractTheQuentity = (id,quantity) => {
-    
-    if(quantityCounter == 0) return
-    setQuantityCounter(quantity => quantity -1)
-    console.log(id,quantity,quantityCounter);
-
-
-    updateQuentityProduct(id,quantityCounter -1).then((data) => {
-      console.log(data)
-          setQuantityCounter(quantityCounter => quantityCounter)
-    })
-    .catch((err) => console.log(err))
-  }
-
 
   return (
 
@@ -138,22 +88,9 @@ export default function Inventory() {
           {groupProducts && groupProducts.length >= 1
             ?
             groupProducts.map((item) => {
-              const { productName, quantity, expirationDate, price, _id, productImage } = item;
 
-              return (
-                <article className="inventoryProducts" style={{backgroundColor: quantity >= 3 ? '#d60f73' : '#91041e'}} key={_id}>
-                  <img src={productImage} alt="product" />
-                  <h1>Product Name : {productName}</h1>
-                  <h1>Price : {price}</h1>
-                  <button onClick={() => addToQuentity(_id,quantity)}>Up +</button>
-                  <h1>Quantity : {quantity}</h1>
-                  <button onClick={() => substractTheQuentity(_id,quantity)}>Down -</button>
-                  <h1>Expiration Date :{expirationDate}</h1>
-                  <button onClick={() => addToGroupList(item)}>Add To List</button>
-                  <button onClick={() => deleteProductFromInventory(item._id)}>Delete</button>
-                  <UpdateProduct item={item} />
-                </article>
-              )
+              return <InventoryCard key={item._id} item={item}/>
+              
             })
             :
             <h1>The Are No Products</h1>}
