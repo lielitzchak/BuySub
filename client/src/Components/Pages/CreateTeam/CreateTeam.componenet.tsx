@@ -17,7 +17,7 @@ const CreateTeam = (): JSX.Element => {
         event.preventDefault();
         // setCreateTeamInfo(createTeamInfo);
         addGroup(createTeamInfo, auth.id)
-          .then((res) => navigate('/Team'))
+          .then(() => navigate('/ListToBuy'))
           .catch((err) => console.log(err));
       };
 

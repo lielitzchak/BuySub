@@ -3,7 +3,7 @@ import { authContext } from "../../../Context/AuthProvider.component";
 import { addProductToListToBuy, getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
-import { addProduct, deleteProduct, updateProduct, updateQuentityProduct } from "../../../Services/ProductService.service";
+import { addProduct, deleteProduct,updateQuentityProduct } from "../../../Services/ProductService.service";
 
 export default function Inventory() {
 
@@ -141,7 +141,7 @@ export default function Inventory() {
               const { productName, quantity, expirationDate, price, _id, productImage } = item;
 
               return (
-                <article style={{backgroundColor: quantity >= 3 ? '#d60f73' : '#91041e'}} key={_id}>
+                <article className="inventoryProducts" style={{backgroundColor: quantity >= 3 ? '#d60f73' : '#91041e'}} key={_id}>
                   <img src={productImage} alt="product" />
                   <h1>Product Name : {productName}</h1>
                   <h1>Price : {price}</h1>

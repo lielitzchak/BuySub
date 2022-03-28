@@ -10,8 +10,7 @@ let getGroups = async (req, res) => {
 };
 
 let getGroupProducts = async (req, res) => {
-    await Group.findOne({ groupName: req.params.groupName.toLowerCase()})
-        .populate("products")
+    await Group.findOne({ groupName: req.params.groupName.toLowerCase()}).populate("products")
         .then((groupProdcts) => {
             if (groupProdcts.products.length >= 1) {
                 res.status(200).send(groupProdcts.products);
@@ -115,7 +114,7 @@ let deleteProductFromListToBuy = async (req,res) => {
     await Group.findOne({groupName: req.params.groupName}).then((group) => {
        const productsFromList = group.listToBuy;
        productsFromList.forEach((item,index) => {
-            if(item._id == req.params.id){
+            if(item._id == req.params.id || item.productName == req.params.id){
 
                 productsFromList.splice(index,1);
                 group.save();
