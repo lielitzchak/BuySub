@@ -84,7 +84,7 @@ export default function Inventory() {
           </section> : <button onClick={() => setShowFormToAddProductToInventory(!showFormToAddProductToInventory)}>Add Product to Inventory</button>}
 
 
-        <section>
+        <section className="inventoryContainer">
           {groupProducts && groupProducts.length >= 1
             ?
             groupProducts.map((item) => {
