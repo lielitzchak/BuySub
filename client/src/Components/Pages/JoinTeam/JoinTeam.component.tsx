@@ -17,7 +17,7 @@ const JoinTeam = (): JSX.Element => {
         event.preventDefault();
         // setJoinTeamInfo(joinTeamInfo);
         joinGroup(joinTeamInfo, auth.id)
-            .then(() => navigate('/Team'))
+            .then(() => navigate('/ListToBuy'))
             .catch((err) => console.log(err));
     };
 
