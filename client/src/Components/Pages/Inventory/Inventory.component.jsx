@@ -4,6 +4,7 @@ import { getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
 import { addProduct} from "../../../Services/ProductService.service";
 import InventoryCard from "../InventoryCard/InventoryCard.component";
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 export default function Inventory() {
 
@@ -54,8 +55,6 @@ export default function Inventory() {
 
       <section>
 
-        <div>Inventory Page</div>
-
         {showFormToAddProductToInventory ?
           <section>
             <h1>Add Product to Inventory</h1>
@@ -81,7 +80,7 @@ export default function Inventory() {
 
             <button onClick={cancelAddProductToInventory}>Cancel</button>
 
-          </section> : <button onClick={() => setShowFormToAddProductToInventory(!showFormToAddProductToInventory)}>Add Product to Inventory</button>}
+          </section> : <button className="addProductToInventory" onClick={() => setShowFormToAddProductToInventory(!showFormToAddProductToInventory)}> Add Product <AddBoxIcon/></button>}
 
 
         <section className="inventoryContainer">

@@ -1,0 +1,26 @@
+.teamContainer{
+    display: flex;
+    width: 100%;
+
+    .teamNavigation{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 40%;
+        height: 100vh;
+        background-color: rgba(59, 58, 56,0.07);
+
+        span{
+            padding-left: 3%;
+            font-size: 1.2rem;
+            border-bottom: solid 0.1rem rgb(136, 132, 132);
+        }
+
+        div{
+            height: 70%;
+            width: 100%;
+        }
+    }
+
+}
+

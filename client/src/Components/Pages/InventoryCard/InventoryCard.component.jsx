@@ -58,7 +58,7 @@ export default function InventoryCard(props) {
     
 
   return (
-    <article  className={quantity >= 3 ? 'inventoryProducts quentityLessThen3' : 'inventoryProducts'} >
+    <article  className={quantity >= 3 ? 'inventoryProducts' : 'inventoryProducts quentityLessThen3'} >
         <img src={productImage} alt="product"/>
         <div className="productsInfo">
             <h1>Product Name : {productName}</h1>
