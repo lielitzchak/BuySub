@@ -58,17 +58,23 @@ export default function InventoryCard(props) {
     
 
   return (
-    <article  className="inventoryProducts" style={{backgroundColor: quantity >= 3 ? '#d60f73' : '#91041e'}}>
+    <article  className={quantity >= 3 ? 'inventoryProducts quentityLessThen3' : 'inventoryProducts'} >
         <img src={productImage} alt="product"/>
-        <h1>Product Name : {productName}</h1>
-        <h1>Price : {price}</h1>
-        <button onClick={() => addToQuentity(_id,quantity)}>Up +</button>
-        <h1>Quantity : {quantityCounter}</h1>
-        <button onClick={() => substractTheQuentity(_id,quantity)}>Down -</button>
-        <h1>Expiration Date :{expirationDate}</h1>
-        <button onClick={() => addToGroupList(props.item)}>Add To List</button>
-        <button onClick={() => deleteProductFromInventory(_id)}>Delete</button>
-        <UpdateProduct item={props.item} />
+        <div className="productsInfo">
+            <h1>Product Name : {productName}</h1>
+            <h1>Price : {price ? price : 'None'}</h1>
+            <h1>Expiration Date : {expirationDate.toString().substr(0,10)}</h1>
+        </div>
+        <div className="quantityControls">
+            <button onClick={() => addToQuentity(_id,quantity)}>+</button>
+            <h1>Quantity : {quantityCounter}</h1>
+            <button onClick={() => substractTheQuentity(_id,quantity)}>-</button>
+        </div>
+        <div className="productsOpertaions">
+            <button onClick={() => addToGroupList(props.item)}>Add To List</button>
+            <button onClick={() => deleteProductFromInventory(_id)}>Delete</button>
+            <UpdateProduct item={props.item} />
+        </div>
   </article>
   )
 }
