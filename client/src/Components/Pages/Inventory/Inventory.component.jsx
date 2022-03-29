@@ -2,16 +2,30 @@ import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { getGroupProducts } from "../../../Services/GroupsService.service";
 import Loading from "../../Features/Loading/Loading.component";
-import { addProduct} from "../../../Services/ProductService.service";
+import { addProduct } from "../../../Services/ProductService.service";
 import InventoryCard from "../InventoryCard/InventoryCard.component";
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import { TextField } from "@mui/material";
+
 
 export default function Inventory() {
 
   const { auth, loading, setLoading } = useContext(authContext);
   const [groupProducts, setGroupProducts] = useState([])
   const [productInfo, setProductInfo] = useState({})
-  const [showFormToAddProductToInventory, setShowFormToAddProductToInventory] = useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const [open, setOpen] = useState(false)
+
+
 
 
   useEffect(() => {
@@ -20,7 +34,7 @@ export default function Inventory() {
       console.log(data);
       if (data.length >= 1) {
         setGroupProducts(data)
-        
+
       } else {
         console.log('empty');
       }
@@ -40,14 +54,20 @@ export default function Inventory() {
     addProduct(productInfo, auth.groupName)
       .then((data) => {
         console.log(data)
+        setOpen(false);
       })
       .catch((err) => console.log(err))
 
   }
 
-  let cancelAddProductToInventory = () => {
-    setShowFormToAddProductToInventory(!showFormToAddProductToInventory);
-  }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   return (
 
@@ -55,46 +75,107 @@ export default function Inventory() {
 
       <section>
 
-        {showFormToAddProductToInventory ?
-          <section>
-            <h1>Add Product to Inventory</h1>
-            <form action="" autoComplete="on" onSubmit={addProductToInventory}>
+        {open ?
+              <section className="addToInventoryPopUp">
+                <Dialog
+                fullScreen={fullScreen}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="responsive-dialog-title"
+                >
+                <DialogTitle id="responsive-dialog-title">
+                    {"Add Product to Inventory"}
+                </DialogTitle>
+                <form action="" autoComplete="on">
 
-              <label>Product Name</label>
-              <input type="text" name="productName" onChange={updateProductInfo} required />
+                <DialogContent>
+                    <DialogContentText>
 
-              <label>Price</label>
-              <input type="text" name="price" onChange={updateProductInfo} />
+                       <TextField
+                          autoFocus
+                          margin="dense"
+                          label="Product Name"
+                          type="text"
+                          fullWidth
+                          variant="standard"
+                          required
+                          name="productName"
+                          onChange={updateProductInfo}
+                            />
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          label="Price"
+                          type="text"
+                          fullWidth
+                          variant="standard"
+                          name="price"
+                          onChange={updateProductInfo}
+                            />
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          label="Quantity"
+                          type="number"
+                          fullWidth
+                          variant="standard"
+                          required
+                          name="quantity"
+                          onChange={updateProductInfo}
+                            />
 
-              <label>Quantity</label>
-              <input type="number" name="quantity" onChange={updateProductInfo} required />
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          // label="Expiration Date"
+                          type="date"
+                          fullWidth
+                          variant="standard"
+                          name="expirationDate"
+                          onChange={updateProductInfo}
+                            />
 
-              <label>Expiration Date</label>
-              <input type="date" name="expirationDate" onChange={updateProductInfo} />
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          label="Image Product"
+                          type="text"
+                          fullWidth
+                          variant="standard"
+                          name="productImage"
+                          onChange={updateProductInfo}
+                            />
 
-              <label>image product</label>
-              <input type="text" name="productImage" onChange={updateProductInfo} />
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button onClick={addProductToInventory} autoFocus>
+                    Add Product
+                    </Button>
+                </DialogActions>
+                </form>
+                </Dialog>
 
-              <button>Add Product</button>
-            </form>
 
-            <button onClick={cancelAddProductToInventory}>Cancel</button>
 
-          </section> : <button className="addProductToInventory" onClick={() => setShowFormToAddProductToInventory(!showFormToAddProductToInventory)}> Add Product <AddBoxIcon/></button>}
+          </section> : <Button variant="outlined" onClick={handleClickOpen}>Add Product</Button>}
 
 
         <section className="inventoryContainer">
 
-        <section className="searchBox">
-             <input type="search" placeholder="Serach Product" /> <button>Search</button>
-        </section>
-        
+          <section className="searchBox">
+            <input type="search" placeholder="Serach Product" /> <button>Search</button>
+          </section>
+
           {groupProducts && groupProducts.length >= 1
             ?
             groupProducts.map((item) => {
 
-              return <InventoryCard key={item._id} item={item}/>
-              
+              return <InventoryCard key={item._id} item={item} />
+
             })
             :
             <h1>The Are No Products</h1>}
