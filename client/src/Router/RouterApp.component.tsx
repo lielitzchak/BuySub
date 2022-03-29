@@ -46,6 +46,7 @@ const RouterApp = (): JSX.Element => {
 
              <Route path="/CreateTeam" element={<CreateTeam/>}/>
              <Route path="/JoinTeam" element={<JoinTeam/>}/>
+             <Route path="/ListToBuy" element={<ListToBuy/>}/>
 
         </Route>
 
