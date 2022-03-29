@@ -518,8 +518,6 @@
 * .social-icons a:hover i {
   -webkit-transform: scale(2.2);
           transform: scale(2.2);
-  background: -webkit-linear-gradient(45deg, #51ff00, #1969eb);
-  -webkit-text-fill-color: transparent;
   -webkit-transition: all 265ms ease-in;
   transition: all 265ms ease-in;
 }
