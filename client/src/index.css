@@ -564,6 +564,7 @@
 }
 
 * .inventoryContainer {
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -572,10 +573,10 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 90%;
+  width: 80%;
   margin-bottom: 4.5vh;
-  position: relative;
-  left: 9%;
+  left: 20%;
+  margin-top: 8vh;
 }
 
 * .inventoryProducts {
@@ -686,11 +687,18 @@
   border-radius: 10px;
 }
 
+* .addProduct {
+  position: absolute;
+  left: 82%;
+  top: 6vh;
+}
+
 * .teamContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  position: relative;
 }
 
 * .teamContainer .teamNavigation {
@@ -703,8 +711,8 @@
           flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  max-width: 15%;
-  min-width: 15%;
+  position: absolute;
+  width: 18%;
   height: 100vh;
   background-color: rgba(59, 58, 56, 0.07);
 }
@@ -721,7 +729,7 @@
 }
 
 * .listToBuyContainer {
-  background-color: yellowgreen;
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -730,20 +738,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 85%;
+  width: 80%;
   margin-bottom: 4.5vh;
-}
-
-* .teamNavigation {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  width: 15%;
+  left: 20%;
 }
 /*# sourceMappingURL=index.css.map */

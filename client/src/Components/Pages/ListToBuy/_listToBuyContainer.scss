@@ -1,16 +1,11 @@
 
 .listToBuyContainer{
-    background-color: yellowgreen;
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 85%;
+    width: 80%;
     margin-bottom: 4.5vh;
+    left: 20%;
 }
 
-.teamNavigation{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 15%;
-}    

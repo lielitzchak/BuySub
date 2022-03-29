@@ -1,11 +1,12 @@
  .inventoryContainer{
+     position: absolute;
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
-     width: 90%;
+     width: 80%;
      margin-bottom: 4.5vh;
-     position: relative;
-     left: 9%;
+     left: 20%;
+     margin-top: 8vh;
  }
  
  .inventoryProducts{
@@ -93,6 +94,12 @@
      background-color: green;
      font-size: 1rem;
      border-radius: 10px;
+ }
+
+ .addProduct{
+     position: absolute;
+     left: 82%;
+     top: 6vh;
  }
 
 

@@ -161,7 +161,7 @@ export default function Inventory() {
 
 
 
-          </section> : <Button variant="outlined" onClick={handleClickOpen}>Add Product</Button>}
+          </section> : <span className="addProduct"><Button variant="outlined" onClick={handleClickOpen}>Add Product</Button></span>}
 
 
         <section className="inventoryContainer">
