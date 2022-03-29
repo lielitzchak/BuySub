@@ -4,11 +4,12 @@ import { authContext } from "../../../Context/AuthProvider.component";
 import { exitGroup, getGroupInfo } from "../../../Services/GroupsService.service";
 import UpdateGroup from "../../Features/UpdateGroup/UpdateGroup.component";
 import Button from '@mui/material/Button';
+import Loading from "../../Features/Loading/Loading.component";
 
 
 
 export default function Setting() {
-  const { auth } = useContext(authContext);
+  const { auth,loading, setLoading} = useContext(authContext);
   const [groupInfo, setGroupInfo] = useState({});
   const [open, setOpen] = useState(false)
 
@@ -16,11 +17,12 @@ export default function Setting() {
   const navigate = useNavigate()
 
   useEffect(() => {
-
+    setLoading(true)
     getGroupInfo(auth.groupName).then((data) => {
       setGroupInfo(data)
       console.log(data);
-    })
+
+    }).finally(() => setLoading(false));
   }, [])
 
 
@@ -39,13 +41,16 @@ export default function Setting() {
 
 
   return (
+
+    loading ? <Loading/> :
+
     <section className="settingContainer">
       <button className="exitGroup" onClick={exitTheGroup}>Exit The Group</button>
 
 
       {open ? <UpdateGroup item={groupInfo} open={open} setOpen={setOpen} /> : <Button className="editBtn" variant="outlined" onClick={handleClickOpen}>Edit Group Info</Button>}
 
-      <img src={groupInfo.imageGroup} alt="group" />
+      <img className="imgGroup" src={groupInfo.imageGroup} alt="group" />
 
        <div>
           <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
