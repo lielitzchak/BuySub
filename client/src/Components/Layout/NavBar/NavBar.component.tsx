@@ -23,10 +23,19 @@ import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact
 import JoinInnerIcon from '@mui/icons-material/JoinInner';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
+import { themeContext } from "../../../Context/ThemeProvider/ThemeProvider";
+import { navBarStyle } from '../../../Context/ThemeProvider/ThemeCSS';
+import { FormControlLabel, Switch } from "@mui/material";
+
 
 
 const NavBar = (): JSX.Element => {
   const { auth, setAuth }: any = useContext(authContext);
+  const {theme,setTheme}: any = useContext(themeContext);
+
+  const themeToggle = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  }
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -52,7 +61,7 @@ const NavBar = (): JSX.Element => {
 
   return (
     <nav>
-      <AppBar position="static">
+      <AppBar position="static" style={theme === 'light' ? navBarStyle.light : navBarStyle.dark}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -214,6 +223,18 @@ const NavBar = (): JSX.Element => {
                 </Button>
 
             </Box>
+
+            <FormControlLabel
+            control={
+              <Switch
+                checked={theme === 'dark'}
+                onChange={themeToggle}
+                name="DarkMode"
+                color="primary"
+              />
+            }
+           label="DarkMode"
+         />
             
 
             <Box sx={{ flexGrow: 0 }}>
@@ -223,14 +244,6 @@ const NavBar = (): JSX.Element => {
                 </IconButton>
               </Tooltip>
 
-              {/* <Tooltip title="Dark mode">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <div>
-                    <input type="checkbox" id="toggle" />
-                    <label htmlFor="toggle"></label>
-                  </div>
-                </IconButton>
-              </Tooltip> */}
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
