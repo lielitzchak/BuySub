@@ -1,3 +1,4 @@
+import "./Setting.css";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
@@ -61,7 +62,7 @@ export default function Setting() {
               <img src={userMember.image} alt="user" />
               <h1>firstName : {userMember.firstName}</h1>
               <h1>lastName : {userMember.lastName}</h1>
-              <h1>isLogin : {userMember.isLogin ? '✔' : 'false'}</h1>
+              <h1>isLogin : {userMember.isLogin ? '✔' : <span>&#9747;</span>}</h1>
             </section>
           )
         }) : <h1>None</h1>}

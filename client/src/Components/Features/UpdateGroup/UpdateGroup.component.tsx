@@ -49,7 +49,7 @@ export default function UpdateGroup(props: any) {
 
 
     return (
-            <section style={{ backgroundColor: "red" }}>
+            <section>
 
                     <Dialog
                         fullScreen={fullScreen}
