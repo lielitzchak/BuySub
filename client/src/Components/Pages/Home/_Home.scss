@@ -1,4 +1,3 @@
-
 @mixin FlexCenter {
     display: flex;
     align-items: center;
@@ -66,7 +65,7 @@
     height: 45px;
     border-radius: 100%;
     display: block;
-    background: linear-gradient(287deg, rgba(180,180,187,1) 37%, rgba(0,138,255,1) 100%);
+    background: linear-gradient(287deg, rgba(180, 180, 187, 1) 37%, rgba(0, 138, 255, 1) 100%);
     transition: all 265ms ease-out;
 }
 
@@ -77,10 +76,6 @@
 
 .social-icons a:hover i {
     transform: scale(2.2);
-
-    // color: #ff003c;
-    background: -webkit-linear-gradient(45deg, #51ff00, rgb(25, 105, 235));
-    -webkit-text-fill-color: transparent;
     transition: all 265ms ease-in;
 }
 
@@ -97,8 +92,6 @@
         .aboutText {
             color: black;
         }
-
-
 
     }
 
