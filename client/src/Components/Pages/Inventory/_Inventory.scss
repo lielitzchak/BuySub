@@ -2,7 +2,7 @@
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
-     width: 85%;
+     width: 90%;
      margin-bottom: 4.5vh;
      position: relative;
      left: 9%;
@@ -86,12 +86,13 @@
 
  .addProductToInventory{
      position: relative;
-     left: 86%;
+     left: 80%;
      top: 2%;
-     width: 8%;
+     width: 9%;
      height: 3%;
      background-color: green;
      font-size: 1rem;
+     border-radius: 10px;
  }
 
 
