@@ -51,11 +51,12 @@ export default function UpdateGroup(props: any) {
         updateGroup(props.item._id, groupDetail)
             .then((data) => {
                 console.log(data)
-                props.setOpen(!props.open)
+                props.setOpen(false)
             })
             .catch((err: any) => {
                 console.log(err);
             });
+
     }
 
     // const handleClose = () => {
@@ -76,19 +77,21 @@ export default function UpdateGroup(props: any) {
     return (
         <>
             {/* {props.showUpdate ? */}
-            <section style={{ backgroundColor: "red" }}>
+            <section>
 
-                <form>
-                    <Dialog
-                        fullScreen={fullScreen}
-                        open={props.open}
-                        onClose={handleClose}
-                        aria-labelledby="responsive-dialog-title"
-                    >
-                        <DialogTitle id="responsive-dialog-title">
-                            {"Update Group Info"}
-                        </DialogTitle>
-                        <DialogContent>
+
+                <Dialog
+                    fullScreen={fullScreen}
+                    open={props.open}
+                    onClose={handleClose}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogTitle id="responsive-dialog-title">
+                        {"Update Group Info"}
+                    </DialogTitle>
+
+                    <DialogContent>
+                        <form >
                             <TextField
                                 autoFocus
                                 margin="dense"
@@ -97,6 +100,7 @@ export default function UpdateGroup(props: any) {
                                 fullWidth
                                 variant="standard"
                                 required
+                                name="groupName"
                                 onChange={updateGroupInfo}
                                 placeholder={prevgrouptDetail.groupName}
                             />
@@ -108,6 +112,7 @@ export default function UpdateGroup(props: any) {
                                 fullWidth
                                 variant="standard"
                                 required
+                                name="color"
                                 onChange={updateGroupInfo}
                             />
                             <TextField
@@ -117,21 +122,24 @@ export default function UpdateGroup(props: any) {
                                 type="text"
                                 fullWidth
                                 variant="standard"
+                                name="imageGroup"
                                 onChange={updateGroupInfo}
-                                placeholder={prevgrouptDetail.imageGroup} 
+                                placeholder={prevgrouptDetail.imageGroup}
                             />
+                        </form>
 
-                        </DialogContent>
-                        <DialogActions>
-                            <Button autoFocus onClick={handleClose}>
-                                Disagree
-                            </Button>
-                            <Button onSubmit={editGroupInfo} autoFocus>
-                                Agree
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
-                </form>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button autoFocus onClick={handleClose}>
+                            Disagree
+                        </Button>
+                        <Button onClick={editGroupInfo} autoFocus>
+                            Agree
+                        </Button>
+                    </DialogActions>
+
+                </Dialog>
+
 
 
                 {/* <form action="" autoComplete="on" onSubmit={editGroupInfo}>
