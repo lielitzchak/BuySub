@@ -84,6 +84,11 @@ export default function Inventory() {
 
 
         <section className="inventoryContainer">
+
+        <section className="searchBox">
+             <input type="search" placeholder="Serach Product" /> <button>Search</button>
+        </section>
+        
           {groupProducts && groupProducts.length >= 1
             ?
             groupProducts.map((item) => {

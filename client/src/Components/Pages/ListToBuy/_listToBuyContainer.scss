@@ -1,0 +1,18 @@
+@import "../Inventory/Inventory";
+
+.listToBuyContainer{
+    background-color: yellowgreen;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 85%;
+    margin-bottom: 4.5vh;
+
+}
+
+.teamNavigation{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 15%;
+}    

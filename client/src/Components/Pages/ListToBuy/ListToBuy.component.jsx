@@ -4,6 +4,9 @@ import { addProductToListToBuy, deleteProductFromListToBuy, getGroupInfo } from 
 import { addProduct, updateQuentityProduct } from "../../../Services/ProductService.service";
 import UpdateProduct from "../../Features/UpdateProduct/UpdateProduct.component";
 import ListToBuyCard from "../ListToBuyCard/ListToBuyCard.component";
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddchartIcon from '@mui/icons-material/Addchart';
+
 
 export default function ListToBuy() {
   const { auth } = useContext(authContext)
@@ -82,10 +85,13 @@ export default function ListToBuy() {
 
 
   return (
-    <section>
+    <section className="listToBuyContainer">
 
-      <div>listToBuy</div>
-      <button>Offer Me Products</button>
+      <button>Offer Me Products <AddchartIcon/></button>
+
+      <section className="searchBox">
+             <input type="search" placeholder="Serach Product" /> <button>Search</button>
+        </section>
 
       {showFormToAddProductToList ?
         <section>
@@ -113,7 +119,8 @@ export default function ListToBuy() {
           <button onClick={() => setShowFormToAddProductToList(!showFormToAddProductToList)}>Cancel</button>
 
         </section> :
-        <button onClick={() => setShowFormToAddProductToList(!showFormToAddProductToList)}>Add Product to List</button>}
+        <button onClick={() => setShowFormToAddProductToList(!showFormToAddProductToList)}>Add Product to List<AddBoxIcon/></button>}
+
 
       {groupListToBuy.length >= 1
         ?
@@ -123,6 +130,7 @@ export default function ListToBuy() {
         })
         :
         <h1>The Are No Products In The List</h1>}
+        
       <button onClick={() => handleListToBuy(groupListToBuy)}>Done</button>
 
     </section>
