@@ -18,7 +18,8 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+import TextField from '@mui/material/TextField';
+// import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -76,7 +77,7 @@ export default function UpdateGroup(props: any) {
         <>
             {/* {props.showUpdate ? */}
             <section style={{ backgroundColor: "red" }}>
-               
+
                 <form>
                     <Dialog
                         fullScreen={fullScreen}
@@ -85,13 +86,41 @@ export default function UpdateGroup(props: any) {
                         aria-labelledby="responsive-dialog-title"
                     >
                         <DialogTitle id="responsive-dialog-title">
-                            {"Use Google's location service?"}
+                            {"Update Group Info"}
                         </DialogTitle>
                         <DialogContent>
-                            <DialogContentText>
-                                Let Google help apps determine location. This means sending anonymous
-                                location data to Google, even when no apps are running.
-                            </DialogContentText>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                label="groupName"
+                                type="text"
+                                fullWidth
+                                variant="standard"
+                                required
+                                onChange={updateGroupInfo}
+                                placeholder={prevgrouptDetail.groupName}
+                            />
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                label="color"
+                                type="color"
+                                fullWidth
+                                variant="standard"
+                                required
+                                onChange={updateGroupInfo}
+                            />
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                label="imageGroup"
+                                type="text"
+                                fullWidth
+                                variant="standard"
+                                onChange={updateGroupInfo}
+                                placeholder={prevgrouptDetail.imageGroup} 
+                            />
+
                         </DialogContent>
                         <DialogActions>
                             <Button autoFocus onClick={handleClose}>
