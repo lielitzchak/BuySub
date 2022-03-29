@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 
 @mixin FlexCenter {
     display: flex;
@@ -36,6 +35,7 @@
             padding: 0;
             list-style: none;
             margin: 1em;
+            @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 
             li {
                 display: inline-block;
@@ -61,7 +61,7 @@
 
 .social-icons a:before {
     transform: scale(1);
-    content: "text";
+    content: " ";
     width: 45px;
     height: 45px;
     border-radius: 100%;

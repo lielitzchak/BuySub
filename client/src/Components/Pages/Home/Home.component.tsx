@@ -19,10 +19,20 @@ function CodeWriters(props: any) {
           </li>
           <li>
             <a href={props.linkedin}>
-              <i className="fa fa-linkedin"></i>
+              {/* <FontAwesomeIcon icon="fa-brands fa-linkedin" /> */}
+              {/* <FontAwesomeIcon/> */}
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fas fa-square fa-stack-2x"></i>
+              <i className="fab fa-twitter fa-stack-1x fa-inverse"></i>
             </a>
           </li>
         </ul>
+        <ul className="social-icons">
+      <li><a href="#"><i className="fa fa-instagram"></i></a></li>
+      <li><a href="#"><i className="fa fa-twitter"></i></a></li>
+      <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
+      <li><a href="#"><i className="fa fa-codepen"></i></a></li>
+    </ul>
       </div>
     </div>
   );
