@@ -35,11 +35,12 @@ export default function UpdateGroup(props: any) {
         updateGroup(props.item._id, groupDetail)
             .then((data) => {
                 console.log(data)
-                props.setOpen(!props.open)
+                props.setOpen(false)
             })
             .catch((err: any) => {
                 console.log(err);
             });
+
     }
 
     const handleClose = () => {
@@ -92,7 +93,7 @@ export default function UpdateGroup(props: any) {
                                 fullWidth
                                 variant="standard"
                                 onChange={updateGroupInfo}
-                                placeholder={prevgrouptDetail.imageGroup} 
+                                placeholder={prevgrouptDetail.imageGroup}
                             />
 
                         </DialogContent>
