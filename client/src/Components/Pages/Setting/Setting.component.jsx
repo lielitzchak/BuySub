@@ -43,20 +43,23 @@ export default function Setting() {
   return (
     <section>
       <h1>Setting</h1>
-      <button onClick={exitTheGroup}>Exit The Group</button>
+      <section style={{ display: "flex" }}>
+        <Button variant="outlined" onClick={exitTheGroup}>Exit The Group</Button>
 
-
-      {open ? <UpdateGroup item={groupInfo} open={open} setOpen={setOpen} /> : <Button variant="outlined" onClick={handleClickOpen}>Edit Group Info</Button>}
+        {open ? <UpdateGroup item={groupInfo} open={open} setOpen={setOpen} /> : <Button variant="outlined" onClick={handleClickOpen}>Edit Group Info</Button>}
+      </section>
 
       {/* : <button onClick={() => setshowUpdate(!showUpdate)}>Edit Group Info</button>
       
        <button onClick={showFormToEditGroup}>Edit Group Info</button> */ }
-      <img src={groupInfo.imageGroup} alt="group" />
+      <section>
+        <img src={groupInfo.imageGroup} alt="group" />
 
-      <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
-      <h1>ListToBuy : {groupInfo.listToBuy ? groupInfo.listToBuy.length : 0}</h1>
-      <h1>Group Name : {groupInfo.groupName}</h1>
-      <h1>CreatedAt : {groupInfo.createdAt}</h1>
+        <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
+        <h1>ListToBuy : {groupInfo.listToBuy ? groupInfo.listToBuy.length : 0}</h1>
+        <h1>Group Name : {groupInfo.groupName}</h1>
+        <h1>CreatedAt : {groupInfo.createdAt}</h1>
+      </section>
       <section>
         <h1>Group Members </h1>
         {groupInfo.members ? groupInfo.members.map((userMember, index) => {
