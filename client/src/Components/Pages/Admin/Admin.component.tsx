@@ -12,8 +12,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 
+import Stack from '@mui/material/Stack';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 
 
 export const Admin = (): JSX.Element => {
@@ -86,75 +92,189 @@ export const Admin = (): JSX.Element => {
     <>
 
 
-      <h1>Group Members </h1>
-      <form onSubmit={addMembers}>
-        <label>email</label>
-        <input name="email" type="email" onChange={memberInfo} />
-        <button>Add Member to Group</button>
+      <h1 style={{textAlign:"center"}}>Group Members </h1>
+      <form onSubmit={addMembers} className="addMemberForm">
+        <TextField
+          id="input-with-icon-textfield"
+          label="email"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+          variant="standard"
+          onChange={memberInfo}
+        />
+
+        
+        <Button variant="contained">Add Member to Group</Button>
+        
       </form>
-      <section className="container">
+      <section className="containerUserProfiles">
         {groupInfo.members ? groupInfo.members.map((userMember: any, index: any) => {
           return (
 
             <section key={index} className="userCard">
-              <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="180"
-                    image={userMember.image}
-                    alt="user"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {userMember.firstName}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      IsLogin : {userMember.isLogin ? '✔' : 'false'}
-                    </Typography>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="180"
+                  image={userMember.image}
+                  alt="user"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {userMember.firstName}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    IsLogin : {userMember.isLogin ? '✔' : <span>&#9747;</span>}
+                  </Typography>
 
-                  </CardContent>
-                </CardActionArea>
-                <div style={{ display: "flex" }}>
-                  <CardContent >
-                    <Typography >
-                      <Stack>
-                        {userMember.role[1] == "Admin" ?
-                          <Button variant="outlined" size="medium" onClick={() => RemoveAdminRole(userMember._id)}>Remove Admin Role</Button>
-                          :
-                          <Button variant="outlined" onClick={() => AddAdminRole(userMember._id)}>Add Admin Role</Button>}
-                      </Stack>
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <div>
-                      <Button variant="outlined" onClick={handleClickOpen}>
-                        Remove User
-                      </Button>
-                      <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
-                        <DialogTitle id="alert-dialog-title">
-                          <article>Are You Sure You Want To Remove <span style={{ color: "#1976d2" }}>{userMember.firstName}</span> From This Team ?</article>
-                        </DialogTitle>
-                        <DialogActions>
-                          <Button onClick={handleClose}>No</Button>
-                          <Button onClick={() => removeUser(userMember._id)} autoFocus>
-                            Yes
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
-                    </div>
-                  </CardActions>
-                </div>
-              </Card>
-            </section>
+                </CardContent>
+              </CardActionArea>
+              <div className="ButtonsContainer">
+                <CardContent >
+                  <Typography >
+                    <Stack>
+                      {userMember.role[1] == "Admin" ?
+                        <Button variant="contained" onClick={() => RemoveAdminRole(userMember._id)}>Remove Admin Role</Button>
+                        :
+                        <Button variant="contained" onClick={() => AddAdminRole(userMember._id)}>Add Admin Role</Button>}
+                    </Stack>
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <div>
+                    <Button variant="contained" onClick={handleClickOpen}>
+                      Remove User
+                    </Button>
+                    <Dialog
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="alert-dialog-title"
+                      aria-describedby="alert-dialog-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">
+                        <article>Are You Sure You Want To Remove <p><span style={{ color: "#1976d2" }}>{userMember.firstName}</span></p> From This Team ?</article>
+                      </DialogTitle>
+                      <DialogActions>
+                        <Button onClick={handleClose}>No</Button>
+                        <Button onClick={() => removeUser(userMember._id)} autoFocus>
+                          Yes
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
+                  </div>
+                </CardActions>
+              </div>
+            </Card>
+          </section>
+
+
+            // <section className="userCard" key={index} >
+            //   <img className="userPic" src={userMember.image} alt="user" />
+            //   <div className="userContent">
+            //     <h1>{userMember.firstName} {userMember.lastName}</h1>
+            //     <p className="isLogIn">Is LogIn : {userMember.isLogin ? '✔' : <span>&#9747;</span>}</p>
+            //     {/* <div className="ButtonsContainer"> */}
+            //       <CardActions className="ButtonsContainer">
+            //         <Button variant="outlined" onClick={handleClickOpen}>
+            //           Remove User
+            //         </Button>
+            //         <Dialog
+            //           open={open}
+            //           onClose={handleClose}
+            //           aria-labelledby="alert-dialog-title"
+            //           aria-describedby="alert-dialog-description"
+            //         >
+            //           <DialogTitle id="alert-dialog-title">
+            //             <article>Are You Sure You Want To Remove <span style={{ color: "#1976d2" }}>{userMember.firstName}</span> From This Team ?</article>
+            //           </DialogTitle>
+            //           <DialogActions>
+            //             <Button onClick={handleClose}>No</Button>
+            //             <Button onClick={() => removeUser(userMember._id)} autoFocus>
+            //               Yes
+            //             </Button>
+            //           </DialogActions>
+            //         </Dialog>
+
+            //       </CardActions>
+            //       <Stack>
+            //         {userMember.role[1] == "Admin" ?
+            //           <Button variant="outlined" onClick={() => RemoveAdminRole(userMember._id)}>Remove Admin Role</Button>
+            //           :
+            //           <Button variant="outlined" onClick={() => AddAdminRole(userMember._id)}>Add Admin Role</Button>}
+            //       </Stack>
+            //     {/* </div> */}
+            //   </div>
+            //   {/* <p><button>Contact</button></p> */}
+            // </section>
+
+
+
+            /* <section key={index} >
+        <Card className="userCard" sx={{ maxWidth: 345 }}>
+          <CardActionArea>
+            <CardMedia */
+            //       component="img"
+            //       height="180"
+            //       image={userMember.image}
+            //       alt="user"
+            //     />
+            //     <CardContent>
+            //       <Typography gutterBottom variant="h5" component="div">
+            //         {userMember.firstName}
+            //       </Typography>
+            //       <Typography variant="body2" color="text.secondary">
+            //         IsLogin : {userMember.isLogin ? '✔' : 'false'}
+            //       </Typography>
+
+            //     </CardContent>
+            //   </CardActionArea>
+            //   <div style={{ display: "flex" }}>
+            //     <CardContent >
+            //       <Typography >
+            //         <Stack>
+            //           {userMember.role[1] == "Admin" ?
+            //             <Button variant="outlined" size="medium" onClick={() => RemoveAdminRole(userMember._id)}>Remove Admin Role</Button>
+            //             :
+            //             <Button variant="outlined" onClick={() => AddAdminRole(userMember._id)}>Add Admin Role</Button>}
+            //         </Stack>
+            //       </Typography>
+            //     </CardContent>
+            //     <CardActions>
+            //       <div>
+            //         <Button variant="outlined" onClick={handleClickOpen}>
+            //           Remove User
+            //         </Button>
+            //         <Dialog
+            //           open={open}
+            //           onClose={handleClose}
+            //           aria-labelledby="alert-dialog-title"
+            //           aria-describedby="alert-dialog-description"
+            //         >
+            //           <DialogTitle id="alert-dialog-title">
+            //             <article>Are You Sure You Want To Remove <span style={{ color: "#1976d2" }}>{userMember.firstName}</span> From This Team ?</article>
+            //           </DialogTitle>
+            //           <DialogActions>
+            //             <Button onClick={handleClose}>No</Button>
+            //             <Button onClick={() => removeUser(userMember._id)} autoFocus>
+            //               Yes
+            //             </Button>
+            //           </DialogActions>
+            //         </Dialog>
+            //       </div>
+            //     </CardActions>
+            //   </div>
+            // </Card>
+            // </section>
           )
         }) : <h1>None</h1>}
-      </section>
+      </section >
+
       <section>
         <Outlet />
       </section>

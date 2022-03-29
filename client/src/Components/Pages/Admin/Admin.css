@@ -1,10 +1,51 @@
-.container{
+.containerUserProfiles{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+	margin-bottom: 10vh;
+
 }
 
 
-.userCard{
+
+.userCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+	max-width: 300px;
 	margin-top: 5vh;
-}
+	font-family: arial;
+	border-radius: 4px;
+	text-align: center;
+  }
+  .userPic{
+	  width: 100%;
+	  height: 65%;
+	  /* margin-top: 0; */
+	  /* border-radius: 6px; */
+  }
+  
+  .ButtonsContainer{
+	  display: flex;
+  }
+
+  .isLogIn {
+	color: grey;
+	font-size: 16px;
+  }
+
+  .addMemberForm{
+	  margin:3vh; 
+	  display: flex;
+	  /* flex-direction: column; */
+	  justify-content: space-between;
+	  max-width:30% ;
+	  /* height: max-content; */
+  }
+  /* .userContent{
+	  display: flex;
+	  justify-content: space-around;
+	  flex-direction: column;
+  } */
+
