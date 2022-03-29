@@ -1,0 +1,64 @@
+.settingContainer{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    left: 20%;
+    margin-top: 8vh;
+
+    button{
+        position: relative;
+        left: 50%;
+        width: 5%;
+        height: 50%;
+    }
+
+    .exitGroup,.editBtn{
+        margin-left: 30%;
+    }
+    .editBtn{
+        margin-top: 2vh;
+    }
+
+    img{
+        border-radius: 50%;
+        width: 42%;
+        margin-left: 17rem;
+        margin-bottom: 5vh;
+    }
+    div{
+        margin-left: 32%;
+    }
+
+    .groupMembers{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+        margin-top: 10vh;
+        margin-bottom: 20vh;
+
+
+        .title{
+            text-align: center;
+            background-color: red;
+            position: absolute;
+            left: 40%;
+        }
+
+        
+        section{
+            width: 35%;
+            margin-top: 8vh;
+            position: relative;
+            left: 12%;
+
+            img{
+               position: relative;
+               right: 30%;
+            }
+
+        }
+    }
+
+}

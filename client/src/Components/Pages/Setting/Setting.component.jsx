@@ -41,22 +41,21 @@ export default function Setting() {
 
   return (
     <section className="settingContainer">
-      <h1 className="settingHeadline">Setting</h1>
-      <section style={{ display: "flex" }}>
-        <Button variant="outlined" onClick={exitTheGroup}>Exit The Group</Button>
+      <button className="exitGroup" onClick={exitTheGroup}>Exit The Group</button>
 
-        {open ? <UpdateGroup item={groupInfo} open={open} setOpen={setOpen} /> : <Button variant="outlined" onClick={handleClickOpen}>Edit Group Info</Button>}
-      </section>
-      <section>
-        <img src={groupInfo.imageGroup} alt="group" />
 
-        <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
-        <h1>ListToBuy : {groupInfo.listToBuy ? groupInfo.listToBuy.length : 0}</h1>
-        <h1>Group Name : {groupInfo.groupName}</h1>
-        <h1>CreatedAt : {groupInfo.createdAt}</h1>
-      </section>
-      <section>
-        <h1>Group Members </h1>
+      {open ? <UpdateGroup item={groupInfo} open={open} setOpen={setOpen} /> : <Button className="editBtn" variant="outlined" onClick={handleClickOpen}>Edit Group Info</Button>}
+
+      <img src={groupInfo.imageGroup} alt="group" />
+
+       <div>
+          <h1>Number Of Products : {groupInfo.products ? groupInfo.products.length : 0}</h1>
+          <h1>ListToBuy : {groupInfo.listToBuy ? groupInfo.listToBuy.length : 0}</h1>
+          <h1>Group Name : {groupInfo.groupName}</h1>
+          <h1>CreatedAt : {groupInfo.createdAt}</h1>
+       </div>
+      <section className="groupMembers">
+        <h1 className="title">Group Members </h1>
         {groupInfo.members ? groupInfo.members.map((userMember, index) => {
           return (
             <section key={index}>
