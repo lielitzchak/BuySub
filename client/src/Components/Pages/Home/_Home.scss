@@ -82,15 +82,20 @@
 .homePage {
     .aboutApp {
         padding: 1%;
-        @include FlexCenter;
+        // @include FlexCenter;
         width: 100%;
+        display: flex;
 
-        .img {
-            height: 100%;
+        img {
+            height: 70vh;
+            width: 90%;
+            margin-left: 5rem;
         }
 
-        .aboutText {
-            color: black;
+        pre{
+            position: relative;
+            top: 20vh;
+            left: 20%;
         }
 
     }
