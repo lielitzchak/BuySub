@@ -39,16 +39,25 @@ export default function ListToBuyCard(props) {
 
       
   return (
-    <article key={_id}>
-    <img src={productImage} alt="product" />
-    <h1>Product Name : {productName}</h1>
-    <h1>Price : {price}</h1>
-    <button onClick={() => addToQuentity(_id ? _id : productName,quantity)}>Up +</button>
-    <h1>Quantity : {quantity}{quantityCounter}</h1>
-    <button onClick={() => substractTheQuentity(_id ? _id : productName,quantity)}>Down -</button>
-    <h1>id : {_id}</h1>
-    {/* <UpdateProduct item={item} /> */}
-    <button onClick={() => { deleteProductFromList(_id ? _id : productName) }}>Delete</button>
+    <article className="inventoryProducts">
+        <img src={productImage} alt="product" />
+    
+        <div className="productsInfo">
+            <h1>Product Name : {productName}</h1>
+            <h1>Price : {price}</h1>
+        </div>
+    
+        <div className="quantityControls">
+            <button onClick={() => addToQuentity(_id ? _id : productName,quantity)}>+</button>
+            {/* <h1>Quantity : {quantity}{quantityCounter}</h1> */}
+            <h1>Quantity : {quantity}</h1>
+            <button onClick={() => substractTheQuentity(_id ? _id : productName,quantity)}>-</button>
+        </div>
+    
+        <div className="productsOpertaions">
+            <button onClick={() => { deleteProductFromList(_id ? _id : productName) }}>Delete</button>
+        {/* <UpdateProduct item={item} /> */}
+        </div>
   </article>
 
   )
