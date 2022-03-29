@@ -1,3 +1,4 @@
+import "./Setting.css";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
@@ -12,8 +13,6 @@ export default function Setting() {
   const [groupInfo, setGroupInfo] = useState({});
   const [open, setOpen] = useState(false)
 
-
-  // const [open, setOpen] = useState(false);
 
   const navigate = useNavigate()
 
@@ -41,17 +40,13 @@ export default function Setting() {
 
 
   return (
-    <section>
-      <h1>Setting</h1>
+    <section className="settingContainer">
+      <h1 className="settingHeadline">Setting</h1>
       <section style={{ display: "flex" }}>
         <Button variant="outlined" onClick={exitTheGroup}>Exit The Group</Button>
 
         {open ? <UpdateGroup item={groupInfo} open={open} setOpen={setOpen} /> : <Button variant="outlined" onClick={handleClickOpen}>Edit Group Info</Button>}
       </section>
-
-      {/* : <button onClick={() => setshowUpdate(!showUpdate)}>Edit Group Info</button>
-      
-       <button onClick={showFormToEditGroup}>Edit Group Info</button> */ }
       <section>
         <img src={groupInfo.imageGroup} alt="group" />
 
@@ -68,7 +63,7 @@ export default function Setting() {
               <img src={userMember.image} alt="user" />
               <h1>firstName : {userMember.firstName}</h1>
               <h1>lastName : {userMember.lastName}</h1>
-              <h1>isLogin : {userMember.isLogin ? '✔' : 'false'}</h1>
+              <h1>isLogin : {userMember.isLogin ? '✔' : <span>&#9747;</span>}</h1>
             </section>
           )
         }) : <h1>None</h1>}
