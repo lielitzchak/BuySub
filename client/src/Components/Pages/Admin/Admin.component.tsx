@@ -156,6 +156,7 @@ export const Admin = (): JSX.Element => {
                       onClose={handleClose}
                       aria-labelledby="alert-dialog-title"
                       aria-describedby="alert-dialog-description"
+                      
                     >
                       <DialogTitle id="alert-dialog-title">
                         <article>Are You Sure You Want To Remove <p><span style={{ color: "#1976d2" }}>{userMember.firstName}</span></p> From This Team ?</article>
