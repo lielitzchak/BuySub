@@ -45,8 +45,7 @@ export default function Profile() {
 
   return (
     <section>
-      {/* <h1>Profile Page</h1> */}
-      {/* <form onSubmit={saveUpdatedUserInfo}>
+      <form onSubmit={saveUpdatedUserInfo}>
         <label>First Name</label>
         <input
           type="text"
@@ -88,9 +87,9 @@ export default function Profile() {
         />
 
         <button>Update</button>
-      </form> */}
+      </form> 
 
-      {/* <form onSubmit={updateUserPassword}>
+      <form onSubmit={updateUserPassword}>
         <label>Current Password</label>
         <input
           type="password"
@@ -110,7 +109,7 @@ export default function Profile() {
         />
 
         <button>Update Password</button>
-      </form> */}
+      </form>
       <div className="profile_user">
         <img src={auth.userImage} alt="user" />
         <div className="profile_detail_user">

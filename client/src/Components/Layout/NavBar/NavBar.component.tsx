@@ -70,7 +70,7 @@ const NavBar = (): JSX.Element => {
               component="div"
               sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             >
-              BuySub
+            <img src="/pictures/logo_transparent.png" alt="" style={{width:"7rem",height:"4.5rem"}}/>
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -164,7 +164,8 @@ const NavBar = (): JSX.Element => {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             >
-              BuySub
+              <img src="/pictures/logo_transparent.png" alt="" style={{width:"7rem",height:"4.5rem"}}/>
+
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                 <Button onClick={handleCloseNavMenu}
