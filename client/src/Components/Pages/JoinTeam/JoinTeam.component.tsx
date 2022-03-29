@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const JoinTeam = (): JSX.Element => {
-    const { auth }: any = useContext(authContext);
+    const { auth,setAuth }: any = useContext(authContext);
     const [joinTeamInfo, setJoinTeamInfo]: any = useState({});
     const navigate = useNavigate();
 
@@ -17,7 +17,12 @@ const JoinTeam = (): JSX.Element => {
         event.preventDefault();
         // setJoinTeamInfo(joinTeamInfo);
         joinGroup(joinTeamInfo, auth.id)
-            .then(() => navigate('/ListToBuy'))
+            .then(() => {
+                navigate('/ListToBuy')
+                setAuth(auth)
+                console.log(auth);
+                
+        })
             .catch((err) => console.log(err));
     };
 

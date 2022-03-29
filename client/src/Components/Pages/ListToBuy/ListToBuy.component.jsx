@@ -18,8 +18,8 @@ export default function ListToBuy() {
   useEffect(() => {
 
     getGroupInfo(auth.groupName).then((data) => {
-      setGroupListToBuy(data.listToBuy)
-      console.log(data.listToBuy);
+        setGroupListToBuy(data.listToBuy)
+        console.log(data.listToBuy);
     })
   }, [])
 

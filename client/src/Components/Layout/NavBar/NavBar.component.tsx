@@ -22,6 +22,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import JoinInnerIcon from '@mui/icons-material/JoinInner';
 import NoteAddIcon from '@mui/icons-material/NoteAdd';
+import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
 
 
 const NavBar = (): JSX.Element => {
@@ -166,7 +167,7 @@ const NavBar = (): JSX.Element => {
                 {auth.email ? "" : <Button onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
-                   <Link to="/SignUp">SignUp</Link>
+                   <Link to="/SignUp">SignUp <RoomPreferencesIcon/></Link>
                 </Button>}
 
                 {auth.email ? <Button onClick={handleCloseNavMenu}
