@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 80%;
     left: 20%;
-    margin-top: 8vh;
+    margin-top: 5vh;
 
     button{
         position: relative;
@@ -20,11 +20,14 @@
         margin-top: 2vh;
     }
 
-    img{
+    .imgGroup{
         border-radius: 50%;
         width: 42%;
         margin-left: 17rem;
         margin-bottom: 5vh;
+        border: solid 5px rgb(209, 209, 209);
+        padding: 20px;
+        box-shadow: 2px 4px 10px rgb(124, 124, 124);
     }
     div{
         margin-left: 32%;
@@ -55,7 +58,9 @@
 
             img{
                position: relative;
-               right: 30%;
+               left: 3%;
+               border-radius: 50%;
+               box-shadow: 2px 4px 10px #000;
             }
 
         }
