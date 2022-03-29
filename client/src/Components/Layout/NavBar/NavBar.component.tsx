@@ -15,6 +15,13 @@ import { Link } from "react-router-dom";
 import LogOut from "../../Features/LogOut/LogOut.component";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { useContext, useState } from "react";
+import HomeIcon from '@mui/icons-material/Home';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import GroupsIcon from '@mui/icons-material/Groups';
+import PersonIcon from '@mui/icons-material/Person';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import JoinInnerIcon from '@mui/icons-material/JoinInner';
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
 
 
 const NavBar = (): JSX.Element => {
@@ -91,41 +98,46 @@ const NavBar = (): JSX.Element => {
                     </Typography>
                   </MenuItem>
 
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  {auth.email ? "" : <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                      {auth.email ? "" : <Link to="/SignUp">SignUp</Link>}                  
+                       <Link to="/SignUp">SignUp</Link>                  
                     </Typography>
-                  </MenuItem>
+                  </MenuItem>}
 
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  {auth.email ? <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                    {auth.email ? <Link to="/Profile">Profile</Link> : ""}               
+                     <Link to="/Profile">Profile</Link>                
                     </Typography>
-                  </MenuItem>
+                    </MenuItem>
+                  : ""}
 
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  {auth.email && auth.groupName !== "" ? <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                    {auth.email && auth.groupName !== "" ? <Link to="/Team">Team</Link> : ""}              
+                     <Link to="/Team">Team</Link>               
                     </Typography>
                   </MenuItem>
+                  : ""}
 
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                    {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <Link to="/Admin">Admin</Link> : ""}             
+                     <Link to="/Admin">Admin</Link>             
                     </Typography>
                   </MenuItem>
+                  : ""} 
 
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  {auth.email && auth.groupName == '' ? <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                    {auth.email && auth.groupName == '' ? <Link to="/CreateTeam">Create Team</Link> : '' }             
+                     <Link to="/CreateTeam">Create Team</Link>             
                     </Typography>
                   </MenuItem>
+                  : '' } 
 
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  {auth.email && auth.groupName == '' ? <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                    {auth.email && auth.groupName == '' ? <Link to="/JoinTeam">Join Team</Link> : '' }             
+                     <Link to="/JoinTeam">Join Team</Link>             
                     </Typography>
                   </MenuItem>
+                  :'' }  
 
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
@@ -148,49 +160,56 @@ const NavBar = (): JSX.Element => {
                 <Button onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
-                        <Link to={"/"}>Home</Link>
+                        <Link to={"/"}>Home <HomeIcon/></Link>
                 </Button>
+
+                {auth.email ? "" : <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                   <Link to="/SignUp">SignUp</Link>
+                </Button>}
+
+                {auth.email ? <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                   <Link to="/Profile">Profile <PersonIcon/></Link>
+                </Button>
+                 : ""}
+
+                {auth.email && auth.groupName !== "" ?<Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                   <Link to="/Team">Team <GroupsIcon/></Link> 
+                </Button>
+                : ""}
+
+                {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ?
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                 <Link to="/Admin">Admin <AdminPanelSettingsIcon/></Link> 
+                </Button>
+                : ""}
+
+                {auth.email && auth.groupName == '' ?<Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                 <Link to="/CreateTeam">Create Team <NoteAddIcon/></Link>   
+                </Button>
+                : '' }
+
+                {auth.email && auth.groupName == '' ?
+                <Button onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "black" }}
+                >
+                 <Link to="/JoinTeam">Join Team <JoinInnerIcon/></Link>   
+                </Button>
+                : '' } 
 
                 <Button onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "black" }}
                 >
-                  {auth.email ? "" : <Link to="/SignUp">SignUp</Link>}
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                  {auth.email ? <Link to="/Profile">Profile</Link> : ""}
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                  {auth.email && auth.groupName !== "" ? <Link to="/Team">Team</Link> : ""}
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                {auth.role && auth.role.length >= 1 && auth.role.includes("Admin") ? <Link to="/Admin">Admin</Link> : ""}
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                {auth.email && auth.groupName == '' ? <Link to="/CreateTeam">Create Team</Link> : '' }  
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                {auth.email && auth.groupName == '' ? <Link to="/JoinTeam">Join Team</Link> : '' }   
-                </Button>
-
-                <Button onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "black" }}
-                >
-                  <Link to="/ContactUs">Contact Us</Link>
+                  <Link to="/ContactUs">Contact Us <ConnectWithoutContactIcon/></Link>
                 </Button>
 
             </Box>
