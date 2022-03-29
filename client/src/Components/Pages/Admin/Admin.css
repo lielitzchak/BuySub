@@ -22,8 +22,6 @@
   .userPic{
 	  width: 100%;
 	  height: 65%;
-	  /* margin-top: 0; */
-	  /* border-radius: 6px; */
   }
   
   .ButtonsContainer{
@@ -38,14 +36,8 @@
   .addMemberForm{
 	  margin:3vh; 
 	  display: flex;
-	  /* flex-direction: column; */
 	  justify-content: space-between;
 	  max-width:30% ;
-	  /* height: max-content; */
   }
-  /* .userContent{
-	  display: flex;
-	  justify-content: space-around;
-	  flex-direction: column;
-  } */
+
 
