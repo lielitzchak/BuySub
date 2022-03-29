@@ -92,7 +92,7 @@ let joinGroup = async (req, res) => {
 let updateGroup = async (req, res) => {
    const groupToUpdate = await Group.findByIdAndUpdate({ _id: req.params.id }, req.body);
 
-    if(groupToUpdate.groupName != req.body.groupName.toLowerCase()){
+    if(groupToUpdate.groupName != req.body.groupName){
 
       await User.find({ groupName: groupToUpdate.groupName }).then((usersToUpdate) => {
 
