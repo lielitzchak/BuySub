@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { updateGroup } from "../../../Services/GroupsService.service";
 // import Button from '@mui/material/Button';
 // import TextField from '@mui/material/TextField';
@@ -59,18 +59,10 @@ export default function UpdateGroup(props: any) {
 
     }
 
-    // const handleClose = () => {
-    //     props.setshowUpdate(!props.showUpdate);
-    //   };
-
-    // const handleClickOpen = () => {
-    //     setOpen(true);
-    //   };
+    
 
     const handleClose = () => {
         props.setOpen(false);
-
-        // props.setShowUpdate(!props.showUpdate);
     };
 
 
@@ -89,9 +81,9 @@ export default function UpdateGroup(props: any) {
                     <DialogTitle id="responsive-dialog-title">
                         {"Update Group Info"}
                     </DialogTitle>
+                    <form >
+                        <DialogContent>
 
-                    <DialogContent>
-                        <form >
                             <TextField
                                 autoFocus
                                 margin="dense"
@@ -126,9 +118,10 @@ export default function UpdateGroup(props: any) {
                                 onChange={updateGroupInfo}
                                 placeholder={prevgrouptDetail.imageGroup}
                             />
-                        </form>
 
-                    </DialogContent>
+
+                        </DialogContent>
+                    </form>
                     <DialogActions>
                         <Button autoFocus onClick={handleClose}>
                             Disagree
