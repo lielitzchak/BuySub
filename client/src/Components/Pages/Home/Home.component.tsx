@@ -1,4 +1,3 @@
-import React from "react";
 
 function CodeWriters(props: any) {
   return (
@@ -32,29 +31,12 @@ export default function Home() {
   return (
     <div className="homePage">
       <article className="aboutApp">
-        <div className="aboutText">
-          aboutApp Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Temporibus earum dolore quod eos, rem cum ut assumenda? Consectetur,
-          veniam eveniet suscipit enim vero expedita assumenda, harum nobis
-          incidunt impedit repudiandae! Esse eligendi veniam nihil optio
-          repellat maiores ipsa laudantium excepturi minima, id voluptate
-          dolorum sit sequi, dolore rerum totam labore iste quia. A magnam aut
-          rerum modi commodi, veniam totam! Quasi aliquid error a suscipit
-          deleniti recusandae dignissimos quo nesciunt tenetur ipsam, tempora
-          provident qui at odit facilis vel quia laudantium enim? Quas inventore
-          ducimus necessitatibus cum error in obcaecati. Molestias dicta unde
-          alias quisquam esse, voluptates, quos recusandae non doloribus odit
-          quam ex consequatur dolore. Quidem, repudiandae, consequatur aperiam
-          commodi dolorem rem, in dolores voluptate esse provident a! Est?
-        </div>
-        <div className="img">
-          <img
-            src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png"
-            alt="gh"
-          />
-        </div>
+            <pre>"Saves you time, 
+                        Money and 
+                              Worries"</pre>
+          <img  src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png" alt="gh"/>
       </article>
-      <h2 className="title">the programmers</h2>
+      <h2 className="title">Programmers</h2>
       <section className="aboutUs">
         <article className="programmers">
           <div>

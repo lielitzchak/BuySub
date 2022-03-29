@@ -524,24 +524,22 @@
 
 * .homePage .aboutApp {
   padding: 1%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
 }
 
-* .homePage .aboutApp .img {
-  height: 100%;
+* .homePage .aboutApp img {
+  height: 70vh;
+  width: 90%;
+  margin-left: 5rem;
 }
 
-* .homePage .aboutApp .aboutText {
-  color: black;
+* .homePage .aboutApp pre {
+  position: relative;
+  top: 20vh;
+  left: 20%;
 }
 
 * .homePage .title {
