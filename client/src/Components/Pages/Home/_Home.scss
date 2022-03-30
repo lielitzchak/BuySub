@@ -121,3 +121,82 @@
         left: 40%;
     }
 }
+
+
+ /************************************Responsive****************************/
+
+ @media screen and (max-width: 768px ) {
+    
+
+    .homePage {
+        .aboutApp {    
+            img {
+                height: 60vh;
+                margin-left: 0rem;
+            }
+    
+        }
+    
+        .title {
+            text-align: center;
+            height: 5rem;
+            margin-top: 20vh;
+            background-color: rgb(145, 177, 177);
+        }
+    
+        .aboutUs {
+            width: 100%;
+    
+            .programmers {
+                display: grid;
+                grid-template-columns: 30% 30% 30%;
+                gap: 4%;
+                padding: auto;
+                margin: auto;
+                margin-left: 2%;
+            }
+        }
+    
+        .textHome{
+            left: 25%;
+        }
+    }
+    
+ }    
+    
+@media screen and (max-width: 480px) {
+    .homePage {
+        .aboutApp {    
+            img {
+                height: 60vh;
+                margin-left: 0rem;
+            }
+    
+        }
+    
+        .title {
+            text-align: center;
+            height: 5rem;
+            margin-top: 20vh;
+            background-color: rgb(145, 177, 177);
+        }
+    
+        .aboutUs {
+            width: 100%;
+    
+            .programmers {
+                display: grid;
+                grid-template-columns: 30% 30% 30%;
+                gap: 4%;
+                padding: auto;
+                margin: auto;
+                margin-left: 2%;
+            }
+        }
+    
+        .textHome{
+            left: 10%;
+        }
+    }
+    
+}
