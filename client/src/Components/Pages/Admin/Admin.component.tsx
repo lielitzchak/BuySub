@@ -1,4 +1,3 @@
-import "./Admin.css";
 import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
@@ -87,8 +86,6 @@ export const Admin = (): JSX.Element => {
 
   return (
     <>
-
-
       <h1 style={{ textAlign: "center" }}>Group Members </h1>
       <form onSubmit={addMembers} className="addMemberForm">
         <TextField
