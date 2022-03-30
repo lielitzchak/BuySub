@@ -61,7 +61,7 @@ export const joinGroup = async (groupDetailsToJoin: any,id: any): Promise<any> =
       "content-type": "application/json",
       "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`
      },
-    body: JSON.stringify(groupDetailsToJoin),
+    body: JSON.stringify(groupDetailsToJoin)
   };
   return await fetch(`${basic_url}/groups/join/${id}`, options)
     .then((res) => res.json())
