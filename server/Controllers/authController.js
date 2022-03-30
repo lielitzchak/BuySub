@@ -15,7 +15,7 @@ let signupPost = async (req,res)=>{
       
       await  User.create(req.body)
       .then(user=> 
-          jwt.sign({email : user.email,id : user._id,role: user.role},process.env.SECRET_KEY,{expiresIn:'30m'},(err,accessToken)=>{
+          jwt.sign({email : user.email,id : user._id,role: user.role,groupName : user.groupName, firstName: user.firstName, lastName: user.lastName,userImage: user.image},process.env.SECRET_KEY,{expiresIn:'30m'},(err,accessToken)=>{
             if(err) return res.status(400).send({Error:`${err}`})
             res.status(200).send({message:"User has been Added and Signed Up Sucssefuly",user,accessToken});
             user.isLogin = true;

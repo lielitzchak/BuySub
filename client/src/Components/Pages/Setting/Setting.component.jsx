@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { exitGroup, getGroupInfo } from "../../../Services/GroupsService.service";
@@ -20,8 +20,6 @@ export default function Setting() {
     setLoading(true)
     getGroupInfo(auth.groupName).then((data) => {
       setGroupInfo(data)
-      console.log(data);
-
     }).finally(() => setLoading(false));
   }, [])
 

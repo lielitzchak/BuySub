@@ -1,13 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext,useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
 import { joinGroup } from "../../../Services/GroupsService.service";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Features/Loading/Loading.component";
+
 
 
 const JoinTeam = (): JSX.Element => {
-    const { auth,setAuth }: any = useContext(authContext);
+    const { auth,setAuth,loading,setLoading }: any = useContext(authContext);
     const [joinTeamInfo, setJoinTeamInfo]: any = useState({});
     const navigate = useNavigate();
+
+
 
     const joinInfo = (event: any): void => {
         joinTeamInfo[event.target.name] = event.target.value;
@@ -16,17 +20,19 @@ const JoinTeam = (): JSX.Element => {
     const joinTeam = (event: any): void => {
         event.preventDefault();
         // setJoinTeamInfo(joinTeamInfo);
+        setLoading(true)
         joinGroup(joinTeamInfo, auth.id)
             .then(() => {
-                navigate('/ListToBuy')
                 setAuth(auth)
+                navigate('/ListToBuy')
                 console.log(auth);
                 
         })
-            .catch((err) => console.log(err));
+        .catch((err) => console.log(err)).finally(() => setLoading(false));
     };
 
     return (
+        loading ? <Loading/> :
         <div>
             <h1>joinTeam</h1>
             
