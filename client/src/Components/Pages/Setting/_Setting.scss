@@ -71,3 +71,113 @@
     }
 
 }
+
+
+
+ /************************************Responsive****************************/
+
+ @media screen and (max-width: 768px ) {
+   
+    .settingContainer{    
+        .imgGroup{
+            border-radius: 50%;
+            width: 70%;
+            margin-left: 6rem;
+            margin-bottom: 5vh;
+            border: solid 5px rgb(209, 209, 209);
+            padding: 20px;
+            box-shadow: 2px 4px 10px rgb(124, 124, 124);
+        }
+        div{
+            margin-left: 28%;
+        }
+    
+        .groupMembers{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            text-align: center;
+            margin-top: 10vh;
+            margin-bottom: 20vh;
+    
+            
+            section{
+    
+                img{
+                    width: 80%;
+                    height: 60%;
+                   left: 3%;
+                   border-radius: 50%;
+                   box-shadow: 2px 4px 10px #000;
+                }
+    
+            }
+        }
+    
+    }
+    
+
+    
+}
+
+@media screen and (max-width: 480px) {
+
+    .settingContainer{
+        width: 80%;
+        left: 20%;
+        margin-top: 2vh;
+    
+        button{
+            position: relative;
+            left: 50%;
+            width: 5%;
+            height: 50%;
+        }
+    
+        .exitGroup,.editBtn{
+            margin-left: 30%;
+        }
+        .editBtn{
+            margin-top: 2vh;
+        }
+    
+        .imgGroup{
+            width: 80%;
+            margin-left: 2rem;
+            margin-bottom: 5vh;
+            border: solid 5px rgb(209, 209, 209);
+        }
+        div{
+            margin-left: 20%;
+        }
+    
+        .groupMembers{
+            margin-top: 10vh;
+            margin-bottom: 20vh;
+    
+    
+            .title{
+                left: 35%;
+            }
+    
+            
+            section{
+                width: 40%;
+                margin: 8vh 0  0 5px;
+                position: relative;
+                left: 10%;
+
+                img{
+                    width: 60%;
+                    height: 40%;
+                   left: 3%;
+                }
+    
+            }
+        }
+    
+    }
+    
+
+}
+    
