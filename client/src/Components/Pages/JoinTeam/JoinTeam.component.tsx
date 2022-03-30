@@ -21,14 +21,15 @@ const JoinTeam = (): JSX.Element => {
         event.preventDefault();
         // setJoinTeamInfo(joinTeamInfo);
         setLoading(true)
-        joinGroup(joinTeamInfo, auth.id)
-            .then(() => {
+        joinGroup(auth.id,joinTeamInfo)
+            .then((data) => {
                 setAuth(auth)
+                console.log(data);
                 navigate('/ListToBuy')
-                console.log(auth);
-                
+                console.log(auth);      
         })
-        .catch((err) => console.log(err)).finally(() => setLoading(false));
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
     };
 
     return (

@@ -52,12 +52,16 @@
         
         section{
             width: 35%;
-            margin-top: 8vh;
+            height: 50vh;
+            margin: 8vh 0  0 10px;
             position: relative;
+            // background-color: rgb, 255, 0.3);
             left: 12%;
 
+
             img{
-               position: relative;
+                width: 70%;
+                height: 75%;
                left: 3%;
                border-radius: 50%;
                box-shadow: 2px 4px 10px #000;
