@@ -80,7 +80,6 @@ export default function Profile() {
 
       <section className="buttonsContainer">
         {openPopUpUpdateProfile ?
-          // <section className="">
           <Dialog
             fullScreen={fullScreen}
             open={setopenPopUpUpdateProfile}
@@ -175,7 +174,6 @@ export default function Profile() {
 
 
         {openPopUpUpdatePassword ?
-          // <section className="">
           <Dialog
             fullScreen={fullScreen}
             open={setopenPopUpUpdatePassword}
@@ -230,33 +228,18 @@ export default function Profile() {
           <Button variant="contained" onClick={handleClickOpenPasswordPopUp}>Update Password</Button>}
       </section>
 
+      <img className="background" src="https://unpkg.com/css-doodle@0.26.3/css-doodle.min.js"/>
+      
+
       <section className="cardProfile">
-        <img src={auth.userImage} />
-          <h1>{auth.firstName}</h1>
-          <p className="cardTitle"> Email : {auth.email}</p>
-          <p>Group Name : {auth.groupName ? auth.groupName : "None"}</p>
-          <div>
-            {/* <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a> */}
-          </div>
-          <p><button>Contact</button></p>
+        <img src={auth.userImage} className="card-image" />
+            {/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); */}
+        <h1 style={{boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.3)"}}>{auth.firstName}    {auth.lastName}</h1>
+        <h4><span className="cardTitle"> Email :</span> {auth.email}</h4>
+        <h4><span className="cardTitle">Group Name : </span>{auth.groupName ? auth.groupName : "None"}</h4>
       </section>
-      {/* <div className="containerProfile">
-        <div className="card">
-          <div className="card-image" style={{ backgroundImage: `url(${auth.image})` }}></div>
-          <div className="card-content">
-            <h4 className="pt-2">SomeOne Famous</h4>
-            <h5>Creative Desinger</h5>
-            <ul className="social-icons d-flex justify-content-center">
-              <li> <a href="#"> <span className="fab fa-facebook"></span> </a> </li>
-              <li> <a href="#"> <span className="fab fa-twitter"></span> </a> </li>
-              <li> <a href="#"> <span className="fab fa-instagram"></span> </a> </li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
+
+
       {/* <div className="profile_user">
         <img src={auth.userImage} alt="user" />
         <div className="profile_detail_user">
