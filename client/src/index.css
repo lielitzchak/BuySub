@@ -298,25 +298,35 @@
   border-radius: 60px;
 }
 
-* .profile_user {
+* .profile .profile_user {
   padding: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 20%;
+  margin-left: 2%;
   padding-top: 2%;
 }
 
-* .profile_user img {
+* .profile .profile_user img {
   border-radius: 50%;
 }
 
-* .profile_user div {
+* .profile .profile_user div {
   margin-left: 5%;
 }
 
-* .profile_user div h1 {
+* .profile .profile_user div h1 {
   font-family: 'Lato', sans-serif;
+}
+
+* .profile .formInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
 * footer {
