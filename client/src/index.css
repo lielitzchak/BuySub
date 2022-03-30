@@ -865,14 +865,14 @@
           box-shadow: 2px 4px 10px #000;
 }
 
-* body {
+* .page404 {
   min-height: 450px;
   height: 100vh;
   margin: 0;
   background: radial-gradient(circle, #0077ea, #1f4f96, #1b2949, #000);
 }
 
-* .stage {
+* .page404 .stage {
   height: 300px;
   width: 500px;
   margin: auto;
@@ -887,7 +887,7 @@
           transform-style: preserve-3d;
 }
 
-* .layer {
+* .page404 .layer {
   width: 100%;
   height: 100%;
   position: absolute;
