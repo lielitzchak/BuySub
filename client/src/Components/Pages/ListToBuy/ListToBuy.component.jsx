@@ -9,18 +9,27 @@ import AddchartIcon from '@mui/icons-material/Addchart';
 
 
 export default function ListToBuy() {
-  const { auth } = useContext(authContext)
+  const { auth,loading,setLoading } = useContext(authContext)
   const [groupListToBuy, setGroupListToBuy] = useState({})
   const [productInfo, setProductInfo] = useState({});
   const [showFormToAddProductToList, setShowFormToAddProductToList] = useState(false);
 
 
   useEffect(() => {
+    setLoading(true)
 
-    getGroupInfo(auth.groupName).then((data) => {
+     getGroupInfo(auth.groupName)
+      .then((data) => {
+      if(data && data.listToBuy){
         setGroupListToBuy(data.listToBuy)
         console.log(data.listToBuy);
+      }
+    
+    }).
+    catch((err) => {
+        console.log(err);
     })
+    .finally(()=>setLoading(false))
   }, [])
 
   let updateProductInfo = (event) => {

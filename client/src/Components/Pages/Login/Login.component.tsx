@@ -27,8 +27,6 @@ const Login = (): JSX.Element => {
           let tokenDecoded: any = jwt_decode(res.accessToken);
           setAuth(tokenDecoded);
           navigate("/");
-          console.log(auth);
-          
         }
       })
       .catch((err) => {
