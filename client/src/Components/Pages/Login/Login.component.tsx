@@ -39,6 +39,7 @@ const Login = (): JSX.Element => {
     loading ? <Loading/> :
      
     <div className="container">
+      <span className="background_logIn_page"></span>
       <div className="screen">
         <div className="screen__content">
           <form onSubmit={saveNewUser} className="login">
