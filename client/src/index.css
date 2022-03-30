@@ -547,19 +547,19 @@
   text-align: center;
 }
 
+* .homePage .aboutUs {
+  width: 100%;
+}
+
 * .homePage .aboutUs .programmers {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 30% 30%;
+      grid-template-columns: 30% 30% 30%;
+  gap: 4%;
+  padding: auto;
+  margin: auto;
+  margin-left: 2%;
 }
 
 * .inventoryContainer {
