@@ -1,14 +1,27 @@
 import { useContext, useState } from "react";
 import { authContext } from "../../../Context/AuthProvider.component";
-import {
-  changeUserPassword,
-  updateUser,
-} from "../../../Services/UserService.service";
+import { changeUserPassword, updateUser, } from "../../../Services/UserService.service";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import { TextField } from "@mui/material";
+
+
 
 export default function Profile() {
   const { auth } = useContext(authContext);
   const [userInfo, setUserInfo] = useState({});
   const [userPasswordInfo, setUserPasswordInfo] = useState({});
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const [openPopUpUpdateProfile, setopenPopUpUpdateProfile] = useState(false);
+  const [openPopUpUpdatePassword, setopenPopUpUpdatePassword] = useState(false);
+
 
   let userInfoToUpdate = (e) => {
     userInfo[e.target.name] = e.target.value;
@@ -43,75 +56,208 @@ export default function Profile() {
       });
   };
 
+
+  const handleClickOpen = () => {
+    setopenPopUpUpdateProfile(true);
+  };
+
+  const handleClose = () => {
+    setopenPopUpUpdateProfile(false);
+  };
+
+  const handleClickOpenPasswordPopUp = () => {
+    setopenPopUpUpdatePassword(true);
+  };
+
+  const handleClosePasswordPopUp = () => {
+    setopenPopUpUpdatePassword(false);
+  };
+
   return (
-    <article className="profile">
-      <section className="formInfo">
-        <form onSubmit={updateUserPassword} className="c">
-          <label>Current Password</label>
-          <input
-            type="password"
-            placeholder="current password"
-            name="confirmPassword"
-            onChange={userPasswordInfoToUpdate}
-            required
-          />
 
-          <label>New Password</label>
-          <input
-            type="password"
-            placeholder="new password"
-            name="password"
-            onChange={userPasswordInfoToUpdate}
-            required
-          />
 
-          <button>Update Password</button>
-        </form>
-        <form onSubmit={saveUpdatedUserInfo} className="f">
-          <label>First Name</label>
-          <input
-            type="text"
-            placeholder="first Name"
-            name="firstName"
-            onChange={userInfoToUpdate}
-          />
+    < div className="containerToAllProfilePage" >
 
-          <label>Last Name</label>
-          <input
-            type="text"
-            placeholder="last Name"
-            name="lastName"
-            onChange={userInfoToUpdate}
-          />
+      <section className="buttonsContainer">
+        {openPopUpUpdateProfile ?
+          // <section className="">
+          <Dialog
+            fullScreen={fullScreen}
+            open={setopenPopUpUpdateProfile}
+            onClose={handleClose}
+            aria-labelledby="responsive-dialog-title"
+          >
+            <DialogTitle id="responsive-dialog-title">
+              {"Update Profile"}
+            </DialogTitle>
+            <form action="" autoComplete="on">
 
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="email"
-            name="email"
-            onChange={userInfoToUpdate}
-          />
+              <DialogContent>
+                <DialogContentText>
 
-          <label>Profile Image</label>
-          <input
-            type="text"
-            placeholder="image"
-            name="image"
-            onChange={userInfoToUpdate}
-          />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    label="First Name"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    name="firstName"
+                    onChange={userInfoToUpdate}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    label="Last Name"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    name="lastName"
+                    onChange={userInfoToUpdate}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    label="Email"
+                    type="email"
+                    fullWidth
+                    variant="standard"
+                    name="email"
+                    onChange={userInfoToUpdate}
+                  />
 
-          <label>Birth Of Date</label>
-          <input
-            type="date"
-            placeholder="birth Of Date"
-            name="birthOfDate"
-            onChange={userInfoToUpdate}
-          />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    // label="Expiration Date"
+                    type="date"
+                    fullWidth
+                    variant="standard"
+                    name="expirationDate"
+                    onChange={userInfoToUpdate}
+                  />
 
-          <button>Update</button>
-        </form>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    label="Image"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    name="image"
+                    onChange={userInfoToUpdate}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    label="Birth Of Date"
+                    type="text"
+                    fullWidth
+                    variant="standard"
+                    name="birthOfDate"
+                    onChange={userInfoToUpdate}
+                  />
+
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button autoFocus onClick={handleClose}>
+                  Cancel
+                </Button>
+                <Button onClick={saveUpdatedUserInfo} autoFocus>
+                  Update
+                </Button>
+              </DialogActions>
+            </form>
+          </Dialog> :
+
+          <Button variant="contained" onClick={handleClickOpen}>Update Profile</Button>}
+
+
+        {openPopUpUpdatePassword ?
+          // <section className="">
+          <Dialog
+            fullScreen={fullScreen}
+            open={setopenPopUpUpdatePassword}
+            onClose={handleClosePasswordPopUp}
+            aria-labelledby="responsive-dialog-title"
+          >
+            <DialogTitle id="responsive-dialog-title">
+              {"Update Profile"}
+            </DialogTitle>
+            <form action="" autoComplete="on">
+
+              <DialogContent>
+                <DialogContentText>
+
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    // label="Confirm Password"
+                    type="password"
+                    fullWidth
+                    variant="standard"
+                    required
+                    placeholder="current password"
+                    name="confirmPassword"
+                    onChange={userPasswordInfoToUpdate}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    // label="Password"
+                    type="password"
+                    fullWidth
+                    variant="standard"
+                    required
+                    placeholder="new password"
+                    name="password"
+                    onChange={userPasswordInfoToUpdate}
+                  />
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button autoFocus onClick={handleClosePasswordPopUp}>
+                  Cancel
+                </Button>
+                <Button onClick={updateUserPassword} autoFocus>
+                  Update
+                </Button>
+              </DialogActions>
+            </form>
+          </Dialog> :
+
+          <Button variant="contained" onClick={handleClickOpenPasswordPopUp}>Update Password</Button>}
       </section>
-      <div className="profile_user">
+
+      <div class="cardProfile">
+        <img src="/w3images/team2.jpg" alt="John" style="width:100%"/>
+          <h1>John Doe</h1>
+          <p class="title">CEO & Founder, Example</p>
+          <p>Harvard University</p>
+          <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </div>
+          <p><button>Contact</button></p>
+      </div>
+      {/* <div className="containerProfile">
+        <div className="card">
+          <div className="card-image" style={{ backgroundImage: `url(${auth.image})` }}></div>
+          <div className="card-content">
+            <h4 className="pt-2">SomeOne Famous</h4>
+            <h5>Creative Desinger</h5>
+            <ul className="social-icons d-flex justify-content-center">
+              <li> <a href="#"> <span className="fab fa-facebook"></span> </a> </li>
+              <li> <a href="#"> <span className="fab fa-twitter"></span> </a> </li>
+              <li> <a href="#"> <span className="fab fa-instagram"></span> </a> </li>
+            </ul>
+          </div>
+        </div>
+      </div> */}
+      {/* <div className="profile_user">
         <img src={auth.userImage} alt="user" />
         <div className="profile_detail_user">
           <h1>First Name : {auth.firstName}</h1>
@@ -120,7 +266,9 @@ export default function Profile() {
           <h1>Group Name : {auth.groupName ? auth.groupName : "None"}</h1>
           {console.log(auth)}
         </div>
-      </div>
-    </article>
+      </div>  */}
+
+
+    </div >
   );
 }
