@@ -61,7 +61,7 @@ export default function Home() {
           </div>
           <div>
             <CodeWriters
-              img="https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+              img="/pictures/d378ea60-7344-4b60-bf05-e82fa9800990.jpg"
               name="Eliyahu Belay"
               linkedin="https://www.linkedin.com/in/eliyahu-belay-a75634227/"
               email=""
