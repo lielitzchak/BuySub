@@ -6,6 +6,7 @@
 @import url("//fonts.googleapis.com/css?family=Pacifico&text=Pure");
 @import url("//fonts.googleapis.com/css?family=Roboto:700&text=css");
 @import url("//fonts.googleapis.com/css?family=Kaushan+Script&text=!");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@1,600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 * {
   border: 0;
@@ -1374,5 +1375,55 @@
     -webkit-transform: rotateY(-40deg) rotateX(-43deg);
             transform: rotateY(-40deg) rotateX(-43deg);
   }
+}
+
+* .contactUsContainer {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+* .contactUsContainer .contactUsTitle {
+  font-family: 'Red Hat Mono', monospace;
+  margin-bottom: 10%;
+  color: #1976d2;
+  font-size: 50px;
+}
+
+* .contactUsContainer .contactUsBackground {
+  background-image: url("https://cdn.pixabay.com/photo/2016/06/22/11/10/box-1472804__340.png");
+  background-size: cover;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  position: absolute;
+}
+
+* .contactUsContainer .contactUsForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 60%;
 }
 /*# sourceMappingURL=index.css.map */

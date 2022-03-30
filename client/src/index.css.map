@@ -12,7 +12,8 @@
         "Components/Pages/Team/_Team.scss",
         "Components/Pages/ListToBuy/_listToBuyContainer.scss",
         "Components/Pages/Setting/_Setting.scss",
-        "Components/Pages/Page404/_Page404.scss"
+        "Components/Pages/Page404/_Page404.scss",
+        "Components/Pages/ContactUs/_ContactUs.scss"
     ],
     "names": [],
     "file": "index.css"

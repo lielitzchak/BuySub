@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@1,600&display=swap');
+
+.contactUsContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .contactUsTitle{
+        font-family: 'Red Hat Mono', monospace;
+        margin-bottom: 10%;
+        color: #1976d2;
+        font-size: 50px;
+    }
+
+    .contactUsBackground{
+    background-image: url("https://cdn.pixabay.com/photo/2016/06/22/11/10/box-1472804__340.png");
+    background-size:cover;
+    filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    position: absolute;
+    }
+    
+    .contactUsForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 60%;
+    }
+}
+

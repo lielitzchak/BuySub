@@ -233,25 +233,10 @@ export default function Profile() {
 
       <section className="cardProfile">
         <img src={auth.userImage} className="card-image" />
-            {/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); */}
         <h1 style={{boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.3)"}}>{auth.firstName}    {auth.lastName}</h1>
         <h4><span className="cardTitle"> Email :</span> {auth.email}</h4>
         <h4><span className="cardTitle">Group Name : </span>{auth.groupName ? auth.groupName : "None"}</h4>
       </section>
-
-
-      {/* <div className="profile_user">
-        <img src={auth.userImage} alt="user" />
-        <div className="profile_detail_user">
-          <h1>First Name : {auth.firstName}</h1>
-          <h1>Last Name : {auth.lastName}</h1>
-          <h1>Email : {auth.email}</h1>
-          <h1>Group Name : {auth.groupName ? auth.groupName : "None"}</h1>
-          {console.log(auth)}
-        </div>
-      </div>  */}
-
-
     </div >
   );
 }
