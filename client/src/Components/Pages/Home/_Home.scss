@@ -88,20 +88,17 @@
 
         img {
             height: 70vh;
-            width: 90%;
+            width: 100%;
             margin-left: 5rem;
-        }
-
-        pre {
-            position: relative;
-            top: 20vh;
-            left: 20%;
         }
 
     }
 
     .title {
         text-align: center;
+        height: 5rem;
+        margin-top: 20vh;
+        background-color: rgb(145, 177, 177);
     }
 
     .aboutUs {
@@ -115,5 +112,12 @@
             margin: auto;
             margin-left: 2%;
         }
+    }
+
+    .textHome{
+        position: absolute;
+        top: 80vh;
+        width: 100%;
+        left: 40%;
     }
 }
