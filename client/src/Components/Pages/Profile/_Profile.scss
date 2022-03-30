@@ -1,4 +1,7 @@
 .profile {
+    display: flex;
+    flex-direction: row-reverse;
+
     .profile_user {
         padding: auto;
         display: flex;
@@ -22,5 +25,17 @@
     .formInfo {
         display: flex;
         flex-direction: row-reverse;
+
+        .f {
+            background: green;
+            margin: 3%;
+            padding: 3%;
+        }
+
+        .c {
+            background: yellow;
+        }
     }
+
+
 }
