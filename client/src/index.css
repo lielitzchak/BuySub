@@ -863,13 +863,15 @@
 
 * .settingContainer .groupMembers section {
   width: 35%;
-  margin-top: 8vh;
+  height: 50vh;
+  margin: 8vh 0  0 10px;
   position: relative;
   left: 12%;
 }
 
 * .settingContainer .groupMembers section img {
-  position: relative;
+  width: 70%;
+  height: 75%;
   left: 3%;
   border-radius: 50%;
   -webkit-box-shadow: 2px 4px 10px #000;

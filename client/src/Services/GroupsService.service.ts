@@ -54,7 +54,7 @@ export const addProductToListToBuy = async (groupName:any,productToAdd: any): Pr
     .catch((er) => console.log(er));
 };
 
-export const joinGroup = async (groupDetailsToJoin: any,id: any): Promise<any> => {
+export const joinGroup = async (id: any,groupDetailsToJoin: any): Promise<any> => {
   let options = {
     method: "POST",
     headers: { 

@@ -1,6 +1,6 @@
 export const navBarStyle = {
     dark : {
-      backgroundColor : 'black',
+      backgroundColor : '#7a7979',
       color : '#fff'
     },
     light : {
