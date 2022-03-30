@@ -92,7 +92,7 @@
             margin-left: 5rem;
         }
 
-        pre{
+        pre {
             position: relative;
             top: 20vh;
             left: 20%;
@@ -109,8 +109,5 @@
             @include FlexCenter;
             justify-content: space-evenly;
         }
-    }
-    .location{
-        
     }
 }

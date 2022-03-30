@@ -1,4 +1,3 @@
-
 function CodeWriters(props: any) {
   return (
     <div className="container">
@@ -31,10 +30,11 @@ export default function Home() {
   return (
     <div className="homePage">
       <article className="aboutApp">
-            <pre>"Saves you time, 
-                        Money and 
-                              Worries"</pre>
-          <img  src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png" alt="gh"/>
+        <pre className="textHome">"Saves you time, Money and Worries"</pre>
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png"
+          alt="gh"
+        />
       </article>
       <h2 className="title">Programmers</h2>
       <section className="aboutUs">

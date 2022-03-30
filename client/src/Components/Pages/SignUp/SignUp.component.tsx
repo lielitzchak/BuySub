@@ -43,7 +43,6 @@ const SingUp = (): JSX.Element => {
               />
             </div>
             <div className="signUp__field">
-              <i className="signUp__icon fas fa-lock"></i>
               <input
                 className="signUp__input"
                 placeholder="last Name"
@@ -53,7 +52,6 @@ const SingUp = (): JSX.Element => {
               />
             </div>
             <div className="signUp__field">
-              <i className="signUp__icon fas fa-user"></i>
               <input
                 className="signUp__input"
                 placeholder="email"
@@ -63,7 +61,6 @@ const SingUp = (): JSX.Element => {
               />
             </div>
             <div className="signUp__field">
-              <i className="signUp__icon fas fa-user"></i>
               <input
                 className="signUp__input"
                 placeholder="password"
@@ -73,7 +70,6 @@ const SingUp = (): JSX.Element => {
               />
             </div>
             <div className="signUp__field">
-              <i className="signUp__icon fas fa-user"></i>
               <input
                 className="signUp__input"
                 placeholder="image"
@@ -83,7 +79,6 @@ const SingUp = (): JSX.Element => {
               />
             </div>
             <div className="signUp__field">
-              <i className="signUp__icon fas fa-user"></i>
               <input
                 className="signUp__input"
                 placeholder="birth Of Date"
