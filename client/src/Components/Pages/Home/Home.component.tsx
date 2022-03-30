@@ -1,4 +1,3 @@
-
 function CodeWriters(props: any) {
   return (
     <div className="container">
@@ -31,10 +30,11 @@ export default function Home() {
   return (
     <div className="homePage">
       <article className="aboutApp">
-            <pre>"Saves you time, 
-                        Money and 
-                              Worries"</pre>
-          <img  src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png" alt="gh"/>
+        <pre className="textHome">"Saves you time, Money and Worries"</pre>
+        <img
+          src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png"
+          alt="gh"
+        />
       </article>
       <h2 className="title">Programmers</h2>
       <section className="aboutUs">
@@ -72,8 +72,8 @@ export default function Home() {
         <iframe
           title="map"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d846.3129312038369!2d34.89091117080763!3d31.954066998826754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502ca59320315f9%3A0x7951b47ac328a87c!2z15jXpy3Xp9eo15nXmdeo15Q!5e0!3m2!1siw!2sil!4v1648473192184!5m2!1siw!2sil"
-          width="400"
-          height="300"
+          width="100%"
+          height="400"
           loading="lazy"
         ></iframe>
       </section>

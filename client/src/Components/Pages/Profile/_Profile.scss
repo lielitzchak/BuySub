@@ -1,20 +1,41 @@
-.profile_user {
-    padding: auto;
+.profile {
     display: flex;
-    margin-left: 20%;
-    padding-top: 2%;
+    flex-direction: row-reverse;
 
-    // justify-content: space-around;
-    img {
-        border-radius: 50%;
-    }
+    .profile_user {
+        padding: auto;
+        display: flex;
+        margin-left: 2%;
+        padding-top: 2%;
 
-    div {
-        margin-left: 5%;
+        img {
+            border-radius: 50%;
+        }
 
-        h1 {
-            @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-            font-family: 'Lato', sans-serif;
+        div {
+            margin-left: 5%;
+
+            h1 {
+                @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+                font-family: 'Lato', sans-serif;
+            }
         }
     }
+
+    .formInfo {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .f {
+            background: green;
+            margin: 3%;
+            padding: 3%;
+        }
+
+        .c {
+            background: yellow;
+        }
+    }
+
+
 }

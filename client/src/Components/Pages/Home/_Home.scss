@@ -92,7 +92,7 @@
             margin-left: 5rem;
         }
 
-        pre{
+        pre {
             position: relative;
             top: 20vh;
             left: 20%;
@@ -105,9 +105,15 @@
     }
 
     .aboutUs {
+        width: 100%;
+
         .programmers {
-            @include FlexCenter;
-            justify-content: space-evenly;
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            gap: 4%;
+            padding: auto;
+            margin: auto;
+            margin-left: 2%;
         }
     }
 }

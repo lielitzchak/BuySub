@@ -8,7 +8,7 @@ function App() {
   return (
       <AuthProvider>
         <ThemeProvider>
-          <RouterApp />
+          <RouterApp /> 
         </ThemeProvider>
       </AuthProvider>
   );
