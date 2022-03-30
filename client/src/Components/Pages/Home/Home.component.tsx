@@ -30,11 +30,13 @@ export default function Home() {
   return (
     <div className="homePage">
       <article className="aboutApp">
-        <pre className="textHome">"Saves you time, Money and Worries"</pre>
+
+
         <img
           src="https://cdni.iconscout.com/illustration/premium/thumb/people-shopping-online-2663489-2207658.png"
           alt="gh"
         />
+          <h1 className="textHome">"Saves Your Time, Money And Worries"</h1>
       </article>
       <h2 className="title">Programmers</h2>
       <section className="aboutUs">
