@@ -25,3 +25,51 @@
 }
 
 
+
+ /************************************Responsive****************************/
+
+ @media screen and (max-width: 768px ) {
+    
+
+    .listToBuyContainer{   
+
+        .offerProducts{
+            position: relative;
+            left: 55%;
+            bottom: 2rem;
+        }
+    
+        .AddProduct{
+            position: relative;
+            margin-right: 25em;
+            bottom: 4rem;
+        }
+    }
+
+    .searchBox{
+        margin: 0 6rem ;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .listToBuyContainer{   
+
+        .offerProducts{
+            position: relative;
+            left: 25%;
+        }
+    
+        .AddProduct{
+            position: relative;
+            margin-right: 20em;
+            bottom: 3rem;
+        }
+    }
+
+    .searchBox{
+        margin: 0 4rem ;
+    }
+
+}
+    

@@ -12,6 +12,9 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  /************************************Responsive****************************/
+  /************************************Responsive****************************/
+  /************************************Responsive****************************/
 }
 
 * .container {
@@ -362,43 +365,6 @@
   -webkit-box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1);
           box-shadow: 0 -10px 10px rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-* .card {
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-}
-
-* .title {
-  color: grey;
-  font-size: 18px;
-}
-
-* button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-* a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
-
-* button:hover, * a:hover {
-  opacity: 0.7;
 }
 
 * footer {
@@ -774,6 +740,202 @@
   top: 6vh;
 }
 
+@media screen and (max-width: 768px) {
+  * .inventoryProducts {
+    width: 90%;
+    height: 20vh;
+    margin-top: 5vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    background-image: url("https://cdn.pixabay.com/photo/2021/02/02/18/30/icon-5974829__480.png");
+    background-size: 100%;
+    background-position: center;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.46);
+            box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.46);
+  }
+  * .inventoryProducts img {
+    border-radius: 50%;
+    justify-self: flex-end;
+    width: 15%;
+    height: 60%;
+    margin-left: 1rem;
+  }
+  * .inventoryProducts .quantityControls {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 30%;
+    height: 60%;
+    font-size: 0.8rem;
+  }
+  * .inventoryProducts .quantityControls h1 {
+    margin-top: 1vh;
+    margin-left: 2.5rem;
+  }
+  * .inventoryProducts .quantityControls button {
+    width: 30%;
+    height: 50%;
+    font-size: 1rem;
+    text-align: center;
+    margin: auto;
+  }
+  * .inventoryProducts .productsInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: auto;
+    padding-left: 0.7rem;
+    width: 45%;
+    height: 40%;
+  }
+  * .inventoryProducts .productsOpertaions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 15%;
+    height: 90%;
+    margin: auto;
+  }
+  * .inventoryProducts .productsOpertaions button {
+    height: 25%;
+    width: 80%;
+    font-size: 0.8rem;
+  }
+  * .addProduct {
+    position: absolute;
+    left: 80%;
+    top: 6vh;
+  }
+  * .addProduct Button {
+    width: 70%;
+    border-radius: 50%;
+    font-size: 0.6rem;
+  }
+  * .searchBox {
+    margin-right: 5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  * .inventoryProducts {
+    width: 90%;
+    height: 20vh;
+    margin-top: 5vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    background-image: url("https://cdn.pixabay.com/photo/2021/02/02/18/30/icon-5974829__480.png");
+    background-size: 100%;
+    background-position: center;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.46);
+            box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.46);
+  }
+  * .inventoryProducts img {
+    border-radius: 50%;
+    justify-self: flex-end;
+    width: 15%;
+    height: 60%;
+    margin-left: 1rem;
+  }
+  * .inventoryProducts .quantityControls {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 30%;
+    height: 55%;
+    font-size: 0.8rem;
+  }
+  * .inventoryProducts .quantityControls h1 {
+    margin-top: 1vh;
+    margin-left: 1rem;
+  }
+  * .inventoryProducts .quantityControls button {
+    width: 30%;
+    height: 50%;
+    font-size: 1rem;
+    text-align: center;
+    margin: auto;
+  }
+  * .inventoryProducts .productsInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: auto;
+    padding-left: 0.7rem;
+    width: 45%;
+    height: 40%;
+  }
+  * .inventoryProducts .productsOpertaions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 15%;
+    height: 90%;
+    margin: auto;
+  }
+  * .inventoryProducts .productsOpertaions button {
+    height: 25%;
+    width: 80%;
+    font-size: 0.8rem;
+  }
+  * .addProduct {
+    position: absolute;
+    left: 80%;
+    top: 6vh;
+  }
+  * .addProduct Button {
+    width: 70%;
+    border-radius: 50%;
+    font-size: 0.6rem;
+  }
+  * .searchBox {
+    margin-right: 5rem;
+  }
+}
+
 * .teamContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -833,6 +995,37 @@
 * .listToBuyContainer .AddProduct {
   position: relative;
   left: 12%;
+}
+
+@media screen and (max-width: 768px) {
+  * .listToBuyContainer .offerProducts {
+    position: relative;
+    left: 55%;
+    bottom: 2rem;
+  }
+  * .listToBuyContainer .AddProduct {
+    position: relative;
+    margin-right: 25em;
+    bottom: 4rem;
+  }
+  * .searchBox {
+    margin: 0 6rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  * .listToBuyContainer .offerProducts {
+    position: relative;
+    left: 25%;
+  }
+  * .listToBuyContainer .AddProduct {
+    position: relative;
+    margin-right: 20em;
+    bottom: 3rem;
+  }
+  * .searchBox {
+    margin: 0 4rem;
+  }
 }
 
 * .settingContainer {
@@ -913,6 +1106,88 @@
   border-radius: 50%;
   -webkit-box-shadow: 2px 4px 10px #000;
           box-shadow: 2px 4px 10px #000;
+}
+
+@media screen and (max-width: 768px) {
+  * .settingContainer .imgGroup {
+    border-radius: 50%;
+    width: 70%;
+    margin-left: 6rem;
+    margin-bottom: 5vh;
+    border: solid 5px #d1d1d1;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px #7c7c7c;
+            box-shadow: 2px 4px 10px #7c7c7c;
+  }
+  * .settingContainer div {
+    margin-left: 28%;
+  }
+  * .settingContainer .groupMembers {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+  }
+  * .settingContainer .groupMembers section img {
+    width: 80%;
+    height: 60%;
+    left: 3%;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 4px 10px #000;
+            box-shadow: 2px 4px 10px #000;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  * .settingContainer {
+    width: 80%;
+    left: 20%;
+    margin-top: 2vh;
+  }
+  * .settingContainer button {
+    position: relative;
+    left: 50%;
+    width: 5%;
+    height: 50%;
+  }
+  * .settingContainer .exitGroup, * .settingContainer .editBtn {
+    margin-left: 30%;
+  }
+  * .settingContainer .editBtn {
+    margin-top: 2vh;
+  }
+  * .settingContainer .imgGroup {
+    width: 80%;
+    margin-left: 2rem;
+    margin-bottom: 5vh;
+    border: solid 5px #d1d1d1;
+  }
+  * .settingContainer div {
+    margin-left: 20%;
+  }
+  * .settingContainer .groupMembers {
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+  }
+  * .settingContainer .groupMembers .title {
+    left: 35%;
+  }
+  * .settingContainer .groupMembers section {
+    width: 40%;
+    margin: 8vh 0  0 5px;
+    position: relative;
+    left: 10%;
+  }
+  * .settingContainer .groupMembers section img {
+    width: 60%;
+    height: 40%;
+    left: 3%;
+  }
 }
 
 * .page404 {
