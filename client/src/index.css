@@ -364,76 +364,41 @@
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-* .container .row .col-lg-4 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-* .card:hover .card-content {
-  bottom: 0px;
-}
-
-* .card:hover .card-content h4,
-* .card:hover .card-content h5 {
-  -webkit-transform: translateY(10px);
-          transform: translateY(10px);
-  opacity: 1;
-}
-
-* .card .card-content h4,
-* .card .card-content h5 {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+* .card {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
   text-align: center;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
-  font-weight: 500;
-  opacity: 0;
-  -webkit-transform: translateY(-40px);
-          transform: translateY(-40px);
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s;
+  font-family: arial;
 }
 
-* .card .card-content h5 {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  font-weight: 200;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
+* .title {
+  color: grey;
+  font-size: 18px;
 }
 
-* .card .card-content .social-icons {
-  list-style: none;
-  padding: 0;
+* button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }
 
-* .card .card-content .social-icons li {
-  margin: 10px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-transition-delay: calc(0.15s * var(--i));
-          transition-delay: calc(0.15s * var(--i));
-  -webkit-transform: translateY(50px);
-          transform: translateY(50px);
+* a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
 }
 
-* .card:hover .card-content .social-icons li {
-  -webkit-transform: translateY(20px);
-          transform: translateY(20px);
-}
-
-* .card .card-content .social-icons li a {
-  color: #fff;
-}
-
-* .card .card-content .social-icons li a span {
-  font-size: 1.3rem;
+* button:hover, * a:hover {
+  opacity: 0.7;
 }
 
 * footer {

@@ -230,19 +230,19 @@ export default function Profile() {
           <Button variant="contained" onClick={handleClickOpenPasswordPopUp}>Update Password</Button>}
       </section>
 
-      {/* <div class="cardProfile">
-        <img src="/w3images/team2.jpg" alt="John" style="width:100%"/>
-          <h1>John Doe</h1>
-          <p class="title">CEO & Founder, Example</p>
-          <p>Harvard University</p>
-          <div style="margin: 24px 0;">
-            <a href="#"><i class="fa fa-dribbble"></i></a>
+      <section className="cardProfile">
+        <img src={auth.userImage} />
+          <h1>{auth.firstName}</h1>
+          <p className="cardTitle"> Email : {auth.email}</p>
+          <p>Group Name : {auth.groupName ? auth.groupName : "None"}</p>
+          <div>
+            {/* <a href="#"><i class="fa fa-dribbble"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a> */}
           </div>
           <p><button>Contact</button></p>
-      </div> */}
+      </section>
       {/* <div className="containerProfile">
         <div className="card">
           <div className="card-image" style={{ backgroundImage: `url(${auth.image})` }}></div>
