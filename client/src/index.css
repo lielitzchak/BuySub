@@ -582,18 +582,15 @@
 
 * .homePage .aboutApp img {
   height: 70vh;
-  width: 90%;
+  width: 100%;
   margin-left: 5rem;
-}
-
-* .homePage .aboutApp pre {
-  position: relative;
-  top: 20vh;
-  left: 20%;
 }
 
 * .homePage .title {
   text-align: center;
+  height: 5rem;
+  margin-top: 20vh;
+  background-color: #91b1b1;
 }
 
 * .homePage .aboutUs {
@@ -609,6 +606,13 @@
   padding: auto;
   margin: auto;
   margin-left: 2%;
+}
+
+* .homePage .textHome {
+  position: absolute;
+  top: 80vh;
+  width: 100%;
+  left: 40%;
 }
 
 * .inventoryContainer {
