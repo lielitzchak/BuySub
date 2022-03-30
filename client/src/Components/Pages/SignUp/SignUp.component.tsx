@@ -30,76 +30,77 @@ const SingUp = (): JSX.Element => {
   };
   return (
     <div className="container_signUp">
-      <div className="screen">
-        <div className="screen__content">
-          <form className="signUp" onSubmit={saveNewUser}>
-            <div className="signUp__field">
-              <input
-                className="signUp__input"
-                placeholder="first Name"
-                name="firstName"
-                onChange={updateUserInfo}
-                type="text"
-              />
-            </div>
-            <div className="signUp__field">
-              <input
-                className="signUp__input"
-                placeholder="last Name"
-                name="lastName"
-                onChange={updateUserInfo}
-                type="text"
-              />
-            </div>
-            <div className="signUp__field">
-              <input
-                className="signUp__input"
-                placeholder="email"
-                name="email"
-                onChange={updateUserInfo}
-                type="email"
-              />
-            </div>
-            <div className="signUp__field">
-              <input
-                className="signUp__input"
-                placeholder="password"
-                name="password"
-                onChange={updateUserInfo}
-                type="password"
-              />
-            </div>
-            <div className="signUp__field">
-              <input
-                className="signUp__input"
-                placeholder="image"
-                name="image"
-                onChange={updateUserInfo}
-                type="text"
-              />
-            </div>
-            <div className="signUp__field">
-              <input
-                className="signUp__input"
-                placeholder="birth Of Date"
-                name="birthOfDate"
-                onChange={updateUserInfo}
-                type="date"
-              />
-            </div>
-            <button className="button signUp__submit">
-              <span className="button__text">save me!</span>
-            </button>
-            <div className="screen__background">
-              <span className="screen__background__shape screen__background__shape4"></span>
-              <span className="screen__background__shape screen__background__shape3"></span>
-              <span className="screen__background__shape screen__background__shape2"></span>
-              <span className="screen__background__shape screen__background__shape1"></span>
-            </div>
-          </form>
+        <div className="background_signUp_page"></div>
+        <div className="screen">
+          <div className="screen__content">
+            <form className="signUp" onSubmit={saveNewUser}>
+              <div className="signUp__field">
+                <input
+                  className="signUp__input"
+                  placeholder="first Name"
+                  name="firstName"
+                  onChange={updateUserInfo}
+                  type="text"
+                />
+              </div>
+              <div className="signUp__field">
+                <input
+                  className="signUp__input"
+                  placeholder="last Name"
+                  name="lastName"
+                  onChange={updateUserInfo}
+                  type="text"
+                />
+              </div>
+              <div className="signUp__field">
+                <input
+                  className="signUp__input"
+                  placeholder="email"
+                  name="email"
+                  onChange={updateUserInfo}
+                  type="email"
+                />
+              </div>
+              <div className="signUp__field">
+                <input
+                  className="signUp__input"
+                  placeholder="password"
+                  name="password"
+                  onChange={updateUserInfo}
+                  type="password"
+                />
+              </div>
+              <div className="signUp__field">
+                <input
+                  className="signUp__input"
+                  placeholder="image"
+                  name="image"
+                  onChange={updateUserInfo}
+                  type="text"
+                />
+              </div>
+              <div className="signUp__field">
+                <input
+                  className="signUp__input"
+                  placeholder="birth Of Date"
+                  name="birthOfDate"
+                  onChange={updateUserInfo}
+                  type="date"
+                />
+              </div>
+              <button className="button signUp__submit">
+                <span className="button__text">save me!</span>
+              </button>
+              <div className="screen__background">
+                <span className="screen__background__shape screen__background__shape4"></span>
+                <span className="screen__background__shape screen__background__shape3"></span>
+                <span className="screen__background__shape screen__background__shape2"></span>
+                <span className="screen__background__shape screen__background__shape1"></span>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 export default SingUp;
